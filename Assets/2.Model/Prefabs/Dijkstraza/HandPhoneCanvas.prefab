@@ -265,8 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5119b660e01da42894232da298133d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrollConfigWindow
-  _gameObject1: {fileID: 0}
-  _gameObject2: {fileID: 0}
+  _gameObject: {fileID: 0}
+  _targetPosition: 0
+  _speed: 4000
+  _targetPosition2: 1920
+  _speed2: 4000
+  _duration: 5
+  _duration2: 5
 --- !u!1 &7393204141175967941
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +283,7 @@ GameObject:
   - component: {fileID: 5669136243156201383}
   - component: {fileID: 6724394129781706754}
   - component: {fileID: 4851410171134826242}
+  - component: {fileID: 6749597523231100627}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -344,3 +350,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6749597523231100627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393204141175967941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5119b660e01da42894232da298133d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::testScroll
+  _gameObject: {fileID: 4565867314733131154}
+  _targetPosition: 85
+  _speed: 4000
+  _targetPosition2: 1835
+  _speed2: 4000
+  _duration: 5
+  _duration2: 5
