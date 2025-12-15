@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca24e44415bb48e4f91a59b879d3820d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddressableManager
-  assetLabel:
-    m_LabelString: default
 --- !u!4 &559279823
 Transform:
   m_ObjectHideFlags: 0
@@ -194,7 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba09de75bbfbaea49bca20a3ab438a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  defaultSceneContextPath: DefaultSceneContext
+  defaultSceneContextPath: SceneContext
+  defaultAssetLabel:
+    m_LabelString: default
 --- !u!4 &902038408
 Transform:
   m_ObjectHideFlags: 0

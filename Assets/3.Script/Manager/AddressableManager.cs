@@ -7,41 +7,104 @@ using UnityEngine.ResourceManagement.ResourceLocations;
 
 public class AddressableManager : SingletonBehaviour<AddressableManager>
 {
-    [SerializeField]
-    private AssetLabelReference assetLabel;
+    private AssetLabelReference currentAssetLabel = new AssetLabelReference();
 
     private IList<IResourceLocation> _locations;
 
     private List<GameObject> _gameObjects = new List<GameObject>();
 
-    private IEnumerator GetLocations()
-    {
-        var op = Addressables.LoadResourceLocationsAsync(assetLabel.labelString);
+    public bool Initialized => _locations != null && _locations.Count != 0;
 
-        while(op.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.None)
+    public void SetAssestLabel(AssetLabelReference assetLabel)
+    {
+        if (currentAssetLabel.labelString == assetLabel.labelString)
+            return;
+
+        currentAssetLabel.labelString = assetLabel.labelString;
+
+        if(_locations != null && _locations.Count > 0)
+        {
+            _locations.Clear();
+        }
+    }
+
+    public IEnumerator GetLocations_co()
+    {
+        var op = Addressables.LoadResourceLocationsAsync(currentAssetLabel.labelString);
+
+        while (op.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.None)
         {
             yield return null;
         }
-        Debug.Log(op.Result.Count);
+
         _locations = op.Result;
     }
 
-    public IEnumerator Instantiate()
+    /// <summary>
+    /// 비동기 방식으로 서버에 있는 게임오브젝트를 불러옴
+    /// 사용 전 경로를 불러와야 하기에 GetLocations()를 호출해 주어야 함
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator Instantiate_co(string objectKey)
     {
-        yield return GetLocations();
-
-        var op = Addressables.InstantiateAsync(_locations[0], Vector3.zero, Quaternion.identity);
-
-        while(op.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.None)
+        if (_locations == null || _locations.Count <= 0)
         {
-            yield return null;
+            Debug.Log($"Addressable location not reloaded");
+            yield break;
         }
 
-        _gameObjects.Add(op.Result);
-        foreach(var g in _gameObjects)
+        IResourceLocation resourceLocation = GetIResourceLocation(objectKey);
+
+        if(resourceLocation != null)
         {
-            Debug.Log(g);
+            var op = Addressables.InstantiateAsync(resourceLocation, Vector3.zero, Quaternion.identity);
+
+            while (op.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.None)
+            {
+                yield return null;
+            }
+
+            _gameObjects.Add(op.Result);
+
+            Debug.Log($"Spawn gameobject from aws server, created {op.Result}");
         }
+    }
+
+    public void Instantiate(string objectKey)
+    {
+        if (_locations == null || _locations.Count <= 0)
+        {
+            Debug.Log($"Addressable location not reloaded");
+            return;
+        }
+
+        IResourceLocation resourceLocation = GetIResourceLocation(objectKey);
+
+        if (resourceLocation != null)
+        {
+            var clone = Addressables.InstantiateAsync(resourceLocation, Vector3.zero, Quaternion.identity).WaitForCompletion();
+            _gameObjects.Add(clone);
+            Debug.Log($"Spawn gameobject from aws server, created {clone}");
+        }
+    }
+
+    private IResourceLocation GetIResourceLocation(string key)
+    {
+        if (_locations == null)
+        {
+            Debug.Log($"Not initialized location");
+            return default;
+        }
+
+        for(int i = 0; i < _locations.Count; i++)
+        {
+            if(_locations[i].PrimaryKey == key)
+            {
+                return _locations[i];
+            }
+        }
+
+        return default;
     }
 
     public void Release()

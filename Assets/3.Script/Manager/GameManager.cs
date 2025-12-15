@@ -7,11 +7,14 @@ using UnityEngine.AddressableAssets;
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField]
-    private string defaultSceneContextPath = "DefaultSceneContext";
+    private string defaultSceneContextPath = "SceneContext";
 
     // 게임 씬 호출 이후 무조건 초기화 되어 있어야 함
     private SceneContext currentSceneContext;
     public SceneContext CurrentSceneContext => currentSceneContext;
+
+    [SerializeField]
+    private AssetLabelReference defaultAssetLabel;
 
     public IEnumerator Initialize()
     {
@@ -19,7 +22,13 @@ public class GameManager : SingletonBehaviour<GameManager>
 
         if(currentSceneContext == null)
         {
-            yield return AddressableManager.Instance.Instantiate();
+            AddressableManager.Instance.SetAssestLabel(defaultAssetLabel);
+
+            yield return AddressableManager.Instance.GetLocations_co();
+            // 비동기
+            //yield return AddressableManager.Instance.Instantiate_co(defaultSceneContextPath);
+            // 동기
+            AddressableManager.Instance.Instantiate(defaultSceneContextPath);
         }
 
         CallOnSceneContextBuilt();

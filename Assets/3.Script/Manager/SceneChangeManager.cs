@@ -24,6 +24,7 @@ public class SceneChangeManager : SingletonBehaviour<SceneChangeManager>
             ChangeScene(SceneType.TitleScene);
         }
     }
+
     private IEnumerator ChangeScene_co(SceneType sceneType)
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync((int)sceneType);
