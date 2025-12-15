@@ -7,8 +7,8 @@ using UnityEngine.AddressableAssets;
 public class SceneContext : MonoBehaviour
 {
     [SerializeField]
-    private float gameDeltaTime = 1f;
-    public float GameDeltaTime => gameDeltaTime;
+    private float gameTimeScale = 1f;
+    public float GameTimeScale => gameTimeScale;
 
     [SerializeField]
     private AssetLabelReference assetLable;
