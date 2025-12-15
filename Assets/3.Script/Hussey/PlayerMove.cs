@@ -27,9 +27,11 @@ public class PlayerMove : MonoBehaviour
     private void Move()
     {
         //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale 필요
-        Vector3 movePos = playerInput.MoveValue * moveSpeed * Time.deltaTime;//timescale 필요
-        //playerR.MovePosition(transform.position + movePos);
-        playerR.MovePosition(transform.position + new Vector3(movePos.x , 0 , movePos.y));
+        Vector3 forward = transform.forward * playerInput.MoveValue.y;
+        Vector3 right = transform.right * playerInput.MoveValue.x;
+        Vector3 direction = (forward + right).normalized;
+        Vector3 movePos = direction * moveSpeed * Time.deltaTime;// * GameManager.Instance.CurrentSceneContext.GameDeltaTime;
+        playerR.MovePosition(transform.position + movePos);
         //ani.걷기
     }
 
