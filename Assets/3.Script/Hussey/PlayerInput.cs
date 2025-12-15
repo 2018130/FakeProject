@@ -14,8 +14,20 @@ public class PlayerInput : MonoBehaviour
     private Vector2 mousePos = Vector2.zero;
     public Vector2 MousePos => mousePos;
 
+    [SerializeField]
+    private Vector2 mouseDelta = Vector2.zero;
+    public Vector2 MouseDelta => mouseDelta;
+
     private bool IsRun = false;
     public bool isRun => IsRun;
+
+    //private bool IsPersonalView = false;
+    //public bool isPersonalView => IsPersonalView;
+
+    private void LateUpdate()
+    {
+        mouseDelta = Vector2.zero;
+    }
 
     public void Event_Move(InputAction.CallbackContext context)
     {
@@ -29,11 +41,20 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public void Event_Aim(InputAction.CallbackContext context)
+    //3인칭 구현이라 주석처리
+    //public void Event_Aim(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Performed)
+    //    {
+    //        mousePos = context.ReadValue<Vector2>();
+    //    }
+    //}
+
+    public void Event_PersonalView(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if(context.phase == InputActionPhase.Performed)
         {
-            mousePos = context.ReadValue<Vector2>();
+            mouseDelta = context.ReadValue<Vector2>();
         }
     }
 
@@ -48,4 +69,17 @@ public class PlayerInput : MonoBehaviour
             IsRun = false;
         }
     }
+
+    //3인칭 구현이라 주석처리
+    //public void Event_ChangeView(InputAction.CallbackContext context)
+    //{
+    //    if(context.phase == InputActionPhase.Performed)
+    //    {
+    //        IsPersonalView = !IsPersonalView;
+    //    }
+    //    //else if(context.phase == InputActionPhase.Canceled)
+    //    //{
+    //    //    IsPersonalView = false;
+    //    //}
+    //}
 }

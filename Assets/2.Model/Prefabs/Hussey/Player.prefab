@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2898629430890784467}
   - component: {fileID: 477678054075509031}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,6 +136,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d4fce193-ae42-4218-88a2-13a282060f33
     m_ActionName: 'Player/Run[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2898629430890784467}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: Event_ChangeView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2fd7ec2c-4662-41de-866d-10ab6582436d
+    m_ActionName: 'Player/ChangeView[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2898629430890784467}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: Event_PersonalView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8e8ff3b-f06c-4d74-b85c-8bcce0d8c001
+    m_ActionName: 'Player/Look[/Mouse/delta]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Player
@@ -155,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
   moveValue: {x: 0, y: 0}
   mousePos: {x: 0, y: 0}
+  mouseDelta: {x: 0, y: 0}
 --- !u!114 &477678054075509031
 MonoBehaviour:
   m_ObjectHideFlags: 0
