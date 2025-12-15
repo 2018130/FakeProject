@@ -70,12 +70,12 @@ public class AddressableManager : SingletonBehaviour<AddressableManager>
         }
     }
 
-    public void Instantiate(string objectKey)
+    public GameObject Instantiate(string objectKey)
     {
         if (_locations == null || _locations.Count <= 0)
         {
             Debug.Log($"Addressable location not reloaded");
-            return;
+            return null;
         }
 
         IResourceLocation resourceLocation = GetIResourceLocation(objectKey);
@@ -85,7 +85,11 @@ public class AddressableManager : SingletonBehaviour<AddressableManager>
             var clone = Addressables.InstantiateAsync(resourceLocation, Vector3.zero, Quaternion.identity).WaitForCompletion();
             _gameObjects.Add(clone);
             Debug.Log($"Spawn gameobject from aws server, created {clone}");
+
+            return clone;
         }
+
+        return null;
     }
 
     private IResourceLocation GetIResourceLocation(string key)
