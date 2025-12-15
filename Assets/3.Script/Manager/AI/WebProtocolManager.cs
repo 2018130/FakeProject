@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -6,114 +7,148 @@ using UnityEngine.UI;
 
 public class WebProtocolManager : MonoBehaviour
 {
-    [SerializeField]
-    private InputField inputField;
-    [SerializeField]
-    private Text text;
+    [SerializeField] private Text displayText;
+    [SerializeField] private InputField inputField;
+    [SerializeField] private Button sendButton;
 
-    // Gemini API 키 (보안을 위해 실제 프로젝트에서는 다른 방식으로 관리하는 것이 좋습니다)
+    // === 1. 설정 ===
+
+    // Gemini API 키를 여기에 입력하세요. 
+    // 실제 배포 시에는 보안을 위해 Environment Variables 또는 다른 안전한 방식을 사용해야 합니다.
     private const string API_KEY = "AIzaSyC7ShO1fWlneRO1EyDf79YV6dId7-wXvBk";
 
     // 사용할 모델과 API 엔드포인트 URL
-    private const string API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY;
+    private const string MODEL_NAME = "gemini-2.5-flash";
+    private string API_URL => $"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent?key={API_KEY}";
 
-    // API 요청 데이터를 직렬화할 수 있는 구조체
-    [System.Serializable]
-    public class GeminiRequest
-    {
-        public Content[] contents;
-    }
+    // 대화 기록을 저장할 리스트
+    // 이 리스트가 대화의 '상태'를 유지하는 역할을 합니다.
+    private List<Content> conversationHistory = new List<Content>();
 
-    [System.Serializable]
-    public class Content
-    {
-        public Part[] parts;
-    }
-
+    // === 2. API 요청/응답 직렬화(Serialization) 구조체 ===
+    #region Request 구조체
     [System.Serializable]
     public class Part
     {
         public string text;
     }
 
-    // API 응답 데이터를 역직렬화할 수 있는 구조체 (응답 구조에 따라 복잡해질 수 있음)
     [System.Serializable]
-    public class GeminiResponse
+    public class Content
     {
-        public Candidate[] candidates;
+        // 'user' 또는 'model' 역할 지정 (대화 기록 유지에 필수)
+        public string role;
+        public Part[] parts;
     }
 
+    [System.Serializable]
+    public class GeminiRequest
+    {
+        // 전체 대화 기록을 담는 배열
+        public Content[] contents;
+    }
+
+    // --- 응답 구조체 (간소화) ---
     [System.Serializable]
     public class Candidate
     {
         public Content content;
     }
-    
-    public void OnSendButtonClicked()
+
+    [System.Serializable]
+    public class GeminiResponse
     {
-        string prompt = inputField.text;
-        SendGeminiRequest(prompt);
+        public Candidate[] candidates;
+    }
+    #endregion
+
+    // === 3. 공용 메서드 ===
+
+    // 외부에서 호출할 대화 시작/진행 메서드
+    public void SendChatMessage()
+    {
+        if (string.IsNullOrEmpty(API_KEY) || API_KEY == "YOUR_GEMINI_API_KEY")
+        {
+            Debug.LogError("API 키를 설정해주세요.");
+            return;
+        }
+
+        Debug.Log($"User: {inputField.text}");
+        StartCoroutine(PostRequest(inputField.text));
     }
 
-    public void SendGeminiRequest(string prompt)
-    {
-        StartCoroutine(PostRequest(prompt));
-    }
+    // === 4. 통신 코루틴 ===
 
-    private IEnumerator PostRequest(string prompt)
+    private IEnumerator PostRequest(string newPrompt)
     {
-        // 1. 요청할 데이터 객체 생성
+        // 1. 새로운 사용자 메시지를 대화 기록에 추가 (role: user)
+        Content newUserContent = new Content
+        {
+            role = "user",
+            parts = new Part[] { new Part { text = newPrompt } }
+        };
+        conversationHistory.Add(newUserContent);
+
+        // 2. 전체 대화 기록을 요청 본문에 담기
         GeminiRequest requestData = new GeminiRequest
         {
-            contents = new Content[]
-            {
-                new Content
-                {
-                    parts = new Part[]
-                    {
-                        new Part { text = prompt }
-                    }
-                }
-            }
+            contents = conversationHistory.ToArray()
         };
 
-        // 2. 객체를 JSON 문자열로 직렬화 (Unity의 JsonUtility 사용)
+        // 객체를 JSON 문자열로 직렬화
         string jsonRequestBody = JsonUtility.ToJson(requestData);
         byte[] rawBody = new UTF8Encoding().GetBytes(jsonRequestBody);
 
-        // 3. UnityWebRequest 객체 생성 (POST 메서드)
+        // 3. UnityWebRequest 설정 및 전송
         using (UnityWebRequest webRequest = new UnityWebRequest(API_URL, "POST"))
         {
             webRequest.uploadHandler = new UploadHandlerRaw(rawBody);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
-
-            // 4. Content-Type 헤더 설정
             webRequest.SetRequestHeader("Content-Type", "application/json");
 
-            // 5. 요청 전송
             yield return webRequest.SendWebRequest();
 
-            // 6. 응답 처리
-            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
+            // 4. 응답 처리
+            if (webRequest.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError("Error: " + webRequest.error);
+                Debug.LogError($"Gemini API Error: {webRequest.error}\nResponse Text: {webRequest.downloadHandler.text}");
+
+                // 오류 발생 시, 방금 추가한 사용자 메시지를 기록에서 제거하여 재시도를 돕습니다.
+                conversationHistory.RemoveAt(conversationHistory.Count - 1);
             }
             else
             {
                 string jsonResponse = webRequest.downloadHandler.text;
-                // 7. JSON 응답을 C# 객체로 역직렬화
+
+                // JSON 응답을 C# 객체로 역직렬화
                 GeminiResponse response = JsonUtility.FromJson<GeminiResponse>(jsonResponse);
 
-                // 예시: 첫 번째 결과에서 텍스트 추출
-                if (response?.candidates?.Length > 0)
+                // 5. 모델 응답을 추출하고 기록에 추가 (role: model)
+                if (response?.candidates?.Length > 0 && response.candidates[0].content.parts.Length > 0)
                 {
-                    string generatedText = response.candidates[0].content.parts[0].text;
-                    Debug.Log("Generated Text: " + generatedText);
+                    Content modelContent = response.candidates[0].content;
+                    string generatedText = modelContent.parts[0].text;
 
-                    text.text = generatedText;
+                    // 모델 응답을 대화 기록에 추가 (role: model)
+                    modelContent.role = "model";
+                    conversationHistory.Add(modelContent);
 
+                    Debug.Log($"Gemini: {generatedText}");
+                    displayText.text = $"Gemini: {generatedText}";
+                }
+                else
+                {
+                    Debug.LogWarning("Gemini 응답에 텍스트가 포함되어 있지 않습니다. 응답 전체: " + jsonResponse);
+                    conversationHistory.RemoveAt(conversationHistory.Count - 1);
                 }
             }
         }
+    }
+
+    // 테스트 및 확인용 메서드 (선택 사항)
+    public void ClearChatHistory()
+    {
+        conversationHistory.Clear();
+        Debug.Log("대화 기록이 초기화되었습니다.");
     }
 }
