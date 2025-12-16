@@ -98,15 +98,15 @@ public class WebProtocolManager : MonoBehaviour
     // === 3. 공용 메서드 ===
     private void Start()
     {
-        SetPrompt();
+        //SetPrompt();
     }
 
     private void SetPrompt()
     {
-        //TextAsset defaultRomanticPrompt = Resources.Load<TextAsset>("DefaultRomanticPrompt");
-        //TextAsset romanticDetectorPrompt = Resources.Load<TextAsset>("RomanticDetectorPrompt");
-        //SendChatMessage(defaultRomanticPrompt.text, ConversationType.Romantic, null);
-        //SendChatMessage(romanticDetectorPrompt.text, ConversationType.RomanticDetector, null);
+        TextAsset defaultRomanticPrompt = Resources.Load<TextAsset>("DefaultRomanticPrompt");
+        TextAsset romanticDetectorPrompt = Resources.Load<TextAsset>("RomanticDetectorPrompt");
+        SendChatMessage(defaultRomanticPrompt.text, ConversationType.Romantic, null);
+        SendChatMessage(romanticDetectorPrompt.text, ConversationType.RomanticDetector, null);
     }
 
     public void SendChatMessage()
@@ -123,10 +123,10 @@ public class WebProtocolManager : MonoBehaviour
             return;
         }
 
-        Debug.Log($"User: {text}");
 
-        if(conversationType ==ConversationType.RomanticDetector)
+        if(conversationType == ConversationType.RomanticDetector)
         {
+            Debug.Log($"User: {text}");
             StartCoroutine(PostRequestForDetector(text, (text) => SendChatMessage(text, ConversationType.Romantic, callback)));
         }
         else
@@ -194,7 +194,7 @@ public class WebProtocolManager : MonoBehaviour
                     conversation.Add(modelContent);
 
                     Debug.Log($"Gemini: {generatedText}");
-                    //callback?.Invoke(generatedText);
+                    callback?.Invoke(generatedText);
                 }
                 else
                 {
@@ -265,7 +265,7 @@ public class WebProtocolManager : MonoBehaviour
 
                     if(generatedText != "Reject")
                     {
-                        callback?.Invoke(displayText.text);
+                        callback?.Invoke(generatedText);
                     }
                     else
                     {

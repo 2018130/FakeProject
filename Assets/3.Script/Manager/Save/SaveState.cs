@@ -24,7 +24,7 @@ public class SaveState : MonoBehaviour, ISceneContextBuilt
 
     public void SaveInfomation()
     {
-        throw new NotImplementedException();
+
     }
 
     private void OnDestroy()

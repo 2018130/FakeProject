@@ -10,7 +10,6 @@ public class DialogueData
     public string Name;
     public string Dialogue;
     public bool HasChoice;
-
     public int Favorability;
 }
 
