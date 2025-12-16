@@ -16,6 +16,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "PersonalView",
+                    "type": "Value",
+                    "id": "b8e8ff3b-f06c-4d74-b85c-8bcce0d8c001",
+                    "expectedControlType": "Delta",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "b482527f-bed0-4901-8077-02247b3c7e22",
@@ -28,6 +37,15 @@
                     "name": "Run",
                     "type": "Button",
                     "id": "d4fce193-ae42-4218-88a2-13a282060f33",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeView",
+                    "type": "Button",
+                    "id": "2fd7ec2c-4662-41de-866d-10ab6582436d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -109,6 +127,28 @@
                     "processors": "",
                     "groups": ";PC",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45d62d9c-588e-4404-8d63-5b53da4a81c4",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "ChangeView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd2c5af4-3db3-43d3-a94e-69918596d293",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "PersonalView",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
