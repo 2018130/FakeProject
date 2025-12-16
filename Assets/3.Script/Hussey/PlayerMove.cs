@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     private Transform mainCam;
 
     private float xRotation = 0f;
+    private float yRotation = 0f;
 
     private void Awake()
     {
@@ -31,8 +32,8 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("there is no camera");
         }
 
-        Cursor.lockState = CursorLockMode.Locked;//커서 고정시키는거임
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;//커서 고정시키는거임
+        //Cursor.visible = false;
     }
 
     private void Update()
@@ -71,9 +72,11 @@ public class PlayerMove : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
 
+        yRotation += mouseX;
+
         if (mainCam != null)
         {
-            mainCam.rotation = Quaternion.Euler(xRotation, 0, 0);
+            mainCam.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         }
 
         transform.Rotate(Vector3.up * mouseX);

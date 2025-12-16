@@ -21,8 +21,15 @@ public class PlayerInput : MonoBehaviour
     private bool IsRun = false;
     public bool isRun => IsRun;
 
+    private Animator ani;
+
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
+
+    private void Awake()
+    {
+        ani = GetComponentInChildren<Animator>();
+    }
 
     private void LateUpdate()
     {
@@ -34,10 +41,12 @@ public class PlayerInput : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             moveValue = context.ReadValue<Vector2>();
+            ani.SetBool("Walk", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             moveValue = Vector2.zero;
+            ani.SetBool("Walk", false);
         }
     }
 
@@ -63,10 +72,12 @@ public class PlayerInput : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             IsRun = true;
+            ani.SetBool("Run", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             IsRun = false;
+            ani.SetBool("Run", false);
         }
     }
 
