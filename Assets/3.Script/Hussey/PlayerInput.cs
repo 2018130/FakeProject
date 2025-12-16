@@ -14,26 +14,56 @@ public class PlayerInput : MonoBehaviour
     private Vector2 mousePos = Vector2.zero;
     public Vector2 MousePos => mousePos;
 
+    [SerializeField]
+    private Vector2 mouseDelta = Vector2.zero;
+    public Vector2 MouseDelta => mouseDelta;
+
     private bool IsRun = false;
     public bool isRun => IsRun;
+
+    private Animator ani;
+
+    //private bool IsPersonalView = false;
+    //public bool isPersonalView => IsPersonalView;
+
+    private void Awake()
+    {
+        ani = GetComponentInChildren<Animator>();
+    }
+
+    private void LateUpdate()
+    {
+        mouseDelta = Vector2.zero;
+    }
 
     public void Event_Move(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
             moveValue = context.ReadValue<Vector2>();
+            ani.SetBool("Walk", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             moveValue = Vector2.zero;
+            ani.SetBool("Walk", false);
         }
     }
 
-    public void Event_Aim(InputAction.CallbackContext context)
+    //3인칭 구현이라 주석처리
+    //public void Event_Aim(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Performed)
+    //    {
+    //        mousePos = context.ReadValue<Vector2>();
+    //    }
+    //}
+
+    public void Event_PersonalView(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if(context.phase == InputActionPhase.Performed)
         {
-            mousePos = context.ReadValue<Vector2>();
+            mouseDelta = context.ReadValue<Vector2>();
         }
     }
 
@@ -42,10 +72,25 @@ public class PlayerInput : MonoBehaviour
         if (context.phase == InputActionPhase.Performed)
         {
             IsRun = true;
+            ani.SetBool("Run", true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             IsRun = false;
+            ani.SetBool("Run", false);
         }
     }
+
+    //3인칭 구현이라 주석처리
+    //public void Event_ChangeView(InputAction.CallbackContext context)
+    //{
+    //    if(context.phase == InputActionPhase.Performed)
+    //    {
+    //        IsPersonalView = !IsPersonalView;
+    //    }
+    //    //else if(context.phase == InputActionPhase.Canceled)
+    //    //{
+    //    //    IsPersonalView = false;
+    //    //}
+    //}
 }

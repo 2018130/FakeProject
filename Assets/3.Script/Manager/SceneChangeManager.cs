@@ -17,14 +17,6 @@ public class SceneChangeManager : SingletonBehaviour<SceneChangeManager>
         StartCoroutine(ChangeScene_co(sceneType));
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeScene(SceneType.TitleScene);
-        }
-    }
-
     private IEnumerator ChangeScene_co(SceneType sceneType)
     {
         AsyncOperation ao = SceneManager.LoadSceneAsync((int)sceneType);

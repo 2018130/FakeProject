@@ -16,6 +16,11 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField]
     private AssetLabelReference defaultAssetLabel;
 
+    private void Start()
+    {
+        StartCoroutine(Initialize());
+    }
+
     public IEnumerator Initialize()
     {
         currentSceneContext = FindAnyObjectByType<SceneContext>();
@@ -28,7 +33,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             // 비동기
             //yield return AddressableManager.Instance.Instantiate_co(defaultSceneContextPath);
             // 동기
-            AddressableManager.Instance.Instantiate(defaultSceneContextPath);
+            GameObject obj = AddressableManager.Instance.Instantiate(defaultSceneContextPath);
         }
 
         CallOnSceneContextBuilt();

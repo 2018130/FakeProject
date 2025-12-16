@@ -156,4 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a49e6f94016f1d4390817ebffb08773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneContext
-  gameDeltaTime: 1
+  gameTimeScale: 1
+  assetLable:
+    m_LabelString: default
