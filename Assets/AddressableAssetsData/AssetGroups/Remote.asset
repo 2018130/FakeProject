@@ -15,12 +15,6 @@ MonoBehaviour:
   m_GroupName: Remote
   m_GUID: dda252c53e9f1064fbb339d83935f725
   m_SerializeEntries:
-  - m_GUID: 15e932191ef82ae4fb9bd0fac74aff83
-    m_Address: TestButton
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e13447ba1391c1640896edb59da5cece
     m_Address: SceneContext
     m_ReadOnly: 0
