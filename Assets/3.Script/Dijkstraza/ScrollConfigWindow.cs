@@ -144,6 +144,7 @@ public class ScrollConfigWindow : MonoBehaviour
         //달성 시간을 정하여 그 시간안에 달성하게 하는 방식
         float startPosY = _configScreen.transform.localPosition.y;
         float _elapseTime = 0;
+        
         Image image = _configScreen.GetComponent<Image>();
         Color tempColor = image.color;
         while (_elapseTime < _durationToDown)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
