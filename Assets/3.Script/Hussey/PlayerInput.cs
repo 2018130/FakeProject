@@ -23,6 +23,8 @@ public class PlayerInput : MonoBehaviour
 
     private Animator ani;
 
+    public event Action OnLightKeyDowned;
+
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
 
@@ -49,6 +51,7 @@ public class PlayerInput : MonoBehaviour
             ani.SetBool("Walk", false);
         }
     }
+
 
     //3인칭 구현이라 주석처리
     //public void Event_Aim(InputAction.CallbackContext context)
@@ -78,6 +81,15 @@ public class PlayerInput : MonoBehaviour
         {
             IsRun = false;
             ani.SetBool("Run", false);
+        }
+    }
+
+    public void Event_Light(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Performed)
+        {
+            Debug.Log("1111");
+            OnLightKeyDowned?.Invoke();
         }
     }
 
