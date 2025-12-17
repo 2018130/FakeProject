@@ -7,47 +7,59 @@ using UnityEngine.AI;
 public class Pickle : MonoBehaviour
 {
     private NavMeshAgent agent;
-    //private AudioSource audioPlayer;
 
     [SerializeField] private Transform target;
-    //[SerializeField] private AudioClip[] pickleSound;
 
     private void Awake()
     {
         TryGetComponent(out agent);
-        //TryGetComponent(out audioPlayer);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        agent.isStopped = true;
+        agent.ResetPath();
+        StopNav();
     }
 
-    private void Update()
+    //private void Start()
+    //{
+    //    agent.ResetPath();
+    //    StopNav();
+    //}
+
+    public void SetPos(Vector3 destPos, Transform target)
     {
-        if (!agent.isStopped && agent.isOnNavMesh)
+        this.target = target;
+
+        if (!NavMesh.SamplePosition(destPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
         {
-            Debug.Log("pickle update");
-            agent.SetDestination(target.position);
+            return;
         }
+
+        agent.Warp(hit.position);
+
+        StartNav();
+
+        InvokeRepeating(nameof(UpdatePath), 0f, 0.2f);
     }
 
-    public void SetPos(Vector3 targetPos, Vector3 gapPos)
+    private void UpdatePath()
     {
-        Vector3 destPos = targetPos + gapPos;
-
-        transform.position = new Vector3(destPos.x, 0, destPos.z);
-        Debug.Log("setPos");
-        //if (agent != null)
-        //{
-        //    agent.Warp(destPos.x, 0, destPos.z);
-        //}
+        if (target == null) return;
+        if (!agent.isOnNavMesh) return;
+    
+        agent.SetDestination(target.position);
     }
+
+    //public IEnumerator Setpath()
+    //{
+    //    yield return null;
+    //    agent.SetDestination(target.position);
+    //}
 
     public void StartNav()
     {
         agent.isStopped = false;
-        Debug.Log("nav mesh started");
     }
 
     public void StopNav()
