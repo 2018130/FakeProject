@@ -12,9 +12,23 @@ public class LightObject : MonoBehaviour
         light = GetComponentInChildren<Light>();
     }
 
-    public void Toggle()
+    public virtual void TurnOn()
     {
-        Debug.Log("2222");
-        light.enabled = !light.enabled;
+        light.enabled = true;
+    }
+    public virtual void TurnOff()
+    {
+        light.enabled = false;
+    }
+    public virtual void Toggle()
+    {
+        if(light.enabled)
+        {
+            TurnOff();
+        }
+        else
+        {
+            TurnOn();
+        }
     }
 }

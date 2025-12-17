@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ActionOnTrigger : MonoBehaviour
 {
     [SerializeField]
-    private UnityAction action;
+    private UnityEvent action;
 
     [SerializeField]
     private string triggerTargetTag = "Player";
