@@ -41,11 +41,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        // test
-        PrintDialogue(new DialogueData() { Name = "지수", Dialogue = "민준아, 다음 주 토요일에 한강공원으로 소풍 가는 거 잊지 않았지? 내가 어제 날씨를 확인해 보니까 딱 맑을 것 같아.", HasChoice = false });
-        PrintDialogue(new DialogueData() { Name = "민준", Dialogue = "물론이지, 지수야! 완전 기대하고 있어. 너 도시락은 뭘 싸 올 거야? 나는 벌써부터 네가 만든 유부초밥이 아른거려. 🤤", HasChoice = false });
-        PrintDialogue(new DialogueData() { Name = "지수", Dialogue = "하하, 네가 제일 좋아하는 유부초밥이랑 샌드위치도 조금 싸 갈 거야. 그리고 과일이랑 시원한 보리차도 챙기려고. 너는 혹시 특별히 먹고 싶은 거 없어?", HasChoice = false });
-        PrintDialogue(new DialogueData() { Name = "민준", Dialogue = "나는 치킨 한 마리 포장해 갈까 생각 중이었는데! 그리고 탄산음료도 좀 있어야 완벽할 것 같아. 역시 소풍의 하이라이트는 맛있는 음식 아니겠어?", HasChoice = true, Favorability = 20 });
+        foreach(DialogueData data in CsvReader.LoadCsvData())
+        {
+            PrintDialogue(data);
+        }
     }
 
     public void PrintDialogue(DialogueData dialogueData)

@@ -3,33 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CsvReader : MonoBehaviour
+public class CsvReader
 {
     // CSV 파일이 Resources 폴더 안에 있을 경우 파일 이름만 지정합니다.
-    public string csvFileName = "dialogue_data"; // 파일명: dialogue_data.csv
-
-    // 로드된 모든 데이터를 저장할 리스트
-    public List<DialogueData> dialogueList = new List<DialogueData>();
-
-    private void Start()
-    {
-        LoadCsvData();
-
-        // 데이터가 잘 로드되었는지 확인하는 예시
-        Debug.Log($"총 {dialogueList.Count}개의 데이터를 로드했습니다.");
-        if (dialogueList.Count > 0)
-        {
-            Debug.Log("첫 번째 데이터:");
-            Debug.Log(dialogueList[0].ToString());
-        }
-    }
+    public static string csvFileName = "dialogue_data"; // 파일명: dialogue_data.csv
 
     /// <summary>
     /// Resources 폴더에서 CSV 파일을 읽어 DialogueData 리스트에 저장합니다.
     /// </summary>
-    public void LoadCsvData()
+    public static List<DialogueData> LoadCsvData()
     {
-        dialogueList.Clear(); // 이전 데이터 초기화
+        List<DialogueData> dialogueDatas = new List<DialogueData>();
 
         // Resources 폴더에서 TextAsset으로 CSV 파일 로드
         TextAsset csvFile = Resources.Load<TextAsset>(csvFileName);
@@ -37,7 +21,7 @@ public class CsvReader : MonoBehaviour
         if (csvFile == null)
         {
             Debug.LogError($"CSV 파일 '{csvFileName}.csv'을(를) Resources 폴더에서 찾을 수 없습니다.");
-            return;
+            return null;
         }
 
         // 전체 텍스트를 줄 단위로 분할
@@ -46,7 +30,7 @@ public class CsvReader : MonoBehaviour
         if (lines.Length <= 1)
         {
             Debug.LogWarning("CSV 파일에 헤더 또는 데이터가 없습니다.");
-            return;
+            return null;
         }
 
         // 첫 번째 줄은 헤더(열 이름)입니다.
@@ -101,7 +85,9 @@ public class CsvReader : MonoBehaviour
                         break;
                 }
             }
-            dialogueList.Add(data);
+            dialogueDatas.Add(data);
         }
+
+        return dialogueDatas;
     }
 }
