@@ -13,7 +13,8 @@ public class PlayerMove : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody playerR;
     //private Animator ani;
-    private Transform mainCam;
+    [SerializeField]
+    private Transform cameraPoint;
 
     private float xRotation = 0f;
     private float yRotation = 0f;
@@ -23,14 +24,6 @@ public class PlayerMove : MonoBehaviour
         TryGetComponent(out playerInput);
         TryGetComponent(out playerR);
         //TryGetComponent(out ani);
-        if (Camera.main != null)
-        {
-            mainCam = Camera.main.transform;
-        }
-        else
-        {
-            Debug.Log("there is no camera");
-        }
 
         //Cursor.lockState = CursorLockMode.Locked;//커서 고정시키는거임
         //Cursor.visible = false;
@@ -74,9 +67,9 @@ public class PlayerMove : MonoBehaviour
 
         yRotation += mouseX;
 
-        if (mainCam != null)
+        if (cameraPoint != null)
         {
-            mainCam.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         }
 
         transform.Rotate(Vector3.up * mouseX);
