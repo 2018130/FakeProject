@@ -4,6 +4,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+public class PlayerData
+{
+    public string Name = "TEST";
+}
+
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField]
@@ -15,6 +20,9 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     [SerializeField]
     private AssetLabelReference defaultAssetLabel;
+
+    [Header("Data")]
+    private PlayerData playerData;
 
     private void Start()
     {
@@ -34,6 +42,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             //yield return AddressableManager.Instance.Instantiate_co(defaultSceneContextPath);
             // µ¿±â
             GameObject obj = AddressableManager.Instance.Instantiate(defaultSceneContextPath);
+            currentSceneContext = obj.GetComponent<SceneContext>();
         }
 
         CallOnSceneContextBuilt();
