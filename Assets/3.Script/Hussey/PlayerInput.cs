@@ -27,6 +27,9 @@ public class PlayerInput : MonoBehaviour
     private Animator ani;
 
     public event Action OnLightKeyDowned;
+    public event Action OnInteractionDowned;
+
+    public bool InteractionPerformed;
 
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
@@ -60,7 +63,7 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    //3ÀÎÄª ±¸ÇöÀÌ¶ó ÁÖ¼®Ã³¸®
+    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_Aim(InputAction.CallbackContext context)
     //{
     //    if (context.phase == InputActionPhase.Performed)
@@ -107,8 +110,20 @@ public class PlayerInput : MonoBehaviour
             }
         }
     }
+    public void Event_Interact(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            InteractionPerformed = true;
+            OnInteractionDowned?.Invoke();
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            InteractionPerformed = false;
+        }
+    }
 
-    //3ÀÎÄª ±¸ÇöÀÌ¶ó ÁÖ¼®Ã³¸®
+    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{
     //    if(context.phase == InputActionPhase.Performed)
