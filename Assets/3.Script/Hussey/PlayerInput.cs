@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
     public Vector2 MouseDelta => mouseDelta;
 
     private bool IsRun = false;
+
+    public bool canRun = false; //½Å¹ß ¾ò±â Àü±îÁö ´Ş¸®´Â°Å ¸·¾ÒÀ½!! 1218
     public bool isRun => IsRun;
 
     private Animator ani;
@@ -63,7 +65,7 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
+    //3?¸ì¹­ êµ¬í˜„?´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_Aim(InputAction.CallbackContext context)
     //{
     //    if (context.phase == InputActionPhase.Performed)
@@ -85,6 +87,9 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Run(InputAction.CallbackContext context)
     {
+        if (!canRun)
+            return;
+
         if (GameManager.Instance.GameState == GameState.Playing)
         {
             if (context.phase == InputActionPhase.Performed)
@@ -123,7 +128,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
+    //3?¸ì¹­ êµ¬í˜„?´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{
     //    if(context.phase == InputActionPhase.Performed)
