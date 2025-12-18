@@ -7,6 +7,9 @@ using UnityEngine.Events;
 public class ActionOnTrigger : MonoBehaviour
 {
     [SerializeField]
+    UIData data;
+
+    [SerializeField]
     private UnityEvent action;
 
     [SerializeField]
@@ -27,7 +30,13 @@ public class ActionOnTrigger : MonoBehaviour
     {
         if(other.CompareTag(triggerTargetTag))
         {
+            FindAnyObjectByType<interkeyUI>().SetInteractionKeyUI(data);
             action?.Invoke();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        FindAnyObjectByType<interkeyUI>().HideUI();
     }
 }
