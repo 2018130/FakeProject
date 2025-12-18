@@ -9,6 +9,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField]
     private PlayerInput playerInput;
+    
 
     [Header("Overlap Check Variable")]
     [SerializeField]
@@ -61,13 +62,14 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     //Debug.Log($"검출된 오브젝트 : {col.name}");
                     //origin
-                    // if (col.TryGetComponent(out IInteractable a))
+                    if (col.TryGetComponent(out IInteractable a))
+                    //if (col.TryGetComponent<IInteractable>(out IInteractable a))
 
                     //sjh 1400
                     // if(col is IInteractable)
 
                     //kjh 1425    
-                    if (col.GetComponent<IInteractable>()!=null)
+                    //if (col.GetComponent<IInteractable>()!=null)
 
                     //kjh 1430
                     //if (col.TryGetComponent<IInteractable>(out IInteractable a))
@@ -80,21 +82,22 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             minDistanceSqr = distanceSqr;
                             //kjh   1425
-                            //closest = a;
+                            closest = a;
                         }
                     }
                 }
 
                 // 2. 가장 가까운 오브젝트가 Interactable을 상속받고 있다면 Interact() 수행
-                if (closest != null)
-                {
+                ///kjh
+               /// if (closest != null)
+               /// {
                     // Interactable이 인터페이스(IInteractable)인지 클래스인지에 따라 타입만 변경해서 쓰세요.
                     // 여기서는 안전하고 빠른 TryGetComponent를 사용합니다.
                         closest.Interact();
 
                         // 상호작용 후 루프를 종료하고 싶다면 break; 추가
                         // 계속 유지해야 한다면 그대로 둠
-                    }
+                 ///   }
                 
             }
 
