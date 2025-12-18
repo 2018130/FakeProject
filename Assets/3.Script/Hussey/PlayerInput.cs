@@ -19,6 +19,8 @@ public class PlayerInput : MonoBehaviour
     public Vector2 MouseDelta => mouseDelta;
 
     private bool IsRun = false;
+
+    public bool canRun = false; //신발 얻기 전까지 달리는거 막았음!! 1218
     public bool isRun => IsRun;
 
     private Animator ani;
@@ -72,6 +74,20 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Run(InputAction.CallbackContext context)
     {
+        if (!canRun)
+            return;
+        if(context.phase==InputActionPhase.Performed)
+        {
+            IsRun = true;
+            ani.SetBool("Run", true);
+        }
+        else if(context.phase==InputActionPhase.Canceled)
+        {
+            IsRun = false;
+            ani.SetBool("Run", false);
+        }
+        //------ ^^^^^ 신발관련 넣은것 ^^^^ 위------- 1218
+
         if (context.phase == InputActionPhase.Performed)
         {
             IsRun = true;
