@@ -9,6 +9,15 @@ public class PlayerData
     public string Name = "TEST";
 }
 
+
+public enum GameState
+{
+    None,
+    Playing,
+    UI,
+    TimeStop,
+}
+
 public class GameManager : SingletonBehaviour<GameManager>
 {
     [SerializeField]
@@ -21,12 +30,25 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField]
     private AssetLabelReference defaultAssetLabel;
 
+    [SerializeField]
+    private GameState gameState;
+    public GameState GameState => gameState;
+
     [Header("Data")]
     private PlayerData playerData;
 
     private void Start()
     {
         StartCoroutine(Initialize());
+    }
+
+    public void ChangeState(GameState newState)
+    {
+        if (gameState == newState)
+            return;
+
+        
+        gameState = newState;
     }
 
     public IEnumerator Initialize()
