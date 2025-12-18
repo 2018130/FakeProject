@@ -290,7 +290,7 @@ MonoBehaviour:
   defaultSceneContextPath: SceneContext
   defaultAssetLabel:
     m_LabelString: default
-  gameState: 0
+  gameState: 1
 --- !u!4 &902038408
 Transform:
   m_ObjectHideFlags: 0

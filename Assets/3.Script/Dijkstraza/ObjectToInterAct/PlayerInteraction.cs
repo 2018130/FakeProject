@@ -61,13 +61,13 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     //Debug.Log($"검출된 오브젝트 : {col.name}");
                     //origin
-                    // if (col.TryGetComponent(out IInteractable a))
+                    if (col.TryGetComponent(out IInteractable a))
 
                     //sjh 1400
                     // if(col is IInteractable)
 
                     //kjh 1425    
-                    if (col.GetComponent<IInteractable>()!=null)
+                    //if (col.GetComponent<IInteractable>()!=null)
 
                     //kjh 1430
                     //if (col.TryGetComponent<IInteractable>(out IInteractable a))
@@ -80,7 +80,7 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             minDistanceSqr = distanceSqr;
                             //kjh   1425
-                            //closest = a;
+                            closest = a;
                         }
                     }
                 }

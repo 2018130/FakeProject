@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    // Ãß°¡
+    [SerializeField] private Transform phonePoint;
+    public Transform PhonePoint => phonePoint;
+
+
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float runSpeed = 50f;
 

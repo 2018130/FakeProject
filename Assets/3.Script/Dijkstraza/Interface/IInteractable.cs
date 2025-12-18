@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 public interface IInteractable
 {
     void Interact();
-
     Transform transform { get; }
     GameObject gameObject { get; }
 
