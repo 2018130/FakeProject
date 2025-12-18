@@ -31,7 +31,7 @@ public class GameManager : SingletonBehaviour<GameManager>
     private AssetLabelReference defaultAssetLabel;
 
     [SerializeField]
-    private GameState gameState;
+    private GameState gameState = GameState.Playing;
     public GameState GameState => gameState;
 
     [Header("Data")]
@@ -66,6 +66,8 @@ public class GameManager : SingletonBehaviour<GameManager>
             GameObject obj = AddressableManager.Instance.Instantiate(defaultSceneContextPath);
             currentSceneContext = obj.GetComponent<SceneContext>();
         }
+
+        currentSceneContext.Initialize();
 
         CallOnSceneContextBuilt();
     }

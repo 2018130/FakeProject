@@ -64,7 +64,6 @@ public class PlayerInteraction : MonoBehaviour
                     //origin
                     if (col.TryGetComponent(out IInteractable a))
                     //if (col.TryGetComponent<IInteractable>(out IInteractable a))
-
                     //sjh 1400
                     // if(col is IInteractable)
 

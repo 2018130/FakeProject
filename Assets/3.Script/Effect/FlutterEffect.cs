@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlutterEffect : MonoBehaviour, ISceneContextBuilt
+public class FlutterEffect : MonoBehaviour
 {
-    private Vector2 orign;
+    private Vector2 orign = Vector3.zero;
 
     [SerializeField]
     private float maxFlutterHeight = 0.1f;
@@ -24,10 +24,8 @@ public class FlutterEffect : MonoBehaviour, ISceneContextBuilt
 
     public int Priority { get; set; }
 
-    public void OnSceneContextBuilt()
+    public void StartFluttering()
     {
-        orign = transform.localPosition;
-
         StartCoroutine(Flutter_co());
     }
 

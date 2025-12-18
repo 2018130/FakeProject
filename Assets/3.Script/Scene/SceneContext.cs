@@ -14,13 +14,18 @@ public class SceneContext : MonoBehaviour
     [SerializeField]
     private AssetLabelReference assetLable;
 
+    [SerializeField]
+    private PlayerMove player;
+    public PlayerMove Player => player;
+
     [Header("Fade in/out")]
     [SerializeField]
     private Image fadePanel;
 
+
     public void Initialize()
     {
-
+        player = FindAnyObjectByType<PlayerMove>();
     }
 
     private void Update()
