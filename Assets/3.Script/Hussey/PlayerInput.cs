@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    private bool _blockBaseInput = false;
+    public bool BlockBaseInput => _blockBaseInput;
+
     [SerializeField]
     private Vector2 moveValue = Vector2.zero;
     public Vector2 MoveValue => moveValue;
@@ -26,6 +29,9 @@ public class PlayerInput : MonoBehaviour
     private Animator ani;
 
     public event Action OnLightKeyDowned;
+    public event Action OnInteractionDowned;
+
+    public bool InteractionPerformed;
 
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
@@ -42,20 +48,24 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Move(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if(GameManager.Instance.GameState == GameState.Playing)
         {
-            moveValue = context.ReadValue<Vector2>();
-            ani.SetBool("Walk", true);
+            if (context.phase == InputActionPhase.Performed)
+            {
+                moveValue = context.ReadValue<Vector2>();
+                ani.SetBool("Walk", true);
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                moveValue = Vector2.zero;
+                ani.SetBool("Walk", false);
+            }
         }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            moveValue = Vector2.zero;
-            ani.SetBool("Walk", false);
-        }
+
     }
 
 
-    //3¿Œƒ™ ±∏«ˆ¿Ã∂Û ¡÷ºÆ√≥∏Æ
+    //3?∏Ïπ≠ Íµ¨ÌòÑ?¥Îùº Ï£ºÏÑùÏ≤òÎ¶¨
     //public void Event_Aim(InputAction.CallbackContext context)
     //{
     //    if (context.phase == InputActionPhase.Performed)
@@ -66,9 +76,12 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_PersonalView(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            mouseDelta = context.ReadValue<Vector2>();
+            if (context.phase == InputActionPhase.Performed)
+            {
+                mouseDelta = context.ReadValue<Vector2>();
+            }
         }
     }
 
@@ -76,40 +89,46 @@ public class PlayerInput : MonoBehaviour
     {
         if (!canRun)
             return;
-        if(context.phase==InputActionPhase.Performed)
-        {
-            IsRun = true;
-            ani.SetBool("Run", true);
-        }
-        else if(context.phase==InputActionPhase.Canceled)
-        {
-            IsRun = false;
-            ani.SetBool("Run", false);
-        }
-        //------ ^^^^^ Ω≈πﬂ∞¸∑√ ≥÷¿∫∞Õ ^^^^ ¿ß------- 1218
 
-        if (context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            IsRun = true;
-            ani.SetBool("Run", true);
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            IsRun = false;
-            ani.SetBool("Run", false);
+            if (context.phase == InputActionPhase.Performed)
+            {
+                IsRun = true;
+                ani.SetBool("Run", true);
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                IsRun = false;
+                ani.SetBool("Run", false);
+            }
         }
     }
 
     public void Event_Light(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            Debug.Log("1111");
-            OnLightKeyDowned?.Invoke();
+            if (context.phase == InputActionPhase.Performed)
+            {
+                OnLightKeyDowned?.Invoke();
+            }
+        }
+    }
+    public void Event_Interact(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            InteractionPerformed = true;
+            OnInteractionDowned?.Invoke();
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            InteractionPerformed = false;
         }
     }
 
-    //3¿Œƒ™ ±∏«ˆ¿Ã∂Û ¡÷ºÆ√≥∏Æ
+    //3?∏Ïπ≠ Íµ¨ÌòÑ?¥Îùº Ï£ºÏÑùÏ≤òÎ¶¨
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{
     //    if(context.phase == InputActionPhase.Performed)
