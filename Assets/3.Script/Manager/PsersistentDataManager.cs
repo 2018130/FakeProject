@@ -81,13 +81,13 @@ public class PersistentDataManager : MonoBehaviour
             }
         }
 
-        public T GetDataWithParsing<T>(string key)
+        public T GetDataWithParsing<T>(string key, T defaultValue)
         {
             StringPair stringPair = GetData(key);
             if (stringPair == null)
             {
                 Debug.LogWarning($"해당 키에 대한 데이터가 존재하지 않습니다. {key}");
-                return default;
+                return defaultValue;
             }
 
             string rawData = stringPair.Second;
@@ -96,7 +96,7 @@ public class PersistentDataManager : MonoBehaviour
             if (splitData.Length != 2)
             {
                 Debug.LogWarning($"데이터 파싱에 실패했습니다. {key} : {rawData}");
-                return default;
+                return defaultValue;
             }
             string dataType = splitData[0];
             string dataValue = splitData[1];
@@ -117,7 +117,7 @@ public class PersistentDataManager : MonoBehaviour
                 if (vectorComponents.Length != 3)
                 {
                     Debug.LogWarning($"Vector3 데이터 파싱에 실패했습니다. {key} : {rawData}");
-                    return default;
+                    return defaultValue;
                 }
                 float x = float.Parse(vectorComponents[0]);
                 float y = float.Parse(vectorComponents[1]);
@@ -132,7 +132,7 @@ public class PersistentDataManager : MonoBehaviour
             else
             {
                 Debug.LogWarning($"지원하지 않는 데이터 타입입니다. {key} : {rawData}");
-                return default;
+                return defaultValue;
             }
         }
 
