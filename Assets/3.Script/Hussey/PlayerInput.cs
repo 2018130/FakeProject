@@ -24,6 +24,9 @@ public class PlayerInput : MonoBehaviour
     private Animator ani;
 
     public event Action OnLightKeyDowned;
+    public event Action OnInteractionDowned;
+
+    public bool InteractionPerformed;
 
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
@@ -88,8 +91,19 @@ public class PlayerInput : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Performed)
         {
-            Debug.Log("1111");
             OnLightKeyDowned?.Invoke();
+        }
+    }
+    public void Event_Interact(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            InteractionPerformed = true;
+            OnInteractionDowned?.Invoke();
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            InteractionPerformed = false;
         }
     }
 
