@@ -15,7 +15,7 @@ public class SaveState : MonoBehaviour, ISceneContextBuilt
 
     public void OnSceneContextBuilt()
     {
-        Vector3 position = PersistentDataManager.Instance.GetDataWithParsing<Vector3>(StateKey);
+        Vector3 position = PersistentDataManager.Instance.GetDataWithParsing<Vector3>(StateKey, transform.position);
         if(position != default)
         {
             transform.position = position;
