@@ -63,7 +63,7 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    //3ÀÎÄª ±¸ÇöÀÌ¶ó ÁÖ¼®Ã³¸®
+    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_Aim(InputAction.CallbackContext context)
     //{
     //    if (context.phase == InputActionPhase.Performed)
@@ -104,7 +104,6 @@ public class PlayerInput : MonoBehaviour
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
-            OnLightKeyDowned?.Invoke();
             if (context.phase == InputActionPhase.Performed)
             {
                 OnLightKeyDowned?.Invoke();
@@ -124,7 +123,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    //3ÀÎÄª ±¸ÇöÀÌ¶ó ÁÖ¼®Ã³¸®
+    //3ì¸ì¹­ êµ¬í˜„ì´ë¼ ì£¼ì„ì²˜ë¦¬
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{
     //    if(context.phase == InputActionPhase.Performed)
