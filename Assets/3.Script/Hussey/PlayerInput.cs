@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    private bool _blockBaseInput = false;
+    public bool BlockBaseInput => _blockBaseInput;
+
     [SerializeField]
     private Vector2 moveValue = Vector2.zero;
     public Vector2 MoveValue => moveValue;
@@ -43,20 +46,24 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Move(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if(GameManager.Instance.GameState == GameState.Playing)
         {
-            moveValue = context.ReadValue<Vector2>();
-            ani.SetBool("Walk", true);
+            if (context.phase == InputActionPhase.Performed)
+            {
+                moveValue = context.ReadValue<Vector2>();
+                ani.SetBool("Walk", true);
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                moveValue = Vector2.zero;
+                ani.SetBool("Walk", false);
+            }
         }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            moveValue = Vector2.zero;
-            ani.SetBool("Walk", false);
-        }
+
     }
 
 
-    //3¿Œƒ™ ±∏«ˆ¿Ã∂Û ¡÷ºÆ√≥∏Æ
+    //3Ïù∏Ïπ≠ Íµ¨ÌòÑÏù¥Îùº Ï£ºÏÑùÏ≤òÎ¶¨
     //public void Event_Aim(InputAction.CallbackContext context)
     //{
     //    if (context.phase == InputActionPhase.Performed)
@@ -67,31 +74,40 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_PersonalView(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            mouseDelta = context.ReadValue<Vector2>();
+            if (context.phase == InputActionPhase.Performed)
+            {
+                mouseDelta = context.ReadValue<Vector2>();
+            }
         }
     }
 
     public void Event_Run(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            IsRun = true;
-            ani.SetBool("Run", true);
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            IsRun = false;
-            ani.SetBool("Run", false);
+            if (context.phase == InputActionPhase.Performed)
+            {
+                IsRun = true;
+                ani.SetBool("Run", true);
+            }
+            else if (context.phase == InputActionPhase.Canceled)
+            {
+                IsRun = false;
+                ani.SetBool("Run", false);
+            }
         }
     }
 
     public void Event_Light(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            OnLightKeyDowned?.Invoke();
+            if (context.phase == InputActionPhase.Performed)
+            {
+                OnLightKeyDowned?.Invoke();
+            }
         }
     }
     public void Event_Interact(InputAction.CallbackContext context)
@@ -107,7 +123,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    //3¿Œƒ™ ±∏«ˆ¿Ã∂Û ¡÷ºÆ√≥∏Æ
+    //3Ïù∏Ïπ≠ Íµ¨ÌòÑÏù¥Îùº Ï£ºÏÑùÏ≤òÎ¶¨
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{
     //    if(context.phase == InputActionPhase.Performed)
