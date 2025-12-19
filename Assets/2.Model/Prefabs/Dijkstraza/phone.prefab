@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee18d92c60725cd439432ff7bb77849a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlutterEffect
-  maxFlutterHeight: 0.05
-  maxFlutterWidth: 0.05
-  flutterHeightSpeed: 0.1
-  flutterWidthSpeed: 0.1
+  maxFlutterHeight: 0.02
+  maxFlutterWidth: 0
+  flutterHeightSpeed: 0.03
+  flutterWidthSpeed: 0.05
   flutterDelay: 0.1
 --- !u!114 &3859031369142744961
 MonoBehaviour:
