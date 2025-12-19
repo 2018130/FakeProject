@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     private CinemachineCamera playerAimCamera;
     [SerializeField]
     private CinemachineCamera freeLookCamera;
+    [SerializeField]
+    private CinemachineCamera startFreeLookCamera;
 
     private void Start()
     {
@@ -25,6 +27,10 @@ public class CameraController : MonoBehaviour
             else if(cam.name.Contains("FreeLook"))
             {
                 freeLookCamera = cam;
+            }
+            else if(cam.name.Contains("Start"))
+            {
+                startFreeLookCamera = cam;
             }
         }
         ChangeCameraToPlayerAimed();
@@ -41,5 +47,11 @@ public class CameraController : MonoBehaviour
         if (freeLookCamera == null)
             return;
         freeLookCamera.Priority = 1;
+    }
+    public void ChangeCameraToStartFreeLook()
+    {
+        if (startFreeLookCamera == null)
+            return;
+        startFreeLookCamera.Priority = 1;
     }
 }
