@@ -30,8 +30,10 @@ public class PlayerInput : MonoBehaviour
 
     public event Action OnLightKeyDowned;
     public event Action OnInteractionDowned;
+    public event Action OnSpaceKeyDowned;
 
-    public bool InteractionPerformed;
+    private bool _interactionPerformed = false;
+    public bool InteractionPerformed => _interactionPerformed;
 
     //private bool IsPersonalView = false;
     //public bool isPersonalView => IsPersonalView;
@@ -119,12 +121,19 @@ public class PlayerInput : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            InteractionPerformed = true;
+            _interactionPerformed = true;
             OnInteractionDowned?.Invoke();
         }
         else if(context.phase == InputActionPhase.Canceled)
         {
-            InteractionPerformed = false;
+            _interactionPerformed = false;
+        }
+    }
+    public void Event_SpaceKeydown(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            OnSpaceKeyDowned?.Invoke();
         }
     }
 

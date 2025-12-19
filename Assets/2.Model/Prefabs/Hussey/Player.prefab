@@ -1652,7 +1652,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &-2816194503757434325
 CapsuleCollider:
@@ -1854,6 +1854,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4f90557a-5c10-4ba5-b6b0-286d2def0a79
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2898629430890784467}
+        m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
+        m_MethodName: Event_SpaceKeydown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 08f97511-681c-436b-a293-59a73c17c968
+    m_ActionName: 'Player/SuitcaseFloat[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Player
@@ -1875,7 +1891,6 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0}
   mouseDelta: {x: 0, y: 0}
   canRun: 0
-  InteractionPerformed: 0
 --- !u!114 &477678054075509031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3455,7 +3470,7 @@ Transform:
   m_GameObject: {fileID: 5995255109584109225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.98255223, y: -0.11339001, z: 0.14645216, w: 0.016901094}
-  m_LocalPosition: {x: -0.6288183, y: -0.3166511, z: 0.66054595}
+  m_LocalPosition: {x: -0.344, y: -0.212, z: 0.487}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
