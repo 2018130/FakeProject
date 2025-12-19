@@ -33,7 +33,6 @@ public class CameraController : MonoBehaviour
                 startFreeLookCamera = cam;
             }
         }
-        ChangeCameraToPlayerAimed();
     }
 
     public void ChangeCameraToPlayerAimed()
@@ -42,12 +41,14 @@ public class CameraController : MonoBehaviour
             return;
         playerAimCamera.Priority = 1;
     }
+
     public void ChangeCameraToFreeLook()
     {
         if (freeLookCamera == null)
             return;
         freeLookCamera.Priority = 1;
     }
+
     public void ChangeCameraToStartFreeLook()
     {
         if (startFreeLookCamera == null)
