@@ -9,10 +9,12 @@ public class ActionOnTrigger : MonoBehaviour
     [SerializeField]
     UIData data;
 
+
     [SerializeField]
     private UnityEvent action;
 
     [SerializeField]
+    [TagSelector]
     private string triggerTargetTag = "Player";
 
     private void Start()
@@ -30,13 +32,14 @@ public class ActionOnTrigger : MonoBehaviour
     {
         if(other.CompareTag(triggerTargetTag))
         {
-            FindAnyObjectByType<interkeyUI>().SetInteractionKeyUI(data);
+            // ?. -> 널이라면 뒤에것 실행 x, 그렇지 않다면 실행
+            FindAnyObjectByType<interkeyUI>()?.SetInteractionKeyUI(data);
             action?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        FindAnyObjectByType<interkeyUI>().HideUI();
+        FindAnyObjectByType<interkeyUI>()?.HideUI();
     }
 }
