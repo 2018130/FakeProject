@@ -121,6 +121,7 @@ public class PlayerInput : MonoBehaviour
         {
             InteractionPerformed = true;
             OnInteractionDowned?.Invoke();
+            
         }
         else if(context.phase == InputActionPhase.Canceled)
         {

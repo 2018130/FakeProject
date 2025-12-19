@@ -9,10 +9,12 @@ public class ActionOnTrigger : MonoBehaviour
     [SerializeField]
     UIData data;
 
+
     [SerializeField]
     private UnityEvent action;
 
     [SerializeField]
+    [TagSelector]
     private string triggerTargetTag = "Player";
 
     private void Start()
