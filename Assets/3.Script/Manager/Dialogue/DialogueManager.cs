@@ -7,6 +7,7 @@ using UnityEngine.UI;
 [Serializable]
 public class DialogueData
 {
+    public int ID;
     public string Name;
     public string Dialogue;
     public bool HasChoice;
@@ -39,6 +40,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueData> dialogueQueue = new Queue<DialogueData>();
     private bool isPrintAnyDialogue = false;
 
+    public event Action<int> OnDialogueStarted;
     private void Start()
     {
         foreach(DialogueData data in CsvReader.LoadCsvData())
@@ -67,6 +69,7 @@ public class DialogueManager : MonoBehaviour
             isPrintAnyDialogue = true;
 
             DialogueData currentDialogue = dialogueQueue.Dequeue();
+            OnDialogueStarted?.Invoke(currentDialogue.ID);
             dialogueText.text = "";
             nameText.text = currentDialogue.Name;
             Debug.Log($"Print dialogue, Current dialogue data : {currentDialogue.Name}");
