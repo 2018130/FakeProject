@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootCaseController : MonoBehaviour
+public class SuitCaseController : MonoBehaviour
 {
     [Header("Float Setting")]
     [SerializeField, Tooltip("키 입력이 몇번 들어오고 열릴건지")]
@@ -27,6 +27,10 @@ public class ShootCaseController : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    [Header("Cutscene")]
+    [SerializeField]
+    private CutsceneContents cutscene;
+
     private void Start()
     {
         playerInput = FindAnyObjectByType<PlayerInput>();
@@ -48,7 +52,7 @@ public class ShootCaseController : MonoBehaviour
     {
         if (floatCount >= maxFloatCount)
         {
-            // TODO 시점변환
+            cutscene.PlayCutscene();
         }
         else if (!_isFloating)
         {
