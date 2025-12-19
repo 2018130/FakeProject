@@ -17,8 +17,6 @@ public class ChatController : MonoBehaviour
         AddMessage("testmessage,나야나 마리오");
         Debug.Log("addmessage는 작동함");
         AddMessage("testmessage,루이지는 루이지, 오늘도 굼바를 괴롭히고 있었어. 근데 쿠파가 나타나더니 불덩이를 던지더라");
-        //AddMessage("3333333333333333333333333333333333333333333333333333333333333");
-        //AddMessage("44444444444444444444444444444444444444444444444444444444444444");
     }
     public void AddMessage(string text)
     {

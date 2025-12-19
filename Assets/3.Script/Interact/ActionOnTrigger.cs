@@ -32,13 +32,14 @@ public class ActionOnTrigger : MonoBehaviour
     {
         if(other.CompareTag(triggerTargetTag))
         {
-            FindAnyObjectByType<interkeyUI>().SetInteractionKeyUI(data);
+            // ?. -> 널이라면 뒤에것 실행 x, 그렇지 않다면 실행
+            FindAnyObjectByType<interkeyUI>()?.SetInteractionKeyUI(data);
             action?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        FindAnyObjectByType<interkeyUI>().HideUI();
+        FindAnyObjectByType<interkeyUI>()?.HideUI();
     }
 }

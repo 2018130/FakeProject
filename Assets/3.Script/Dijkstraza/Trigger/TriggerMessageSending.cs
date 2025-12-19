@@ -6,15 +6,23 @@ using UnityEngine;
 
 public class TriggerMessageSending : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    private StringDataSO messageData;
+    private ChatController chatController;
+
+    private bool _sendMSGAlready = false;
+
+    private void Start()
     {
-        
+        chatController = FindAnyObjectByType<ChatController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnSendMessage()
     {
-        
+        if(!_sendMSGAlready)
+        {
+            chatController.AddMessage(messageData.scriptLines);
+            _sendMSGAlready = true;
+        }
     }
 }
