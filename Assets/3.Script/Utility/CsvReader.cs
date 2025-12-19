@@ -57,6 +57,9 @@ public class CsvReader
 
                 switch (header)
                 {
+                    case "ID":
+                        int.TryParse(value, out data.ID);
+                        break;
                     case "Name":
                         data.Name = value;
                         break;
