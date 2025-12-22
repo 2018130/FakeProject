@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class ScrollConfigWindow : MonoBehaviour
 {
-    [Header("Config")]
+    [Header("BlurOverlayImage")]
+    [SerializeField]
+    private GameObject blurOverlayImage;
+    [Space(50)]
+
+    [Header("Config Screen")]
     [SerializeField]
     private GameObject _configScreen;
     [Header("DownWardPosition")]
@@ -29,7 +34,7 @@ public class ScrollConfigWindow : MonoBehaviour
 
 
     [Space(50)]
-    [Header("Call")]
+    [Header("Call Screen")]
     [SerializeField]
     private GameObject _callScreen;
     [Header("RightWardPosition")]
@@ -56,7 +61,7 @@ public class ScrollConfigWindow : MonoBehaviour
 
 
     [Space(50)]
-    [Header("Message")]
+    [Header("Message Screen")]
     [SerializeField]
     private GameObject _messageScreen;
     [Header("RightWardPosition")]
@@ -74,6 +79,13 @@ public class ScrollConfigWindow : MonoBehaviour
     [SerializeField]
     private float _durationToLeftBack = 0.4f;
     private bool _isLeft = false;
+
+    private void Awake()
+    {
+       
+    }
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -144,18 +156,25 @@ public class ScrollConfigWindow : MonoBehaviour
         //달성 시간을 정하여 그 시간안에 달성하게 하는 방식
         float startPosY = _configScreen.transform.localPosition.y;
         float _elapseTime = 0;
-        
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Image image = _configScreen.GetComponent<Image>();
         Color tempColor = image.color;
+
         while (_elapseTime < _durationToDown)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
         {
             _elapseTime += Time.deltaTime;          //누적시간만들기
             float per = _elapseTime / _durationToDown;    //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
 
             _configScreen.transform.localPosition = new Vector3(0, Mathf.Lerp(startPosY, _targetDownPosition, per), 0);
-            tempColor.a = Mathf.Lerp(0.0f, 1f, per);
+            tempColor.a = Mathf.Lerp(0.1f, 250/255f, per);
             image.color = tempColor;
-            
+
+            blurOverlayImageColor.a = Mathf.Lerp(0.0f, 70/255f, per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
+
             yield return null;
         }
 
@@ -165,8 +184,14 @@ public class ScrollConfigWindow : MonoBehaviour
         // 마찬가지로 진행도가 0.4%씩 차는데 마지막이 99.7%이면 합했을 때 100.1%이므로 while문 내부를 실행하지 않고 밖으로 나가버림
         // 그러나 우리의 목표는 100%에 해당하는 값임, 이 차이를 보정하기 위해 최종적으로 대상의 position에 목표 position값을 대입해버림
         _configScreen.transform.localPosition = new Vector3(0, _targetDownPosition, 0);
-        tempColor.a = 1;
+
+        blurOverlayImageColor.a = 70/255f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
+        tempColor.a = 250 / 255f;
         image.color = tempColor;
+
+       
     }
 
     IEnumerator UpScroll()
@@ -181,12 +206,19 @@ public class ScrollConfigWindow : MonoBehaviour
         //달성 시간을 정하여 그 시간안에 달성하게 하는 방식
         float _elapseTime = 0;
         Image image = _configScreen.GetComponent<Image>();
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Color tempColor = image.color;
         float startPosY = _configScreen.transform.localPosition.y;
         while (_elapseTime < _durationToUp)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
         {
             _elapseTime += Time.deltaTime;              //누적시간만들기
             float per = _elapseTime / _durationToUp;       //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
+
+            blurOverlayImageColor.a = Mathf.Lerp(70/255f, 0f, per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
 
             _configScreen.transform.localPosition = new Vector3(0, Mathf.Lerp(startPosY, _targetUpPosition, per), 0);
             tempColor.a = Mathf.Lerp(1f, 0.1f, per);
@@ -200,6 +232,10 @@ public class ScrollConfigWindow : MonoBehaviour
         // 마찬가지로 진행도가 0.4%씩 차는데 마지막이 99.7%이면 합했을 때 100.1%이므로 while문 내부를 실행하지 않고 밖으로 나가버림
         // 그러나 우리의 목표는 100%에 해당하는 값임, 이 차이를 보정하기 위해 최종적으로 대상의 position에 목표 position값을 대입해버림
         _configScreen.transform.localPosition = new Vector3(0, _targetUpPosition, 0);
+
+        blurOverlayImageColor.a = 0/255f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
         tempColor.a = 0;
         image.color = tempColor;
     }
@@ -216,6 +252,10 @@ public class ScrollConfigWindow : MonoBehaviour
         //달성 시간을 정하여 그 시간안에 달성하게 하는 방식
         float _elapseTime = 0;
         Image image = _callScreen.GetComponent<Image>();
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Color tempColor = image.color;
         float startPosX = _callScreen.transform.localPosition.x;
         while (_elapseTime < _durationToRight)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
@@ -224,7 +264,11 @@ public class ScrollConfigWindow : MonoBehaviour
             float per = _elapseTime / _durationToRight;       //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
 
             _callScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetRightPosition, per),0, 0);
-            tempColor.a = Mathf.Lerp(0.1f, 1f, per);
+
+            blurOverlayImageColor.a = Mathf.Lerp(0f, 70/255f,  per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
+
+            tempColor.a = Mathf.Lerp(0.1f, 250 / 255f, per);
             image.color = tempColor;
             yield return null;
             Debug.Log(_elapseTime + "  " + _durationToRight);
@@ -235,7 +279,11 @@ public class ScrollConfigWindow : MonoBehaviour
         // 마찬가지로 진행도가 0.4%씩 차는데 마지막이 99.7%이면 합했을 때 100.1%이므로 while문 내부를 실행하지 않고 밖으로 나가버림
         // 그러나 우리의 목표는 100%에 해당하는 값임, 이 차이를 보정하기 위해 최종적으로 대상의 position에 목표 position값을 대입해버림
         _callScreen.transform.localPosition = new Vector3(_targetRightPosition,0, 0);
-        tempColor.a = 1;
+
+        blurOverlayImageColor.a = 70 / 255f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
+        tempColor.a = 250 / 255f;
         image.color = tempColor;
     }
 
@@ -251,6 +299,10 @@ public class ScrollConfigWindow : MonoBehaviour
         //달성 시간을 정하여 그 시간안에 달성하게 하는 방식
         float _elapseTime = 0;
         Image image = _callScreen.GetComponent<Image>();
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Color tempColor = image.color;
         float startPosX = _callScreen.transform.localPosition.x;
         while (_elapseTime < _durationToRightBack)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
@@ -259,6 +311,10 @@ public class ScrollConfigWindow : MonoBehaviour
             float per = _elapseTime / _durationToRightBack;       //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
 
             _callScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetRightBackWardPosition, per), 0, 0);
+
+            blurOverlayImageColor.a = Mathf.Lerp(70 / 255f, 0f, per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
+
             tempColor.a = Mathf.Lerp(1f, 0.1f, per);
             image.color = tempColor;
             yield return null;
@@ -270,6 +326,10 @@ public class ScrollConfigWindow : MonoBehaviour
         // 마찬가지로 진행도가 0.4%씩 차는데 마지막이 99.7%이면 합했을 때 100.1%이므로 while문 내부를 실행하지 않고 밖으로 나가버림
         // 그러나 우리의 목표는 100%에 해당하는 값임, 이 차이를 보정하기 위해 최종적으로 대상의 position에 목표 position값을 대입해버림
         _callScreen.transform.localPosition = new Vector3(_targetRightBackWardPosition, 0, 0);
+
+        blurOverlayImageColor.a = 0f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
         tempColor.a = 0;
         image.color = tempColor;
     }
@@ -278,6 +338,10 @@ public class ScrollConfigWindow : MonoBehaviour
     {
         float _elapseTime = 0;
         Image image = _messageScreen.GetComponent<Image>();
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Color tempColor = image.color;
         float startPosX = _messageScreen.transform.localPosition.x;
         while (_elapseTime < _durationToLeft)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
@@ -286,13 +350,21 @@ public class ScrollConfigWindow : MonoBehaviour
             float per = _elapseTime / _durationToLeft;       //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
 
             _messageScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetLeftPosition, per), 0, 0);
-            tempColor.a = Mathf.Lerp(0.1f, 1f, per);
+
+            blurOverlayImageColor.a = Mathf.Lerp(0f, 70 / 255f,  per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
+
+            tempColor.a = Mathf.Lerp(0.1f, 250 / 255f, per);
             image.color = tempColor;
             yield return null;
             
         }
         _messageScreen.transform.localPosition = new Vector3(_targetRightPosition, 0, 0);
-        tempColor.a = 1;
+
+        blurOverlayImageColor.a = 70 / 255f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
+        tempColor.a = 250 / 255f;
         image.color = tempColor;
         yield return null;
     }
@@ -301,6 +373,10 @@ public class ScrollConfigWindow : MonoBehaviour
     {
         float _elapseTime = 0;
         Image image = _messageScreen.GetComponent<Image>();
+
+        Image blurOverlayImageImage = blurOverlayImage.GetComponent<Image>();
+        Color blurOverlayImageColor = blurOverlayImageImage.color;
+
         Color tempColor = image.color;
         float startPosX = _messageScreen.transform.localPosition.x;
         while (_elapseTime < _durationToLeftBack)      //달성 시간과 비슷한 시간이 되면 while문을 벗어남
@@ -309,12 +385,20 @@ public class ScrollConfigWindow : MonoBehaviour
             float per = _elapseTime / _durationToLeftBack;       //누적시간이 지속시간에 비하여 몇%인지 확인하여 넣기
 
             _messageScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetLeftBackWardPosition, per), 0, 0);
+
+            blurOverlayImageColor.a = Mathf.Lerp(70 / 255f, 0f,per);
+            blurOverlayImageImage.color = blurOverlayImageColor;
+
             tempColor.a = Mathf.Lerp(1f, 0.1f, per);
             image.color = tempColor;
             yield return null;
             
         }
         _messageScreen.transform.localPosition = new Vector3(_targetLeftBackWardPosition, 0, 0);
+
+        blurOverlayImageColor.a = 0f;
+        blurOverlayImageImage.color = blurOverlayImageColor;
+
         tempColor.a = 0;
         image.color = tempColor;
 
