@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
             {
                 playerAimCamera = cam;
             }
-            else if(cam.name.Contains("FreeLook"))
+            else if(cam.name.Contains("PickleLookCamera"))
             {
                 freeLookCamera = cam;
             }

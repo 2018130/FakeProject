@@ -25,7 +25,7 @@ public class PlayerLight : LightObject
         FindAnyObjectByType<PlayerInput>().OnLightKeyDowned += Toggle;
 
         _toggle = FindAnyObjectByType<ScrollConfigWindow>()?.transform.GetComponentInChildren<Toggle>();
-        _toggle.onValueChanged.AddListener(Lighting);
+        _toggle?.onValueChanged.AddListener(Lighting);
     }
     public void Lighting(bool active)
     {
