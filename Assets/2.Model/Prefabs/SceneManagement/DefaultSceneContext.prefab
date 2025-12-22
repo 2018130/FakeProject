@@ -225,4 +225,5 @@ MonoBehaviour:
   gameTimeScale: 1
   assetLable:
     m_LabelString: default
+  player: {fileID: 0}
   fadePanel: {fileID: 9083253364803914341}

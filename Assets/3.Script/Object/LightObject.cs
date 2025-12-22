@@ -21,6 +21,8 @@ public class LightObject : MonoBehaviour
     {
         light.enabled = false;
     }
+
+
     public virtual void Toggle()
     {
         if(light.enabled)
