@@ -9,6 +9,7 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
     private string playedKey = "CutscenePlayedKey";
     [SerializeField]
     private bool isPlayed = false;
+    private bool _isPlaying = false;
 
     [SerializeField]
     private List<SceneEffect> sceneEffects = new List<SceneEffect>();
@@ -22,12 +23,16 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
 
     public void PlayCutscene()
     {
-        StartCoroutine(PlaySceneEffect_co());
+        if (!_isPlaying)
+        {
+            StartCoroutine(PlaySceneEffect_co());
+        }
     }
 
     public IEnumerator PlaySceneEffect_co()
     {
-        foreach(var sceneEffect in sceneEffects)
+        _isPlaying = true;
+        foreach (var sceneEffect in sceneEffects)
         {
             yield return null;
 
@@ -60,7 +65,7 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
                     break;
             }
         }
-
+        _isPlaying = false;
         isPlayed = true;
     }
 }
