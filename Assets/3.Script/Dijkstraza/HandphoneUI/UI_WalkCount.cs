@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class UI_WalkCount : MonoBehaviour
+public class UI_WalkCount : MonoBehaviour, ISceneContextBuilt
 {
     [Header("UI References")]
     [SerializeField]
@@ -17,7 +17,7 @@ public class UI_WalkCount : MonoBehaviour
 
     [Header("Auto References")]
     [SerializeField]
-    private Rigidbody playerRigidbody;
+    private PlayerInput playerInput;
 
     [Header("Settings")]
     public float stepInterval = 0.5f;
@@ -28,17 +28,13 @@ public class UI_WalkCount : MonoBehaviour
     public int currentSteps = 0;
     private float _timer = 0f;
 
-    private void Awake()
+    public int Priority { get; set; }
+
+
+    public void OnSceneContextBuilt()
     {
         // 안전하게 참조 가져오기 (Null 체크 권장)
-        if (GameManager.Instance != null && GameManager.Instance.CurrentSceneContext != null)
-        {
-            playerRigidbody = GameManager.Instance.CurrentSceneContext.Player.GetComponent<Rigidbody>();
-        }
-        else
-        {
-            Debug.LogError("GameManager 또는 Player를 찾을 수 없습니다.");
-        }
+        playerInput = GameManager.Instance.CurrentSceneContext.Player.GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -53,7 +49,7 @@ public class UI_WalkCount : MonoBehaviour
 
     private void Update()
     {
-        if (playerRigidbody == null) return;
+        if (playerInput == null) return;
 
         CheckMovement();
         UpdateUI();
@@ -62,7 +58,7 @@ public class UI_WalkCount : MonoBehaviour
     private void CheckMovement()
     {
         // [중요] Y축(점프/낙하) 속도를 제외하고 수평 속도(X, Z)만 계산합니다.
-        Vector3 horizontalVelocity = new Vector3(playerRigidbody.linearVelocity.x, 0, playerRigidbody.linearVelocity.z);
+        Vector3 horizontalVelocity = new Vector3(playerInput.MoveValue.x, 0, playerInput.MoveValue.y);
 
         if (horizontalVelocity.magnitude > minWalkingSpeed)
         {

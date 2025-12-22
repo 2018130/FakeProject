@@ -71,6 +71,26 @@ public class CsvReader
                         // "TRUE", "True", "true", "1" 등을 모두 true로 처리할 수 있습니다.
                         data.HasChoice = bool.TryParse(value, out bool hasChoice) && hasChoice;
                         break;
+                    case "AcceptDialogue":
+                        data.AcceptDialogue = value;
+                        break;
+                    case "AcceptID":
+                        // 문자열을 int로 변환
+                        if (int.TryParse(value, out int acceptID))
+                        {
+                            data.AcceptID = acceptID;
+                        }
+                        break;
+                    case "RejectDialogue":
+                        data.RejectDialogue = value;
+                        break;
+                    case "RejectID":
+                        // 문자열을 int로 변환
+                        if (int.TryParse(value, out int rejectID))
+                        {
+                            data.RejectID = rejectID;
+                        }
+                        break;
                     case "Favorability":
                         // 문자열을 int로 변환
                         if (int.TryParse(value, out int favorability))
