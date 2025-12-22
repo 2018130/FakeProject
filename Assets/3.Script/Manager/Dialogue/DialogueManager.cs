@@ -11,6 +11,10 @@ public class DialogueData
     public string Name;
     public string Dialogue;
     public bool HasChoice;
+    public string AcceptDialogue;
+    public int AcceptID;
+    public string RejectDialogue;
+    public int RejectID;
     public int Favorability;
 }
 
@@ -35,20 +39,21 @@ public class DialogueManager : MonoBehaviour
     [Space(10f)]
 
     [Header("Dialogue")]
-
+    [SerializeField]
+    private List<DialogueData> dialogueDatas;
     // 다이얼로그 데이터 값
     private Queue<DialogueData> dialogueQueue = new Queue<DialogueData>();
     private bool isPrintAnyDialogue = false;
 
     public event Action<int> OnDialogueStarted;
+    [SerializeField]
+    private int _nextPrintDialogueID = 1;
+
     private void Start()
     {
-        foreach(DialogueData data in CsvReader.LoadCsvData())
-        {
-            PrintDialogue(data);
-        }
+        dialogueDatas = CsvReader.LoadCsvData();
+        PrintDialogue(_nextPrintDialogueID);
     }
-
     public void PrintDialogue(DialogueData dialogueData)
     {
         if (dialogueData != null)
@@ -61,23 +66,44 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(PrintDialogue_co());
         }
     }
+    public void PrintDialogue(int id)
+    {
+        DialogueData data = dialogueDatas.Find(x => x.ID == id);
+
+        if (!isPrintAnyDialogue)
+        {
+            PrintDialogue(data);
+        }
+    }
 
     private IEnumerator PrintDialogue_co()
     {
-        if(dialogueQueue.Count > 0)
+        if (dialogueQueue.Count > 0)
         {
             isPrintAnyDialogue = true;
 
+            bool isClickedAnyKey = false;
             DialogueData currentDialogue = dialogueQueue.Dequeue();
             OnDialogueStarted?.Invoke(currentDialogue.ID);
             dialogueText.text = "";
             nameText.text = currentDialogue.Name;
             Debug.Log($"Print dialogue, Current dialogue data : {currentDialogue.Name}");
 
-            SetButtonActive(currentDialogue.HasChoice, 
-                () => DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability + currentDialogue.Favorability),
-                () => DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability - currentDialogue.Favorability));
-
+            SetButtonActive(currentDialogue,
+                () =>
+                {
+                    DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability + currentDialogue.Favorability);
+                    PrintDialogue(currentDialogue.AcceptID);
+                    _nextPrintDialogueID = currentDialogue.AcceptID;
+                    isClickedAnyKey = true;
+                },
+                () =>
+                {
+                    DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability - currentDialogue.Favorability);
+                    PrintDialogue(currentDialogue.RejectID);
+                    _nextPrintDialogueID = currentDialogue.RejectID;
+                    isClickedAnyKey = true;
+                });
             int index = 0;
             while (index < currentDialogue.Dialogue.Length)
             {
@@ -99,33 +125,47 @@ public class DialogueManager : MonoBehaviour
             }
 
             // 옵저버 패턴
-            bool isClickedAnyKey = false;
-            yield return new WaitUntil(() => {
-                isClickedAnyKey = Input.anyKeyDown;
+            yield return new WaitUntil(() =>
+            {
+                if (!currentDialogue.HasChoice)
+                {
+                    isClickedAnyKey = Input.anyKeyDown;
+                }
 
                 return isClickedAnyKey;
             });
 
             isPrintAnyDialogue = false;
 
-            PrintDialogue(null);
+            if (!currentDialogue.HasChoice)
+            {
+                _nextPrintDialogueID++;
+            }
+
+            PrintDialogue(_nextPrintDialogueID);
         }
     }
 
-    private void SetButtonActive(bool active, UnityEngine.Events.UnityAction acceptChoiceCallback = null, UnityEngine.Events.UnityAction rejectChoideCallback = null)
+    private void SetButtonActive(DialogueData currentDialogue, UnityEngine.Events.UnityAction acceptChoiceCallback = null, UnityEngine.Events.UnityAction rejectChoideCallback = null)
     {
-        foreach (var choiceBtn in chooseButton)
+        if (currentDialogue.HasChoice)
         {
-            choiceBtn.gameObject.SetActive(active);
-        }
+            chooseButton[0].gameObject.SetActive(true);
+            chooseButton[1].gameObject.SetActive(true);
 
-        if(active)
-        {
+            chooseButton[0].GetComponentInChildren<Text>().text = currentDialogue.AcceptDialogue;
+            chooseButton[1].GetComponentInChildren<Text>().text = currentDialogue.RejectDialogue;
+
             chooseButton[0].onClick.RemoveAllListeners();
             chooseButton[1].onClick.RemoveAllListeners();
 
             chooseButton[0].onClick.AddListener(acceptChoiceCallback);
             chooseButton[1].onClick.AddListener(rejectChoideCallback);
+        }
+        else
+        {
+            chooseButton[0].gameObject.SetActive(false);
+            chooseButton[1].gameObject.SetActive(false);
         }
     }
 }
