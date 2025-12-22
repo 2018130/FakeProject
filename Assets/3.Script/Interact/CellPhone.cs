@@ -3,8 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellPhone : MonoBehaviour, IInteractable
+public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
 {
+    public int Priority { get; set; }
+    [SerializeField]
+    private bool obtained = false;
+    [SerializeField]
+    private string cellphoneObtainKey = "CellphoneObtained";
+
+    public void OnSceneContextBuilt()
+    {
+        obtained = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
+
+        if(obtained)
+        {
+            Interact();
+        }
+    }
+
     public void Interact()
     {
         if(TryGetComponent(out FlutterEffect flutterEffect))
@@ -16,4 +32,5 @@ public class CellPhone : MonoBehaviour, IInteractable
         transform.localRotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
     }
+
 }
