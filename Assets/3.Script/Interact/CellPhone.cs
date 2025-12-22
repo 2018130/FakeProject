@@ -8,8 +8,10 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
     public int Priority { get; set; }
     [SerializeField]
     private bool obtained = false;
+    public bool IsObtained => obtained;
     [SerializeField]
     private string cellphoneObtainKey = "CellphoneObtained";
+
 
     public void OnSceneContextBuilt()
     {
