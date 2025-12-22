@@ -52,20 +52,20 @@ public class PlayerMove : MonoBehaviour
 
         if (playerInput.isRun)
         {
-            Vector3 movePos = direction * runSpeed * Time.deltaTime;// * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+            Vector3 movePos = direction * runSpeed * Time.deltaTime;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
             playerR.MovePosition(transform.position + movePos);
         }
         else
         {
-            Vector3 movePos = direction * moveSpeed * Time.deltaTime;// * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+            Vector3 movePos = direction * moveSpeed * Time.deltaTime;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
             playerR.MovePosition(transform.position + movePos);
         }
     }
 
     private void PersonalView()
     {
-        float mouseX = playerInput.MouseDelta.x * lookSpeed;// * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
-        float mouseY = playerInput.MouseDelta.y * lookSpeed;// * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+        float mouseX = playerInput.MouseDelta.x * lookSpeed;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+        float mouseY = playerInput.MouseDelta.y * lookSpeed;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
@@ -80,28 +80,8 @@ public class PlayerMove : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    //move로 통합됨
-    //private void Run(bool isRun)
-    //{
-    //    //ani.SetBool("Run", isRun);
-    //    Vector3 runPos = new Vector3(playerInput.MoveValue.x * runSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * runSpeed * Time.deltaTime);//timescale 필요
-    //    playerR.MovePosition(transform.position + runPos);
-    //
-    //}
-
-    //private void Aim()
-    //{
-    //    Ray ray = Camera.main.ScreenPointToRay(playerInput.MousePos);
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(ray, out hit, 1000f))
-    //    {
-    //        transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-    //    }
-    //}
-
-    //private void ChangeView()
-    //{
-    //
-    //}
-
+    public void Die()
+    {
+        //대충 savestate, scenecontext.gametime = 0, 죽는 ui 출력, scene 변경
+    }
 }

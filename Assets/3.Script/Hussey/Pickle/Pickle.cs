@@ -9,6 +9,7 @@ public class Pickle : MonoBehaviour
     private NavMeshAgent agent;
 
     [SerializeField] private Transform target;
+    [SerializeField] private float pickleSpeed = 3f;
 
     private void Awake()
     {
@@ -27,11 +28,11 @@ public class Pickle : MonoBehaviour
     //    StopNav();
     //}
 
-    public void SetPos(Vector3 destPos, Transform target)
+    public void SetPos(Vector3 sponPos, Transform target)
     {
         this.target = target;
 
-        if (!NavMesh.SamplePosition(destPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+        if (!NavMesh.SamplePosition(sponPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
         {
             return;
         }
@@ -65,5 +66,10 @@ public class Pickle : MonoBehaviour
     public void StopNav()
     {
         agent.isStopped = true;
+    }
+
+    public void SetSpeed(float pickleSpeed)
+    {
+        agent.speed = pickleSpeed;
     }
 }
