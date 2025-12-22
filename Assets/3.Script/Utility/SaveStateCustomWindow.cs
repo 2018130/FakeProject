@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
 public class SaveStateViewerWindow : EditorWindow
 {
     // 씬에서 찾은 모든 SaveState 컴포넌트를 저장할 리스트
@@ -91,3 +92,4 @@ public class SaveStateViewerWindow : EditorWindow
         // 씬 변경 감지: 씬이 변경되거나 저장될 때 자동으로 목록을 업데이트하고 싶다면 EditorApplication.hierarchyChanged 등을 사용할 수 있습니다.
     }
 }
+#endif
