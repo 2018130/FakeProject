@@ -31,8 +31,10 @@ public class EventExample : MonoBehaviour
     public void PickleInYourBack()
     {
         Vector3 sponPos = scenecontext.Player.transform.forward * 10f;
-        pickle.gameObject.SetActive(true);
+        pickle.ShowPickle();
         pickle.SetPos(sponPos, scenecontext.Player.transform);
         pickle.StartNav();
+
+        SoundManager.Instance.PlaySFX(ESFX.SFX_PickleBreath2);
     }
 }

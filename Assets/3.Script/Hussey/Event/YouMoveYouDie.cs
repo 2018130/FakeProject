@@ -16,12 +16,15 @@ public class YouMoveYouDie : MonoBehaviour
 
     public void DontMove()
     {
-        if(light.Light.enabled)
+        if (light.IsTurnOn)
         {
-            //TODO : if(isCellphone true)
-            if(player.MoveValue != Vector2.zero && player.MouseDelta != Vector2.zero)
+            if (GameManager.Instance.GameState == GameState.UI)
             {
-                //TODO : End Game
+                if (player.MoveValue != Vector2.zero || player.MouseDelta != Vector2.zero)
+                {
+                    GameManager.Instance.ChangeState(GameState.Dead);
+                    //TODO : End Game
+                }
             }
         }
     }

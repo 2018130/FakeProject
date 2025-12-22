@@ -79,9 +79,4 @@ public class PlayerMove : MonoBehaviour
 
         transform.Rotate(Vector3.up * mouseX);
     }
-
-    public void Die()
-    {
-        //대충 savestate, scenecontext.gametime = 0, 죽는 ui 출력, scene 변경
-    }
 }

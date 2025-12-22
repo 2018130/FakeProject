@@ -23,6 +23,7 @@ public class DropDeadBody : MonoBehaviour
     {
         //obj.position = transform.position + Vector3.forward * zLength + Vector3.up * yLenhth;
         obj.gameObject.SetActive(true);
-        SoundManager.Instance.PlaySFX(ESFX.SFX_DropDeadBody);
+
+        //SoundManager.Instance.PlaySFX(ESFX.SFX_DropDeadBody);
     }
 }

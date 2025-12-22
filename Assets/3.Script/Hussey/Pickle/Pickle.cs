@@ -20,6 +20,7 @@ public class Pickle : MonoBehaviour
     {
         agent.ResetPath();
         StopNav();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     //private void Start()
@@ -48,7 +49,7 @@ public class Pickle : MonoBehaviour
     {
         if (target == null) return;
         if (!agent.isOnNavMesh) return;
-    
+
         agent.SetDestination(target.position);
     }
 
@@ -71,5 +72,15 @@ public class Pickle : MonoBehaviour
     public void SetSpeed(float pickleSpeed)
     {
         agent.speed = pickleSpeed;
+    }
+
+    public void HidePickle()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void ShowPickle()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 }
