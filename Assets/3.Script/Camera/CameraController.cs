@@ -61,6 +61,7 @@ public class CameraController : MonoBehaviour
     {
         if (playerAimCamera == null)
             return;
+
         playerAimCamera.Priority = 10;
     }
 
