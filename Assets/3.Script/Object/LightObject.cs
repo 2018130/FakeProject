@@ -6,6 +6,7 @@ using UnityEngine;
 public class LightObject : MonoBehaviour
 {
     protected Light light;
+    public Light Light => light;
 
     protected virtual void Awake()
     {
