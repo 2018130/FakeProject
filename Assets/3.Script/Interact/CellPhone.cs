@@ -33,6 +33,9 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
         transform.SetParent(GameManager.Instance.CurrentSceneContext.Player.PhonePoint);
         transform.localRotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
+
+        PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
+        phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
     }
 
 }
