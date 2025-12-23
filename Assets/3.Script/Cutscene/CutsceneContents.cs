@@ -23,7 +23,7 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
 
     public void PlayCutscene()
     {
-        if (!_isPlaying)
+        if (!_isPlaying && !isPlayed)
         {
             StartCoroutine(PlaySceneEffect_co());
         }

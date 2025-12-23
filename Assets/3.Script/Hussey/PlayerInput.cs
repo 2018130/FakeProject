@@ -31,6 +31,7 @@ public class PlayerInput : MonoBehaviour
     public event Action OnLightKeyDowned;
     public event Action OnInteractionDowned;
     public event Action OnSpaceKeyDowned;
+    public event Action OnSettingKeyDowned;
 
     private bool _interactionPerformed = false;
     public bool InteractionPerformed => _interactionPerformed;
@@ -41,6 +42,7 @@ public class PlayerInput : MonoBehaviour
     private void Awake()
     {
         ani = GetComponentInChildren<Animator>();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void LateUpdate()
@@ -138,6 +140,13 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public void Event_SettingKeydown(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            OnSettingKeyDowned?.Invoke();
+        }
+    }
     //3?�칭 구현?�라 주석처리
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{

@@ -82,6 +82,7 @@ public class CameraController : MonoBehaviour
     {
         if (dollyCamera == null)
             return;
+
         dollyCamera.Priority = 1;
     }
 
