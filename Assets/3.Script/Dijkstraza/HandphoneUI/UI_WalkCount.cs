@@ -34,7 +34,7 @@ public class UI_WalkCount : MonoBehaviour, ISceneContextBuilt
     public void OnSceneContextBuilt()
     {
         // 안전하게 참조 가져오기 (Null 체크 권장)
-        playerInput = GameManager.Instance.CurrentSceneContext.Player.GetComponent<PlayerInput>();
+        playerInput = GameManager.Instance.CurrentSceneContext?.Player?.GetComponent<PlayerInput>();
     }
 
     private void Start()

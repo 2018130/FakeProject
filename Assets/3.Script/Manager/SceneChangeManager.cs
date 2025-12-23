@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public enum SceneType
 {
     TitleScene,
+    DialogueScene,
+    GameScene,
     Bootstap,
 }
 
