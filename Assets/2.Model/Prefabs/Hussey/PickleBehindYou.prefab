@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2402541558874935505}
   - component: {fileID: 5783648513724897891}
   m_Layer: 0
-  m_Name: EventCollider
+  m_Name: PickleBehindYou
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -76,11 +76,13 @@ public class Pickle : MonoBehaviour
 
     public void HidePickle()
     {
+        if (!transform.GetChild(0).gameObject.activeSelf) return;
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void ShowPickle()
     {
+        if (transform.GetChild(0).gameObject.activeSelf) return;
         transform.GetChild(0).gameObject.SetActive(true);
     }
 }

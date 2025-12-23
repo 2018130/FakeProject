@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventExample : MonoBehaviour
+public class PickleBehindYou : MonoBehaviour
 {
     private Pickle pickle;
     private SceneContext scenecontext;
+    [SerializeField] GameObject sponPos;
+    [SerializeField] private float delay = 3f;
 
     private void Awake()
     {
         pickle = FindAnyObjectByType<Pickle>();
-        pickle.gameObject.SetActive(false);
+        pickle.HidePickle();
         scenecontext = FindAnyObjectByType<SceneContext>();
     }
 
@@ -28,13 +30,19 @@ public class EventExample : MonoBehaviour
     //    }
     //}
 
-    public void PickleInYourBack()
+    public IEnumerator PickleInYourBack()
     {
-        Vector3 sponPos = scenecontext.Player.transform.forward * 10f;
+        Vector3 sponPos = this.sponPos.transform.position;
         pickle.ShowPickle();
         pickle.SetPos(sponPos, scenecontext.Player.transform);
+        yield return new WaitForSeconds(delay);
         pickle.StartNav();
 
-        SoundManager.Instance.PlaySFX(ESFX.SFX_PickleBreath2);
+        //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleBreath2);
+    }
+
+    public void Start_Co()
+    {
+        StartCoroutine(PickleInYourBack());
     }
 }
