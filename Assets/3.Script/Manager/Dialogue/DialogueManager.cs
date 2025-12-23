@@ -139,6 +139,7 @@ public class DialogueManager : MonoBehaviour
 
             if (!currentDialogue.HasChoice)
             {
+                Debug.Log("1111");
                 _nextPrintDialogueID++;
             }
 
