@@ -25,6 +25,7 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
     {
         if (!_isPlaying && !isPlayed)
         {
+            Debug.Log("여기 나의 족적을 남기고 간다.... ㅋ");
             StartCoroutine(PlaySceneEffect_co());
         }
     }
