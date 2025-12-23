@@ -25,11 +25,11 @@ public class PickleWatchingYou : MonoBehaviour
     /// pickle must be humanoid type
     /// using avatar mask. separate head and body -> base => body
     /// </summary>
-    public void SetLookat()
-    {
-        ani.SetLookAtWeight(lookWeight);
-        ani.SetLookAtPosition(sceneContext.Player.transform.position);
-    }
+    //public void SetLookat()
+    //{
+    //    ani.SetLookAtWeight(lookWeight);
+    //    ani.SetLookAtPosition(sceneContext.Player.transform.position);
+    //}
 
     public void WatchingYou()
     {
@@ -37,7 +37,7 @@ public class PickleWatchingYou : MonoBehaviour
         pickle.SetSpeed(walkSpeed);
         pickle.ShowPickle();
 
-        InvokeRepeating(nameof(SetLookat), 0f, 0.2f);
+        //InvokeRepeating(nameof(SetLookat), 0f, 0.2f);
 
         pickle.StartNav();
 

@@ -21,6 +21,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     private Transform cameraPoint;
 
+    private float mouseX;
+    private float mouseY;
+
     private float xRotation = 0f;
     private float yRotation = 0f;
 
@@ -37,7 +40,13 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         Move();
-        //Aim();
+
+        mouseX = playerInput.MouseDelta.x * lookSpeed * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+        mouseY = playerInput.MouseDelta.y * lookSpeed * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+    }
+
+    private void LateUpdate()
+    {
         PersonalView();
     }
 
@@ -52,21 +61,18 @@ public class PlayerMove : MonoBehaviour
 
         if (playerInput.isRun)
         {
-            Vector3 movePos = direction * runSpeed * Time.deltaTime;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+            Vector3 movePos = direction * runSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
             playerR.MovePosition(transform.position + movePos);
         }
         else
         {
-            Vector3 movePos = direction * moveSpeed * Time.deltaTime;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
+            Vector3 movePos = direction * moveSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
             playerR.MovePosition(transform.position + movePos);
         }
     }
 
     private void PersonalView()
     {
-        float mouseX = playerInput.MouseDelta.x * lookSpeed;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
-        float mouseY = playerInput.MouseDelta.y * lookSpeed;//TODO * GameManager.Instance.CurrentSceneContext.GameDeltaTime; -> null이 떠서 주석처리 함
-
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
 

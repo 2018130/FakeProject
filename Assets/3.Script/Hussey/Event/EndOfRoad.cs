@@ -24,7 +24,7 @@ public class EndOfRoad : MonoBehaviour
         pickle.ShowPickle();
         pickle.StartNav();
 
-        SoundManager.Instance.PlaySFX(ESFX.SFX_PickleRun);
-        SoundManager.Instance.PlaySFX(ESFX.SFX_PickleCry1);
+        //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleRun);
+        //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleCry1);
     }
 }

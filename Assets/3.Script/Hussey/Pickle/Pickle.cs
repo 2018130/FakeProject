@@ -40,8 +40,6 @@ public class Pickle : MonoBehaviour
 
         agent.Warp(hit.position);
 
-        StartNav();
-
         InvokeRepeating(nameof(UpdatePath), 0f, 0.2f);
     }
 
