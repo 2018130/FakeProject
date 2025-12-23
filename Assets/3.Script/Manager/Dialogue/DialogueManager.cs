@@ -47,12 +47,14 @@ public class DialogueManager : MonoBehaviour
 
     public event Action<int> OnDialogueStarted;
     [SerializeField]
-    private int _nextPrintDialogueID = 1;
+    private int nextPrintDialogueID = 1;
+    [SerializeField]
+    private float endDelay = 3f;
 
     private void Start()
     {
         dialogueDatas = CsvReader.LoadCsvData();
-        PrintDialogue(_nextPrintDialogueID);
+        PrintDialogue(nextPrintDialogueID);
     }
     public void PrintDialogue(DialogueData dialogueData)
     {
@@ -72,6 +74,7 @@ public class DialogueManager : MonoBehaviour
 
         if (!isPrintAnyDialogue)
         {
+            Debug.Log("여기 나의 족적을 남기고 간다.... ㅋ");
             PrintDialogue(data);
         }
     }
@@ -84,6 +87,7 @@ public class DialogueManager : MonoBehaviour
 
             bool isClickedAnyKey = false;
             DialogueData currentDialogue = dialogueQueue.Dequeue();
+
             OnDialogueStarted?.Invoke(currentDialogue.ID);
             dialogueText.text = "";
             nameText.text = currentDialogue.Name;
@@ -94,14 +98,14 @@ public class DialogueManager : MonoBehaviour
                 {
                     DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability + currentDialogue.Favorability);
                     PrintDialogue(currentDialogue.AcceptID);
-                    _nextPrintDialogueID = currentDialogue.AcceptID;
+                    nextPrintDialogueID = currentDialogue.AcceptID;
                     isClickedAnyKey = true;
                 },
                 () =>
                 {
                     DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability - currentDialogue.Favorability);
                     PrintDialogue(currentDialogue.RejectID);
-                    _nextPrintDialogueID = currentDialogue.RejectID;
+                    nextPrintDialogueID = currentDialogue.RejectID;
                     isClickedAnyKey = true;
                 });
             int index = 0;
@@ -139,10 +143,19 @@ public class DialogueManager : MonoBehaviour
 
             if (!currentDialogue.HasChoice)
             {
-                _nextPrintDialogueID++;
+                nextPrintDialogueID++;
             }
 
-            PrintDialogue(_nextPrintDialogueID);
+            if (currentDialogue.Name == "EOF")
+            {
+                yield return new WaitForSeconds(endDelay);
+                DialogueSceneManager.Instance.PlayGame();
+                yield break;
+            }
+            else
+            {
+                PrintDialogue(nextPrintDialogueID);
+            }
         }
     }
 
@@ -150,8 +163,22 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentDialogue.HasChoice)
         {
-            chooseButton[0].gameObject.SetActive(true);
-            chooseButton[1].gameObject.SetActive(true);
+            if(currentDialogue.AcceptDialogue.Length != 0)
+            {
+                chooseButton[0].gameObject.SetActive(true);
+            }
+            else
+            {
+                chooseButton[0].gameObject.SetActive(false);
+            }
+            if (currentDialogue.RejectDialogue.Length != 0)
+            {
+                chooseButton[1].gameObject.SetActive(true);
+            }
+            else
+            {
+                chooseButton[1].gameObject.SetActive(false);
+            }
 
             chooseButton[0].GetComponentInChildren<Text>().text = currentDialogue.AcceptDialogue;
             chooseButton[1].GetComponentInChildren<Text>().text = currentDialogue.RejectDialogue;
