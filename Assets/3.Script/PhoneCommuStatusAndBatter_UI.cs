@@ -34,8 +34,9 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
 
     [Header("핸드폰 배터리 슬라이더(Slider_Back)를 연결해 주세요.")]
     [SerializeField]
-    private Slider sliderBattery;
-    
+    public Slider sliderBattery;
+    public event Action OnBatteryEmpty;
+
     [Header("핸드폰 배터리 숫자(Text (Legacy))를 연결해 주세요.")]
     [SerializeField]
     private Text textBattery;
@@ -46,10 +47,11 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
 
     [Header("배터리의 최대최소는 100-0 ")]
     [SerializeField]
-    private float batteryStartNum=50f;
+    private float batteryStartNum;
     private float batteryMaxNum=100f;
     private float batteryMinNum=0f;
-
+    [SerializeField]
+    private float batterSpeed = 10f;
     PlayerLight phoneLight;
 
     private void Start()
@@ -62,8 +64,15 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
     {
         phoneLight = playerLight;
     }
-    
 
+    public void UpdateBattery()
+    {
+        // 값이 0 이하가 되면 구독자들에게 알림
+        if (sliderBattery.value <= 0)
+        {
+            OnBatteryEmpty?.Invoke();
+        }
+    }
     //
     //public void CommuStatusUpdate()
     //{
@@ -100,8 +109,9 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
 
         if (phoneLight != null && phoneLight.IsTurnOn == true)
         {
-            sliderBattery.value -= 1f*Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+            sliderBattery.value -= batterSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
             textBattery.text = sliderBattery.value.ToString("F0");
+            UpdateBattery();
         }
 
     }
