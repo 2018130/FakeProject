@@ -3508,9 +3508,9 @@ MonoBehaviour:
   backgroundImage: {fileID: 765036191}
   dialogueManager: {fileID: 305779359}
   visualData:
-  - dialogueID: 7
-    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
-    backgroundSprite: {fileID: 21300000, guid: b2c101912a005e44c88b3d24cfc22604, type: 3}
+  - dialogueID: 0
+    characterSprite: {fileID: 0}
+    backgroundSprite: {fileID: 0}
 --- !u!43 &385775777
 Mesh:
   m_ObjectHideFlags: 0
