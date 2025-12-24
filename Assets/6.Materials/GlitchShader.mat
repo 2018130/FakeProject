@@ -105,7 +105,7 @@ Material:
     - _GlitchAmount: 1
     - _GlitchCutAmountX: 1.49
     - _GlitchCutAmountY: 1
-    - _GlitchIntensity: 0.105
+    - _GlitchIntensity: 0.07
     - _GlitchSpeed: 2.32
     - _GlossMapScale: 0
     - _Glossiness: 0
