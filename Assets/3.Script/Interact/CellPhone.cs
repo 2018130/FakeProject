@@ -35,6 +35,9 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
         transform.localPosition = Vector3.zero;
 
         GetComponentInChildren<TwinkleLight>().StopTwinkle();
+
+        PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
+        phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
     }
 
 }

@@ -16,7 +16,7 @@ public class PlayerLight : LightObject
                 return false;
             }
 
-            return _toggle.isOn;
+            return !_toggle.isOn;
         }
     }
 

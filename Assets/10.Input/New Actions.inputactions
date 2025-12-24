@@ -19,7 +19,7 @@
                     "name": "PersonalView",
                     "type": "Value",
                     "id": "b8e8ff3b-f06c-4d74-b85c-8bcce0d8c001",
-                    "expectedControlType": "Delta",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
