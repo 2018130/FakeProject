@@ -4,6 +4,7 @@ using UnityEngine.UI; // Toggle 사용을 위해 필수
 public class LightObject : MonoBehaviour
 {
     protected Light light;
+    public Light Light => light;
 
     [Header("의존성 Dependencies")]
     public PhoneCommuStatusAndBatter_UI batteryUI;

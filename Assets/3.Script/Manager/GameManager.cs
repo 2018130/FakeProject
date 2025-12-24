@@ -16,6 +16,7 @@ public enum GameState
     Playing,
     UI,
     TimeStop,
+    Dead,
 }
 
 public class GameManager : SingletonBehaviour<GameManager>
