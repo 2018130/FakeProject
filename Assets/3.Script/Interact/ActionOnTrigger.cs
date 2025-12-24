@@ -9,7 +9,6 @@ public class ActionOnTrigger : MonoBehaviour
     [SerializeField]
     UIData data;
 
-
     [SerializeField]
     private UnityEvent action;
 
@@ -40,6 +39,12 @@ public class ActionOnTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        FindAnyObjectByType<interkeyUI>()?.HideUI();
+        FindAnyObjectByType<interkeyUI>()?.SetActive(false);
+    }
+
+    public void ChangeUIData(UIData uIData)
+    {
+        data = uIData;
+        FindAnyObjectByType<interkeyUI>()?.SetInteractionKeyUI(data);
     }
 }

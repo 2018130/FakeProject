@@ -7,9 +7,19 @@ public class TwinkleLight : LightObject
 {
     private bool twinkle = false;
     [SerializeField]
+    private bool twinkleOnStart = true;
+    [SerializeField]
     private float maxLagTime = 0.1f;
     [SerializeField]
     private float minLagTime = 0.1f;
+
+    private void Start()
+    {
+        if(twinkleOnStart)
+        {
+            TurnOn();
+        }
+    }
 
     public override void TurnOn()
     {

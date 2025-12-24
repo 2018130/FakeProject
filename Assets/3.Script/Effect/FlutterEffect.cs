@@ -20,10 +20,20 @@ public class FlutterEffect : MonoBehaviour
     [SerializeField]
     private float flutterDelay = 0.1f;
 
+    [SerializeField]
+    private bool fluttingOnStart = false;
+
     private bool endOfLower = true;
 
     public int Priority { get; set; }
 
+    private void Start()
+    {
+        if(fluttingOnStart)
+        {
+            StartFluttering();
+        }
+    }
     public void StartFluttering()
     {
         StartCoroutine(Flutter_co());
