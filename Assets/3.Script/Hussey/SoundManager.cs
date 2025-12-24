@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public enum EBGM
 {
@@ -51,6 +52,14 @@ public class SoundManager : SingletonBehaviour<SoundManager>
 
     [SerializeField] private AudioMixer audioMixer;
 
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
+
+    private void Start()
+    {
+        SetBGMVolume(bgmSlider.value);
+        SetSFXVolume(sfxSlider.value);
+    }
 
     public void PlayBGM(EBGM bgmIndex)
     {
