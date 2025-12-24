@@ -17,7 +17,7 @@ public class HidePickle : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             pickle.StopNav();
-            pickle.HidePickle();
+            pickle.HidePickle(0);
         }
     }
 }

@@ -76,6 +76,14 @@ public class SoundManager : SingletonBehaviour<SoundManager>
     {
         sfxPlayer.PlayOneShot(sfxs[(int)sfxIndex]);
     }
+    public void PlaySFX(AudioClip clip)
+    {
+        sfxPlayer.PlayOneShot(clip);
+    }
+    public void StopSFX()
+    {
+        sfxPlayer.Stop();
+    }
 
     public void SetMasterVolume(float volume)
     {

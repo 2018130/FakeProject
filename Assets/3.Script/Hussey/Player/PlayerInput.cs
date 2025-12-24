@@ -65,18 +65,23 @@ public class PlayerInput : MonoBehaviour
                 ani.SetBool("Walk", false);
             }
         }
+        else
+        {
+            moveValue = Vector2.zero;
+            ani.SetBool("Walk", false);
+        }
 
     }
 
 
     //3?�칭 구현?�라 주석처리
-    //public void Event_Aim(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Performed)
-    //    {
-    //        mousePos = context.ReadValue<Vector2>();
-    //    }
-    //}
+    public void Event_Aim(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            mousePos = context.ReadValue<Vector2>();
+        }
+    }
 
     public void Event_PersonalView(InputAction.CallbackContext context)
     {

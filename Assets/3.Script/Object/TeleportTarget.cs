@@ -1,0 +1,47 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TeleportTarget : MonoBehaviour
+{
+    [SerializeField]
+    private Transform target;
+
+    [SerializeField]
+    private Transform spawnPoint;
+
+    [Header("Screen Point Spawn Layer")]
+    [SerializeField]
+    private LayerMask screenPointSpawnLayer;
+    [SerializeField, Tooltip("해당변수가 우선권을 가집니다 0이라면 spawnPoint 실행")]
+    private Vector2 screenSpawnPoint;
+
+    private PlayerInput _playerInput;
+
+    private void Start()
+    {
+        _playerInput = FindAnyObjectByType<PlayerInput>();
+    }
+
+    public void Teleport()
+    {
+        if(screenSpawnPoint != Vector2.zero)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(screenSpawnPoint);
+
+            if(Physics.Raycast(ray, out RaycastHit hit, 100f, screenPointSpawnLayer))
+            {
+                Debug.Log(hit.collider.name);
+                Vector3 spawnPos = hit.point;
+                spawnPos.y = 2f;
+                target.position = spawnPos;
+            }
+        }
+        else
+        {
+            target.position = spawnPoint.position;
+        }
+    }
+
+}

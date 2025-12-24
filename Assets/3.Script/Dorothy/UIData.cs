@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "interact KEY",menuName = "interaction UI Date")]
+[CreateAssetMenu(fileName = "interact KEY",menuName = "Scriptable Objects/interaction UI Date")]
 public class UIData : ScriptableObject
 {
     /*
