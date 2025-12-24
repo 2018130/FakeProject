@@ -57,8 +57,8 @@ public class SoundManager : SingletonBehaviour<SoundManager>
 
     private void Start()
     {
-        SetBGMVolume(bgmSlider.value);
-        SetSFXVolume(sfxSlider.value);
+        //SetBGMVolume(bgmSlider.value);
+        //SetSFXVolume(sfxSlider.value);
     }
 
     public void PlayBGM(EBGM bgmIndex)

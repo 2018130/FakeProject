@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
 {
+    [SerializeField]
+    private Camera cellphoneCamera;
     public int Priority { get; set; }
     [SerializeField]
     private bool obtained = false;
@@ -34,10 +36,13 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
         transform.localRotation = Quaternion.identity;
         transform.localPosition = Vector3.zero;
 
-        GetComponentInChildren<TwinkleLight>().StopTwinkle();
+        GetComponentInChildren<TwinkleLight>()?.StopTwinkle();
 
         PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
         phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
+
+        PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
+        galleryManager.Initialize(cellphoneCamera);
     }
 
 }

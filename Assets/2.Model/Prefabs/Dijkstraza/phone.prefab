@@ -126,6 +126,7 @@ MonoBehaviour:
   flutterHeightSpeed: 0.03
   flutterWidthSpeed: 0.05
   flutterDelay: 0.1
+  fluttingOnStart: 0
 --- !u!114 &3859031369142744961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbecae2106e12464cae1b6d982b506a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CellPhone
+  cellphoneCamera: {fileID: 8828705242987289868}
   obtained: 0
   cellphoneObtainKey: CellphoneObtained
 --- !u!65 &1617691410599590205
