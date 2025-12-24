@@ -62,13 +62,15 @@ public class CameraController : MonoBehaviour
         if (playerAimCamera == null)
             return;
 
-        playerAimCamera.Priority = 10;
+        playerAimCamera.Priority = 1;
+        freeLookCamera.Priority = 0;
     }
 
     public void ChangeCameraToFreeLook()
     {
         if (freeLookCamera == null)
             return;
+
         freeLookCamera.Priority = 1;
     }
 

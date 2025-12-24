@@ -71,10 +71,21 @@ public class Pickle : MonoBehaviour
     {
         agent.speed = pickleSpeed;
     }
-
-    public void HidePickle()
+    //
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="time">time 시간 이후 모습이 보이지 않습니다.</param>
+    public void HidePickle(float time = 0)
     {
         if (!transform.GetChild(0).gameObject.activeSelf) return;
+
+        StartCoroutine(Hide_co(time));
+    }
+
+    private IEnumerator Hide_co(float time)
+    {
+        yield return new WaitForSeconds(time);
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
