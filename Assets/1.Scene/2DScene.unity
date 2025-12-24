@@ -3454,7 +3454,7 @@ Canvas:
   m_GameObject: {fileID: 383918952}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -11460,7 +11460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -357.59912, y: -248.2}
+  m_AnchoredPosition: {x: -357.59906, y: -248.2}
   m_SizeDelta: {x: 1543.84, y: 1022}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1244192658
@@ -13971,7 +13971,6 @@ GameObject:
   - component: {fileID: 1696334847}
   - component: {fileID: 1696334851}
   - component: {fileID: 1696334850}
-  - component: {fileID: 1696334852}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14068,7 +14067,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: 169c1a67b83b04847909524ec4bb2bdc, type: 2}
 --- !u!114 &1696334851
 MonoBehaviour:
@@ -14114,19 +14113,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &1696334852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696334846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3aaadf57aeefb9499c5459d295d117e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
-  meunmenu: {fileID: 2800000, guid: 02ce8c7954f85ed459e806387f020efa, type: 3}
 --- !u!43 &1699514266
 Mesh:
   m_ObjectHideFlags: 0

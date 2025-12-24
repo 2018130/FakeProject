@@ -4007,6 +4007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131fd3bcd1b3d2e489cc8f02c32c8d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwinkleLight
+  batteryUI: {fileID: 0}
   twinkleOnStart: 1
   maxLagTime: 0.7
   minLagTime: 1
@@ -12896,6 +12897,8 @@ MonoBehaviour:
   messagePrefab: {fileID: 4204410856645064990, guid: 6e8c42c3fe0710b4d8dd38f430fb1c50, type: 3}
   contentTransform: {fileID: 4070824718917578500}
   scrollRect: {fileID: 7308381105451431972}
+  notificationBadge: {fileID: 0}
+  messageCountText: {fileID: 0}
 --- !u!1 &3440590688781395798
 GameObject:
   m_ObjectHideFlags: 0
@@ -13683,7 +13686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14092806}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.1411381}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &4074183564209531770
@@ -13725,6 +13728,7 @@ MonoBehaviour:
   textBattery: {fileID: 0}
   phonePrefab: {fileID: 0}
   batteryStartNum: 50
+  batterSpeed: 10
 --- !u!114 &4090860665815674559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15241,8 +15245,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2152533847712394913}
   m_HandleRect: {fileID: 1985912959413870130}
   m_Direction: 2
-  m_Value: 0.0008658009
-  m_Size: 0.9999079
+  m_Value: -0.0008665511
+  m_Size: 0.9997044
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15778,6 +15782,8 @@ MonoBehaviour:
   _targetLeftBackWardPosition: 1080
   _durationToLeft: 0.3
   _durationToLeftBack: 0.35
+  cameraScreen: {fileID: 0}
+  _durationToCamera: 0.5
 --- !u!114 &5618250819369093488
 MonoBehaviour:
   m_ObjectHideFlags: 0
