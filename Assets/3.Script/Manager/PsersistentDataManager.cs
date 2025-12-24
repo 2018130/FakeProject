@@ -157,7 +157,7 @@ public class PersistentDataManager : MonoBehaviour
                 }
             }
         }
-        private void SaveDataToFile()
+        public void SaveDataToFile()
         {
             string saveData = "";
             for(int i = 0; i < persistantData.Count; i++)

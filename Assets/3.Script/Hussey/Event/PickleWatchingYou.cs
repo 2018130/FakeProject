@@ -52,7 +52,6 @@ public class PickleWatchingYou : MonoBehaviour
 
     public void OnAnimatorIK(int layerIndex)
     {
-        Debug.Log("1111");
         //ani.SetLookAtWeight(lookWeight);
         //ani.SetLookAtPosition(sceneContext.Player.transform.position);
 

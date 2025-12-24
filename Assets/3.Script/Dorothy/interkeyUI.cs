@@ -12,28 +12,24 @@ public class interkeyUI : MonoBehaviour
     [SerializeField]
     private Text descriptionText;
 
-    private void Awake()
+    private void Start()
     {
-        /*
-         
-         .¡ü__,¡ü
-         (.¡¡¡¡¡¡£©
-         (¡¡¡¡n¡¡£©
-         .£àu¡ªu¢¥
+        SetActive(false);
+    }
 
-
-         */
+    public void SetActive(bool active)
+    {
+        keyText.gameObject.SetActive(active);
+        descriptionText.gameObject.SetActive(active);
     }
 
     public void SetInteractionKeyUI(UIData data)
     {
-        keyText.text = data.UIname;
-        descriptionText.text = data.UImsg;
-        gameObject.SetActive(true);
-    }
-
-    public void HideUI()
-    {
-        gameObject.SetActive(false);
+        if(data != null)
+        {
+            keyText.text = data.UIname;
+            descriptionText.text = data.UImsg;
+            SetActive(true);
+        }
     }
 }
