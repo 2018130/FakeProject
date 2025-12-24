@@ -636,7 +636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6e3ce3f1f736fa94d83b5a0c3e83e54f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a457bf8f450a574592e413ba1a60845, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 1057178586}
   - component: {fileID: 1057178585}
   - component: {fileID: 1057178588}
+  - component: {fileID: 1057178589}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -791,6 +792,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1057178589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057178584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3aaadf57aeefb9499c5459d295d117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
+  meunmenu: {fileID: 2800000, guid: 02ce8c7954f85ed459e806387f020efa, type: 3}
 --- !u!1 &1150852459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,8 +3713,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7348536381507326589}
   m_HandleRect: {fileID: 7181844571521082094}
   m_Direction: 2
-  m_Value: -0.0008665511
-  m_Size: 0.9995606
+  m_Value: -0.006065858
+  m_Size: 0.9995104
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4592,7 +4606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14097972}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.14171462}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &4660663331157186470
