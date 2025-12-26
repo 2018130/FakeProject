@@ -613,6 +613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
   audioClip: {fileID: 8300000, guid: dad9103aedc6c5846aaf8af38a3f26b2, type: 3}
+  sfxType: 0
+  playOnStart: 0
+  bGM: 0
 --- !u!1 &154235837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5699122024509331713, guid: 8814d21114865784da3896ae0472c1ad, type: 3}
@@ -4651,6 +4654,173 @@ Transform:
   - {fileID: 272145877}
   m_Father: {fileID: 1403253560}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1072736691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072736693}
+  - component: {fileID: 1072736692}
+  m_Layer: 0
+  m_Name: CuttedArmCutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1072736692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072736691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
+  playedKey: CutscenePlayedKey
+  isPlayed: 0
+  sceneEffects:
+  - _type: 3
+    Time: 0
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 2
+    Time: 0.5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 3
+    Time: 0.5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 2
+    Time: 0.5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 3
+    Time: 0.5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 3
+    Time: 0.5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1271537589}
+          m_TargetAssemblyTypeName: TriggerMessageSending, Assembly-CSharp
+          m_MethodName: OnSendMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 0
+    IsBGM: 0
+    Clip: {fileID: 0}
+--- !u!4 &1072736693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072736691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.50142, y: 0, z: 91.94537}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089612814
 GameObject:
   m_ObjectHideFlags: 0
@@ -5356,6 +5526,53 @@ Transform:
   - {fileID: 100169582}
   - {fileID: 1631264644}
   m_Father: {fileID: 1276505760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1271537588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271537590}
+  - component: {fileID: 1271537589}
+  m_Layer: 0
+  m_Name: CuttingArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1271537589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271537588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720c24c70797f2f4ebaf2edb1c8a25f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerMessageSending
+  messageData: {fileID: 11400000, guid: 2232c3bc7ff19f04e916101176c582ff, type: 2}
+--- !u!4 &1271537590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271537588}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 238.6, y: 0.24, z: 316.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2097040226}
+  - {fileID: 2115513634}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1276505759
 GameObject:
@@ -7693,6 +7910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
   audioClip: {fileID: 0}
+  sfxType: 0
+  playOnStart: 0
+  bGM: 0
 --- !u!1 &1973330999
 GameObject:
   m_ObjectHideFlags: 0
@@ -8213,6 +8433,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2097040225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2097040226}
+  - component: {fileID: 2097040228}
+  - component: {fileID: 2097040227}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2097040226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097040225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6941111, y: 0.6363199, z: 0.18582498, w: -0.2806705}
+  m_LocalPosition: {x: 0.69, y: -0.11468837, z: -1.39}
+  m_LocalScale: {x: 21.257113, y: 21.25711, z: 21.25711}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1271537590}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2097040227
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097040225}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -8370482900718932654, guid: 6ac5dc68474eb8c45843a01a5d45c9b9, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2097040228
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097040225}
+  m_Mesh: {fileID: 7697209536985634680, guid: 6ac5dc68474eb8c45843a01a5d45c9b9, type: 3}
 --- !u!1 &2100668113
 GameObject:
   m_ObjectHideFlags: 0
@@ -8327,6 +8636,77 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  triggerTargetTag: Player
+--- !u!1 &2115513633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2115513634}
+  - component: {fileID: 2115513636}
+  - component: {fileID: 2115513635}
+  m_Layer: 0
+  m_Name: TriggerZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2115513634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115513633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 7, y: 1, z: 7}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1271537590}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2115513635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115513633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2115513636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115513633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f920eedcb8bc1c4f8777fe6f1b91424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActionOnTrigger
+  data: {fileID: 11400000, guid: f2147b1f1605388459d9105deab7e5f2, type: 2}
+  action:
+    m_PersistentCalls:
+      m_Calls: []
   triggerTargetTag: Player
 --- !u!1 &2127585775
 GameObject:
@@ -13906,7 +14286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14099091}
+  m_AnchoredPosition: {x: -0.0004367976, y: 4.2210736}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3529271771841632229
@@ -15486,8 +15866,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537293230407225511}
   m_HandleRect: {fileID: 1370685821100400692}
   m_Direction: 2
-  m_Value: -0.0008665511
-  m_Size: 0.9999078
+  m_Value: -28.964472
+  m_Size: 0.8496351
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17073,6 +17453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
   audioClip: {fileID: 8300000, guid: dad9103aedc6c5846aaf8af38a3f26b2, type: 3}
+  sfxType: 0
+  playOnStart: 0
+  bGM: 0
 --- !u!4 &5539204901084861895
 Transform:
   m_ObjectHideFlags: 0
@@ -18369,6 +18752,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundPlayer
   audioClip: {fileID: 0}
+  sfxType: 0
+  playOnStart: 0
+  bGM: 0
 --- !u!114 &6292435243671925106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23957,6 +24343,7 @@ SceneRoots:
   - {fileID: 1106081247}
   - {fileID: 1696864470}
   - {fileID: 950400523}
+  - {fileID: 1271537590}
   - {fileID: 2008373631}
   - {fileID: 670613772}
   - {fileID: 1331290256}
@@ -23966,6 +24353,7 @@ SceneRoots:
   - {fileID: 6851211515125562189}
   - {fileID: 8313878502705526423}
   - {fileID: 2023794120}
+  - {fileID: 1072736693}
   - {fileID: 399185917}
   - {fileID: 208656516}
   - {fileID: 2003645873}
