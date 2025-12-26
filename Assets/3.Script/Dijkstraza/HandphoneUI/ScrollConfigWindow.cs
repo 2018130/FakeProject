@@ -78,6 +78,53 @@ public class ScrollConfigWindow : MonoBehaviour
     private float _durationToCamera = 0.5f; // 카메라 페이드 시간
     bool isCameraOn = false;
 
+    private void Start()
+    {
+        FindAnyObjectByType<PlayerInput>().OnSettingKeyDowned += Toggle;
+        ClosePanel();
+    }
+    // --- 화면 끄고 키는 기능 ---
+
+    public void Toggle()
+    {
+        if(transform.GetChild(1).gameObject.activeSelf)
+        {
+            ClosePanel();
+        }
+        else
+        {
+            OpenPanel();
+        }
+    }
+
+    public void ClosePanel(bool useTimeContol = true)
+    {
+        if(useTimeContol)
+        {
+            GameManager.Instance.ChangeState(GameState.Playing);
+        }
+
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).name == "GalleryScreen")
+                continue;
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    public void OpenPanel(bool useTimeContol = true)
+    {
+        if (useTimeContol)
+        {
+            GameManager.Instance.ChangeState(GameState.UI);
+        }
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
     // --- 새로 추가된 카메라 제어 함수 ---
     public void OnCameraOpen()
     {

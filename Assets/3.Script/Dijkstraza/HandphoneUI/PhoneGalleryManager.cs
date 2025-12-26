@@ -13,7 +13,10 @@ public class PhoneGalleryManager : MonoBehaviour
     [Header("Gallery UI")]
     public GameObject galleryPanel; // 갤러리 전체 패널 (켜고 끌 것)
     public Transform contentParent; // ScrollView의 Content 오브젝트
+    public GameObject titlePrefab;
+    public GameObject UpperbarPrefab;
     public GameObject photoPrefab;  // 갤러리에 추가될 사진 프리팹 (Image 컴포넌트가 있어야 함)
+    public Animator openAnimator;
 
     private string savePath;
 
@@ -27,6 +30,16 @@ public class PhoneGalleryManager : MonoBehaviour
         {
             Directory.CreateDirectory(savePath);
         }
+        else
+        {
+            Directory.Delete(savePath, true);
+            Directory.CreateDirectory(savePath);
+        }
+    }
+
+    public void Initialize(Camera camera)
+    {
+        photoCamera = camera;
     }
 
     // [기능 1] 사진 촬영 및 저장 (기존 코드에서 특정 키나 버튼을 누르면 이 함수를 호출하세요)
@@ -66,13 +79,17 @@ public class PhoneGalleryManager : MonoBehaviour
     public void OpenGallery()
     {
         galleryPanel.SetActive(true);
+
+        openAnimator.SetTrigger("Opened");
         LoadPhotos();
     }
 
     public void CloseGallery()
     {
-        galleryPanel.SetActive(false);
+        // 애니메이션만 실행
+        openAnimator.SetTrigger("Closed");
     }
+
 
     void LoadPhotos()
     {
@@ -84,6 +101,11 @@ public class PhoneGalleryManager : MonoBehaviour
 
         // 2. 저장 경로에서 모든 png 파일 가져오기
         string[] files = Directory.GetFiles(savePath, "*.png");
+
+        RectTransform titleRect = Instantiate(titlePrefab, contentParent).GetComponent<RectTransform>();
+        RectTransform upperRect = Instantiate(UpperbarPrefab, contentParent).GetComponent<RectTransform>();
+        float height = titleRect.sizeDelta.y;
+        height += upperRect.sizeDelta.y;
 
         foreach (string file in files)
         {
@@ -98,7 +120,11 @@ public class PhoneGalleryManager : MonoBehaviour
                 // 5. 프리팹 생성 및 이미지 할당
                 GameObject newPhoto = Instantiate(photoPrefab, contentParent);
                 newPhoto.GetComponent<Image>().sprite = newSprite;
+                height += newPhoto.GetComponent<RectTransform>().sizeDelta.y + 20;
             }
         }
+
+        contentParent.GetComponent<RectTransform>().sizeDelta = 
+            new Vector2(contentParent.GetComponent<RectTransform>().sizeDelta.x, height);
     }
 }

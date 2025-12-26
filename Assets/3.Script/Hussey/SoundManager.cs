@@ -7,16 +7,21 @@ using UnityEngine.UI;
 
 public enum EBGM
 {
+    BGM_T,
     BGM_2D,
     BGM_3D,
+    BGM_3Dchase,
 }
 
 public enum ESFX
 {
     SFX_Playerwalk,
     SFX_PlayerRun,
-    SFX_PlayerBreath,
+    SFX_BreathFast,
+    SFX_BreathSlowly,
     SFX_CarAlarm,
+    SFX_CarAlarm1,
+    SFX_CarAlarm2,
     SFX_BirdSound,
     SFX_Rustle1,
     SFX_Rustle2,
@@ -24,6 +29,9 @@ public enum ESFX
     SFX_PickleCry1,
     SFX_PickleCry2,
     SFX_PickleBreath1,
+    /*
+     피클브레스1까지 넣음
+     */
     SFX_PickleBreath2,
     SFX_PickleStep,
     SFX_PickleRun,
@@ -31,6 +39,7 @@ public enum ESFX
     SFX_DropDeadBody,
     SFX_RollingHead,
     SFX_MessageAlarm,
+    SFX_Picklescare,
 }
 
 
@@ -57,8 +66,8 @@ public class SoundManager : SingletonBehaviour<SoundManager>
 
     private void Start()
     {
-        SetBGMVolume(bgmSlider.value);
-        SetSFXVolume(sfxSlider.value);
+        //SetBGMVolume(bgmSlider.value);
+        //SetSFXVolume(sfxSlider.value);
     }
 
     public void PlayBGM(EBGM bgmIndex)
