@@ -32,6 +32,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float blinkLagTime = 1f;
 
+    private CinemachineSplineDolly dolly;
     private void Start()
     {
         brain = GetComponent<CinemachineBrain>();
@@ -88,9 +89,26 @@ public class CameraController : MonoBehaviour
         dollyCamera.Priority = 1;
     }
 
+    /// <summary>
+    /// chatGPT 피셜 자동으로 맡기면 이동 끝난 지점에서 무조건 흔들리게 되어 있다고 합니다
+    /// </summary>
     public void StartDolly()
     {
-        dollyCamera.GetComponent<CinemachineSplineDolly>().AutomaticDolly.Enabled = true;
+        //dollyCamera.GetComponent<CinemachineSplineDolly>().AutomaticDolly.Enabled = true;
+
+        dolly = dollyCamera.GetComponent<CinemachineSplineDolly>();
+        dolly.AutomaticDolly.Enabled = false;
+
+        StartCoroutine(DollyMove());
+    }
+
+    private IEnumerator DollyMove()
+    {
+        while(dolly.CameraPosition<0.98f)
+        {
+            dolly.CameraPosition += 0.4f * Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void Blink()
