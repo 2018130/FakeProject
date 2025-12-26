@@ -28,6 +28,8 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
             Debug.Log("여기 나의 족적을 남기고 간다.... ㅋ");
             StartCoroutine(PlaySceneEffect_co());
         }
+        /// kjh
+        PersistentDataManager.Instance.SaveData(playedKey, isPlayed);
     }
 
     public IEnumerator PlaySceneEffect_co()

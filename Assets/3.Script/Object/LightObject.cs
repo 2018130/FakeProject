@@ -12,6 +12,9 @@ public class LightObject : MonoBehaviour
     // UI 토글 컴포넌트 참조
     private Toggle toggleToLightOnPhone;
 
+    [SerializeField]
+    protected string lightTurnOnKey = "LightTurnOnKey";
+
     protected virtual void Awake()
     {
         light = GetComponentInChildren<Light>();
@@ -59,6 +62,8 @@ public class LightObject : MonoBehaviour
             if (toggleToLightOnPhone != null) toggleToLightOnPhone.isOn = false;
             Debug.Log("배터리가 없어 불을 켤 수 없습니다.");
         }
+
+        PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
     }
 
     public virtual void TurnOff()
@@ -71,7 +76,8 @@ public class LightObject : MonoBehaviour
             toggleToLightOnPhone.isOn = true;
             Debug.Log("turnoff??");
         }
-       
+
+        PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
     }
 
     public virtual void Toggle()

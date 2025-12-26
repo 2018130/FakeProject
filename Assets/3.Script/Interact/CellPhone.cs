@@ -19,10 +19,11 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
     {
         obtained = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
 
-        if(obtained)
+        if (obtained)
         {
             Interact();
         }
+
     }
 
     public void Interact()
@@ -43,6 +44,7 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
 
         PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
         galleryManager.Initialize(cellphoneCamera);
+        PersistentDataManager.Instance.SaveData(cellphoneObtainKey, obtained);
     }
 
 }
