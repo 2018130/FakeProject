@@ -9,7 +9,7 @@ public class SceneContext : MonoBehaviour
 {
     [SerializeField]
     private float gameTimeScale = 1f;
-    public float GameTimeScale => gameTimeScale;
+    public float GameTimeScale { get => gameTimeScale; set => gameTimeScale = value; }
 
     [SerializeField]
     private AssetLabelReference assetLable;

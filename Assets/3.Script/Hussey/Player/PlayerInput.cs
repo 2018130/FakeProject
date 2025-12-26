@@ -152,6 +152,7 @@ public class PlayerInput : MonoBehaviour
             OnSettingKeyDowned?.Invoke();
         }
     }
+
     //3?�칭 구현?�라 주석처리
     //public void Event_ChangeView(InputAction.CallbackContext context)
     //{

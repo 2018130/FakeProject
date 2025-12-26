@@ -48,8 +48,23 @@ public class GameManager : SingletonBehaviour<GameManager>
         if (gameState == newState)
             return;
 
-        
         gameState = newState;
+        switch (gameState)
+        {
+            case GameState.None:
+                break;
+            case GameState.Playing:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 1f;
+                break;
+            case GameState.UI:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 0f;
+                break;
+            case GameState.TimeStop:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 0f;
+                break;
+            case GameState.Dead:
+                break;
+        }
     }
 
     public IEnumerator Initialize()
