@@ -39,6 +39,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.CurrentSceneContext == null)
+            return;
         Move();
 
         mouseX = playerInput.MouseDelta.x * lookSpeed * GameManager.Instance.CurrentSceneContext.GameTimeScale;
@@ -52,6 +54,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
+
         //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale ÇÊ¿ä
 
         Vector3 forward = transform.forward * playerInput.MoveValue.y;
