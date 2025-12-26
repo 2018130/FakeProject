@@ -23,21 +23,15 @@ public enum ESFX
     SFX_CarAlarm1,
     SFX_CarAlarm2,
     SFX_BirdSound,
-    /*
-      Rustle1,2 안넣었음
-     */
     SFX_Rustle1,
     SFX_Rustle2,
     SFX_ItemPick,
-    /*
-     아이템 픽까지 넣음
-     */
     SFX_PickleCry1,
-    /*
-     피클울음1까지만 넣음
-     */
     SFX_PickleCry2,
     SFX_PickleBreath1,
+    /*
+     피클브레스1까지 넣음
+     */
     SFX_PickleBreath2,
     SFX_PickleStep,
     SFX_PickleRun,
@@ -45,6 +39,7 @@ public enum ESFX
     SFX_DropDeadBody,
     SFX_RollingHead,
     SFX_MessageAlarm,
+    SFX_Picklescare,
 }
 
 
