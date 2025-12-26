@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   bgms:
+  - {fileID: 0}
   - {fileID: 8300000, guid: 5b8279cc14a6a134aad8da34c163a1fc, type: 3}
   - {fileID: 8300000, guid: 96b5a3136d8eef845b73596a2ac180af, type: 3}
   - {fileID: 8300000, guid: b1fdacf20a273e54f97e2ef298284669, type: 3}
-  - {fileID: 0}
   - {fileID: 8300000, guid: c2e7bd662d7fdfa44ad0aec58147739d, type: 3}
   sfxs:
   - {fileID: 8300000, guid: 17fcac5c276a2e24baf76555bb7589da, type: 3}
@@ -177,6 +177,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f1b31b1a54d7cb146ad9789d7ca4412e, type: 3}
   - {fileID: 8300000, guid: 1b988de29da3d84428d86c6f71b2c823, type: 3}
   - {fileID: 8300000, guid: 469dbed98031dd24f888acb38446e750, type: 3}
+  - {fileID: 8300000, guid: 26574370355233343a2f72ff4be008c8, type: 3}
   bgmPlayer: {fileID: 1430286898}
   sfxPlayer: {fileID: 1174484939}
   audioMixer: {fileID: 24100000, guid: 7116a4a10c0213245abe66327e63e180, type: 2}

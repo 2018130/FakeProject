@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public enum EBGM
 {
+    None,
     BGM_T,
     BGM_2D,
     BGM_2DError,
@@ -38,6 +39,7 @@ public enum ESFX
     SFX_RollingHead,
     SFX_MessageAlarm,
     SFX_Picklescare,
+    SFX_AppClick
 }
 
 
