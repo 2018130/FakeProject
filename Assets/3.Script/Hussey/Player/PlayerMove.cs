@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+    private bool isMouseStop = true;
+
     private void Awake()
     {
         TryGetComponent(out playerInput);
@@ -50,6 +52,11 @@ public class PlayerMove : MonoBehaviour
     private void LateUpdate()
     {
         PersonalView();
+    }
+
+    private void FixedUpdate()
+    {
+        //PersonalView();
     }
 
     private void Move()
@@ -76,16 +83,25 @@ public class PlayerMove : MonoBehaviour
 
     private void PersonalView()
     {
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
-
-        yRotation += mouseX;
-
-        if (cameraPoint != null)
+        if (isMouseStop)
         {
+            cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
+
+            yRotation += mouseX;
+
+            //transform.Rotate(Vector3.up * mouseY);
+            transform.Rotate(Vector3.up * mouseX);
             cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         }
+    }
 
-        transform.Rotate(Vector3.up * mouseX);
+    public void MouseStop()
+    {
+        isMouseStop = !isMouseStop;
     }
 }
