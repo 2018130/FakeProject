@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de62f8bf2aa17c4b9a65e94cfbce0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLight
-  batteryUI: {fileID: 0}
+  _batteryUI: {fileID: 0}
 --- !u!33 &4270916745813824070
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   cellphoneCamera: {fileID: 8828705242987289868}
   obtained: 0
   cellphoneObtainKey: CellphoneObtained
+  screenMaterial: {fileID: 2100000, guid: 8adc489959242814c928a2b16f6726b1, type: 2}
 --- !u!65 &1617691410599590205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -317,13 +318,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6698887813842780593}
   serializedVersion: 2
-  m_LocalRotation: {x: -1, y: 0, z: -0, w: 0}
+  m_LocalRotation: {x: -0.9914449, y: 0.13052626, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9207708342787562975}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -180}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -165}
 --- !u!20 &8828705242987289868
 Camera:
   m_ObjectHideFlags: 0

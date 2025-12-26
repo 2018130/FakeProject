@@ -106,10 +106,9 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
     }
     public void Update()
     {
-
-        if (phoneLight != null && phoneLight.IsTurnOn == true)
+        if (phoneLight != null && phoneLight.IsTurnOn)
         {
-            sliderBattery.value -= batterSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+            sliderBattery.value -= batterSpeed * Time.deltaTime;
             textBattery.text = sliderBattery.value.ToString("F0");
             UpdateBattery();
         }
