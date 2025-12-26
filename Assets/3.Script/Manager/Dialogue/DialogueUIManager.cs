@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueUIManager : MonoBehaviour
+public class DialogueUIManager : MonoBehaviour, ISceneContextBuilt
 {
     [SerializeField]
     private Slider favorabilityProgressBar;
@@ -16,6 +16,8 @@ public class DialogueUIManager : MonoBehaviour
     private DialogueManager dialogueManager;
     public DialogueManager DialogueManager => dialogueManager;
 
+    public int Priority { get; set; } = 1;
+
     //1219 ID리소스 관리
     public List<DialogueVisualData> visualData;
 
@@ -23,9 +25,6 @@ public class DialogueUIManager : MonoBehaviour
 
     private void Start()
     {
-        dialogueManager.OnDialogueStarted += UpdatevisualbyID;
-        DialogueSceneManager.Instance.OnFavorabilityChanged += SetFavorabilityProgressBar;
-        DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability);
     }
 
     private void SetFavorabilityProgressBar(float value, float valueAmount)
@@ -33,13 +32,18 @@ public class DialogueUIManager : MonoBehaviour
         favorabilityProgressBar.value = value / valueAmount;
     }
 
-    public void UpdatevisualbyID(int id) //특정 id 받았을 때 배경과 일러스트를 변경함
+    public void UpdatevisualbyID(int id) //특정 id 받았을 때 배경과 일러스트를 변경함+1226 배경음 추가
     {
         DialogueVisualData data = visualData.Find(x => x.dialogueID == id);
-        if(data!=null)
+        Debug.Log(id);
+        if (data!=null)
         {
             if (data.characterSprite != null) characterImage.sprite = data.characterSprite;
             if (data.backgroundSprite != null) backgroundImage.sprite = data.backgroundSprite;
+            if (data.bgmType != EBGM.None)
+            {
+                SoundManager.Instance.PlayBGM(data.bgmType);
+            }
         }
     }
 
@@ -48,11 +52,19 @@ public class DialogueUIManager : MonoBehaviour
         characterImage.sprite = sprite;
     }
 
+    public void OnSceneContextBuilt()
+    {
+        dialogueManager.OnDialogueStarted += UpdatevisualbyID;
+        DialogueSceneManager.Instance.OnFavorabilityChanged += SetFavorabilityProgressBar;
+        DialogueSceneManager.Instance.SetFavorability(DialogueSceneManager.Instance.Favorability);
+    }
+
     [System.Serializable]
     public class DialogueVisualData
     {
         public int dialogueID;
         public Sprite characterSprite;
         public Sprite backgroundSprite;
+        public EBGM bgmType;
     }
 }
