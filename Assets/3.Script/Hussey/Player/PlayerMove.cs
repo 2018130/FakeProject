@@ -67,7 +67,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
             //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale 필요
 
@@ -91,21 +91,21 @@ public class PlayerMove : MonoBehaviour
 
     private void PersonalView()
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
-        if (isMouseStop)
-        {
-            cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-        else
-        {
-            if (cameraPoint != null)
+        if (GameManager.Instance.GameState == GameState.Playing)
+            if (isMouseStop)
             {
-                cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+                cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
+            else
+            {
+                if (cameraPoint != null)
+                {
+                    cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+                }
 
-            transform.Rotate(Vector3.up * mouseX);
-        }
-        else if(GameManager.Instance.GameState == GameState.UI)
+                transform.Rotate(Vector3.up * mouseX);
+            }
+        else if (GameManager.Instance.GameState == GameState.UI)
         {
             xRotation -= playerInput.MoveValue.y;
             xRotation = Mathf.Clamp(xRotation, -camLookDegreeLimit, camLookDegreeLimit);
@@ -120,11 +120,11 @@ public class PlayerMove : MonoBehaviour
 
             transform.Rotate(Vector3.up * mouseX);
         }
-            //transform.Rotate(Vector3.up * mouseY);
-            transform.Rotate(Vector3.up * mouseX);
-            cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        }
+        //transform.Rotate(Vector3.up * mouseY);
+        transform.Rotate(Vector3.up * mouseX);
+        cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
+
 
     public void MouseStop()
     {
