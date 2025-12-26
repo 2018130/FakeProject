@@ -151,6 +151,7 @@ MonoBehaviour:
   bgms:
   - {fileID: 8300000, guid: 5b8279cc14a6a134aad8da34c163a1fc, type: 3}
   - {fileID: 8300000, guid: 96b5a3136d8eef845b73596a2ac180af, type: 3}
+  - {fileID: 8300000, guid: b1fdacf20a273e54f97e2ef298284669, type: 3}
   - {fileID: 0}
   - {fileID: 8300000, guid: c2e7bd662d7fdfa44ad0aec58147739d, type: 3}
   sfxs:
