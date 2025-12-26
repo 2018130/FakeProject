@@ -52,24 +52,17 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Move(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
+        if (context.phase == InputActionPhase.Performed)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                moveValue = context.ReadValue<Vector2>();
-                ani.SetBool("Walk", true);
-            }
-            else if (context.phase == InputActionPhase.Canceled)
-            {
-                moveValue = Vector2.zero;
-                ani.SetBool("Walk", false);
-            }
+            moveValue = context.ReadValue<Vector2>();
+            ani.SetBool("Walk", true);
         }
-        else
+        else if (context.phase == InputActionPhase.Canceled)
         {
             moveValue = Vector2.zero;
             ani.SetBool("Walk", false);
         }
+
 
     }
 
@@ -77,10 +70,10 @@ public class PlayerInput : MonoBehaviour
     //3?�칭 구현?�라 주석처리
     public void Event_Aim(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
-        {
-            mousePos = context.ReadValue<Vector2>();
-        }
+            if (context.phase == InputActionPhase.Performed)
+            {
+                mousePos = context.ReadValue<Vector2>();
+            }
     }
 
     public void Event_PersonalView(InputAction.CallbackContext context)
@@ -130,9 +123,9 @@ public class PlayerInput : MonoBehaviour
         {
             _interactionPerformed = true;
             OnInteractionDowned?.Invoke();
-            
+
         }
-        else if(context.phase == InputActionPhase.Canceled)
+        else if (context.phase == InputActionPhase.Canceled)
         {
             _interactionPerformed = false;
         }

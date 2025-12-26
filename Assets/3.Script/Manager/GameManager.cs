@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,8 @@ public class GameManager : SingletonBehaviour<GameManager>
     private GameState gameState = GameState.Playing;
     public GameState GameState => gameState;
 
+    public event Action<GameState> OnChangedGameState;
+
     [Header("Data")]
     private PlayerData playerData;
 
@@ -49,6 +52,7 @@ public class GameManager : SingletonBehaviour<GameManager>
             return;
 
         gameState = newState;
+        OnChangedGameState?.Invoke(gameState);
         switch (gameState)
         {
             case GameState.None:

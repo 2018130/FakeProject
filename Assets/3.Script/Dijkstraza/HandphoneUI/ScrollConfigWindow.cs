@@ -13,6 +13,8 @@ public class ScrollConfigWindow : MonoBehaviour
 
     [Header("Config Screen")]
     [SerializeField]
+    private GameObject sideModel;
+    [SerializeField]
     private GameObject _configScreen;
     [Header("DownWardPosition")]
     [SerializeField]
@@ -110,6 +112,7 @@ public class ScrollConfigWindow : MonoBehaviour
                 continue;
             transform.GetChild(i).gameObject.SetActive(false);
         }
+        sideModel.SetActive(false);
     }
 
     public void OpenPanel(bool useTimeContol = true)
@@ -123,6 +126,7 @@ public class ScrollConfigWindow : MonoBehaviour
         {
             transform.GetChild(i).gameObject.SetActive(true);
         }
+        sideModel.SetActive(true);
     }
 
     // --- 새로 추가된 카메라 제어 함수 ---
