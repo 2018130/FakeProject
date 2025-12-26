@@ -13,6 +13,7 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
 
     private bool _sendMSGAlready = false;
 
+    private string _sendMSGOnInteractionKey = "_sendMSGOnInteractionKey";
     private void Start()
     {
         chatController = FindAnyObjectByType<ChatController>();
@@ -25,6 +26,8 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
             chatController.AddMessage(messageData.scriptLines);
             _sendMSGAlready = true;
 
+            ///kjh
+            PersistentDataManager.Instance.SaveData(_sendMSGOnInteractionKey, _sendMSGAlready);
             targetModel.SetActive(false);
         }
     }

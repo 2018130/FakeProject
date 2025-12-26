@@ -52,7 +52,11 @@ public class PersistentDataManager : MonoBehaviour
             {
                 serializedData = "f_" + data.ToString();
             }
-            else if (data.GetType() == typeof(Vector3))
+        else if (data.GetType() == typeof(bool))
+        {
+            serializedData = "b_" + data.ToString();
+        }
+        else if (data.GetType() == typeof(Vector3))
             {
                 Vector3 tmp = (Vector3)data;
                 serializedData = "v_" + tmp.x+"."+tmp.y + "." + tmp.z;
@@ -67,7 +71,8 @@ public class PersistentDataManager : MonoBehaviour
                 return;
             }
 
-            currentData.Second = serializedData;
+        Debug.Log($"데이터가 버퍼에 저장되었습니다");
+        currentData.Second = serializedData;
 
             persistantData.Add(currentData);
         }
@@ -111,7 +116,12 @@ public class PersistentDataManager : MonoBehaviour
                 float parsedValue = float.Parse(dataValue);
                 return (T)(object)parsedValue;
             }
-            else if (dataType[0] == 'v')
+        else if (dataType[0] == 'b')
+        {
+            bool parsedValue = bool.Parse(dataValue);
+            return (T)(object)parsedValue;
+        }
+        else if (dataType[0] == 'v')
             {
                 string[] vectorComponents = dataValue.Split('.');
                 if (vectorComponents.Length != 3)
@@ -163,8 +173,9 @@ public class PersistentDataManager : MonoBehaviour
             for(int i = 0; i < persistantData.Count; i++)
             {
                 saveData += "{" + persistantData[i].First + "," + persistantData[i].Second + "}\n";
-            }
-            File.WriteAllText(Application.persistentDataPath + "/persistantData.txt", saveData);
+        }
+        Debug.Log($"데이터가 파일에 저장되었습니다");
+        File.WriteAllText(Application.persistentDataPath + "/persistantData.txt", saveData);
         }
 
         private StringPair CreateData(string key, string data = "")

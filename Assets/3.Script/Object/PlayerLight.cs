@@ -39,6 +39,8 @@ public class PlayerLight : LightObject
     public void Lighting(bool active)
     {
         light.enabled = !active;
+
+        PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
     }
 
     public override void Toggle()
