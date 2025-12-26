@@ -52,24 +52,17 @@ public class PlayerInput : MonoBehaviour
 
     public void Event_Move(InputAction.CallbackContext context)
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
+        if (context.phase == InputActionPhase.Performed)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                moveValue = context.ReadValue<Vector2>();
-                ani.SetBool("Walk", true);
-            }
-            else if (context.phase == InputActionPhase.Canceled)
-            {
-                moveValue = Vector2.zero;
-                ani.SetBool("Walk", false);
-            }
+            moveValue = context.ReadValue<Vector2>();
+            ani.SetBool("Walk", true);
         }
-        else
+        else if (context.phase == InputActionPhase.Canceled)
         {
             moveValue = Vector2.zero;
             ani.SetBool("Walk", false);
         }
+
 
     }
 
@@ -130,9 +123,9 @@ public class PlayerInput : MonoBehaviour
         {
             _interactionPerformed = true;
             OnInteractionDowned?.Invoke();
-            
+
         }
-        else if(context.phase == InputActionPhase.Canceled)
+        else if (context.phase == InputActionPhase.Canceled)
         {
             _interactionPerformed = false;
         }

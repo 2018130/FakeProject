@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ce8971a73366f84bb8607c0e1305ab7, type: 3}
-  m_Name: InteractUIData
+  m_Name: LightUIData
   m_EditorClassIdentifier: Assembly-CSharp::UIData
-  UIname: E
-  UImsg: "- \uC0C1\uD638\uC791\uC6A9"
+  UIname: K
+  UImsg: "- \uC190\uC804\uB4F1 \uD1A0\uAE00"
