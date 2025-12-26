@@ -8062,7 +8062,7 @@ MonoBehaviour:
   intensityUpTime: 0.7
   intensityDownTime: 0
   delay: 0.5
-  count: 5
+  count: 3
   chzzSpeed: 1
   glitchWeight: 0.05
 --- !u!4 &908486400

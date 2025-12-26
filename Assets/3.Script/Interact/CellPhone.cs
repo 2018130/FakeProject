@@ -39,8 +39,9 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
         GetComponentInChildren<TwinkleLight>()?.StopTwinkle();
 
         PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
+        Debug.Log(phoneCommuStatusAndBatter_UI);
         phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
-
+        
         PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
         galleryManager.Initialize(cellphoneCamera);
     }
