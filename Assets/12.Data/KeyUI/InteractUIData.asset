@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: InteractUIData
   m_EditorClassIdentifier: Assembly-CSharp::UIData
   UIname: E
-  UImsg: "\uD0A4\uB97C \uB20C\uB7EC \uC0C1\uD638\uC791\uC6A9"
+  UImsg: "- \uC0C1\uD638\uC791\uC6A9"

@@ -9,7 +9,7 @@ public class SceneContext : MonoBehaviour
 {
     [SerializeField]
     private float gameTimeScale = 1f;
-    public float GameTimeScale => gameTimeScale;
+    public float GameTimeScale { get => gameTimeScale; set => gameTimeScale = value; }
 
     [SerializeField]
     private AssetLabelReference assetLable;
@@ -49,6 +49,15 @@ public class SceneContext : MonoBehaviour
         Fade(3, true);
     }
 
+    public void ShortFadeOut()
+    {
+        Fade(0.8f, false);
+    }
+
+    public void ShortFadeIn()
+    {
+        Fade(0.8f, true);
+    }
     public void Fade(float time, bool isFadeIn = true)
     {
         StartCoroutine(Fade_co(time, isFadeIn));

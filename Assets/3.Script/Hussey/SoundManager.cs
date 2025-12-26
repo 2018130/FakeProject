@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public enum EBGM
 {
+    None,
     BGM_T,
     BGM_2D,
+    BGM_2DError,
     BGM_3D,
     BGM_3Dchase,
 }
@@ -29,9 +31,6 @@ public enum ESFX
     SFX_PickleCry1,
     SFX_PickleCry2,
     SFX_PickleBreath1,
-    /*
-     피클브레스1까지 넣음
-     */
     SFX_PickleBreath2,
     SFX_PickleStep,
     SFX_PickleRun,
@@ -40,6 +39,7 @@ public enum ESFX
     SFX_RollingHead,
     SFX_MessageAlarm,
     SFX_Picklescare,
+    SFX_AppClick
 }
 
 

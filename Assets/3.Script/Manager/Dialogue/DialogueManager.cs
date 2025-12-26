@@ -18,7 +18,7 @@ public class DialogueData
     public int Favorability;
 }
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour,ISceneContextBuilt
 {
     [Header("Reference")]
     [SerializeField]
@@ -51,10 +51,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private float endDelay = 3f;
 
+    public int Priority { get; set; } = 2;
+
     private void Start()
     {
-        dialogueDatas = CsvReader.LoadCsvData();
-        PrintDialogue(nextPrintDialogueID);
     }
     public void PrintDialogue(DialogueData dialogueData)
     {
@@ -88,6 +88,7 @@ public class DialogueManager : MonoBehaviour
             bool isClickedAnyKey = false;
             DialogueData currentDialogue = dialogueQueue.Dequeue();
 
+            Debug.Log(currentDialogue.ID);
             OnDialogueStarted?.Invoke(currentDialogue.ID);
             dialogueText.text = "";
             nameText.text = currentDialogue.Name;
@@ -194,5 +195,11 @@ public class DialogueManager : MonoBehaviour
             chooseButton[0].gameObject.SetActive(false);
             chooseButton[1].gameObject.SetActive(false);
         }
+    }
+
+    public void OnSceneContextBuilt()
+    {
+        dialogueDatas = CsvReader.LoadCsvData();
+        PrintDialogue(nextPrintDialogueID);
     }
 }

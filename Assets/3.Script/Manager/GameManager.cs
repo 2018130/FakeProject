@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,8 @@ public class GameManager : SingletonBehaviour<GameManager>
     private GameState gameState = GameState.Playing;
     public GameState GameState => gameState;
 
+    public event Action<GameState> OnChangedGameState;
+
     [Header("Data")]
     private PlayerData playerData;
 
@@ -48,8 +51,24 @@ public class GameManager : SingletonBehaviour<GameManager>
         if (gameState == newState)
             return;
 
-        
         gameState = newState;
+        OnChangedGameState?.Invoke(gameState);
+        switch (gameState)
+        {
+            case GameState.None:
+                break;
+            case GameState.Playing:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 1f;
+                break;
+            case GameState.UI:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 0f;
+                break;
+            case GameState.TimeStop:
+                GameManager.Instance.currentSceneContext.GameTimeScale = 0f;
+                break;
+            case GameState.Dead:
+                break;
+        }
     }
 
     public IEnumerator Initialize()

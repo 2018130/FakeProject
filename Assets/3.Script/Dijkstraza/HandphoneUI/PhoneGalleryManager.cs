@@ -16,6 +16,7 @@ public class PhoneGalleryManager : MonoBehaviour
     public GameObject titlePrefab;
     public GameObject UpperbarPrefab;
     public GameObject photoPrefab;  // 갤러리에 추가될 사진 프리팹 (Image 컴포넌트가 있어야 함)
+    public Animator openAnimator;
 
     private string savePath;
 
@@ -27,6 +28,11 @@ public class PhoneGalleryManager : MonoBehaviour
         // 폴더가 없으면 생성
         if (!Directory.Exists(savePath))
         {
+            Directory.CreateDirectory(savePath);
+        }
+        else
+        {
+            Directory.Delete(savePath, true);
             Directory.CreateDirectory(savePath);
         }
     }
@@ -73,13 +79,17 @@ public class PhoneGalleryManager : MonoBehaviour
     public void OpenGallery()
     {
         galleryPanel.SetActive(true);
+
+        openAnimator.SetTrigger("Opened");
         LoadPhotos();
     }
 
     public void CloseGallery()
     {
-        galleryPanel.SetActive(false);
+        // 애니메이션만 실행
+        openAnimator.SetTrigger("Closed");
     }
+
 
     void LoadPhotos()
     {
@@ -110,7 +120,7 @@ public class PhoneGalleryManager : MonoBehaviour
                 // 5. 프리팹 생성 및 이미지 할당
                 GameObject newPhoto = Instantiate(photoPrefab, contentParent);
                 newPhoto.GetComponent<Image>().sprite = newSprite;
-                height += newPhoto.GetComponent<RectTransform>().sizeDelta.y;
+                height += newPhoto.GetComponent<RectTransform>().sizeDelta.y + 20;
             }
         }
 

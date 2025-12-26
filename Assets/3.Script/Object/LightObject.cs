@@ -6,45 +6,12 @@ public class LightObject : MonoBehaviour
     protected Light light;
     public Light Light => light;
 
-    [Header("의존성 Dependencies")]
-    public PhoneCommuStatusAndBatter_UI batteryUI;
-
-    // UI 토글 컴포넌트 참조
-    private Toggle toggleToLightOnPhone;
-
     [SerializeField]
     protected string lightTurnOnKey = "LightTurnOnKey";
 
     protected virtual void Awake()
     {
         light = GetComponentInChildren<Light>();
-
-        if (batteryUI == null)
-        {
-            batteryUI = FindObjectOfType<PhoneCommuStatusAndBatter_UI>();
-        }
-
-        // batteryUI가 있다면 그 하위에서 Toggle을 찾아 할당합니다.
-        if (batteryUI != null)
-        {
-            toggleToLightOnPhone = batteryUI.GetComponentInChildren<Toggle>();
-        }
-    }
-
-    protected virtual void OnEnable()
-    {
-        if (batteryUI != null)
-        {
-            batteryUI.OnBatteryEmpty += TurnOff;
-        }
-    }
-
-    protected virtual void OnDisable()
-    {
-        if (batteryUI != null)
-        {
-            batteryUI.OnBatteryEmpty -= TurnOff;
-        }
     }
 
     public virtual void TurnOn()

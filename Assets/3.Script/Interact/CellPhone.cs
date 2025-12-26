@@ -14,10 +14,13 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
     [SerializeField]
     private string cellphoneObtainKey = "CellphoneObtained";
 
+    [SerializeField]
+    private Material screenMaterial;
 
     public void OnSceneContextBuilt()
     {
         obtained = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
+        GameManager.Instance.OnChangedGameState += SetActiveScreen;
 
         if (obtained)
         {
@@ -28,23 +31,37 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
 
     public void Interact()
     {
-        if(TryGetComponent(out FlutterEffect flutterEffect))
+        if(!obtained)
         {
-            flutterEffect.StartFluttering();
+            if (TryGetComponent(out FlutterEffect flutterEffect))
+            {
+                flutterEffect.StartFluttering();
+            }
+
+            transform.SetParent(GameManager.Instance.CurrentSceneContext.Player.PhonePoint);
+            transform.localRotation = Quaternion.identity;
+            transform.localPosition = Vector3.zero;
+
+            GetComponentInChildren<TwinkleLight>()?.StopTwinkle();
+
+            PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
+
+            phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
+            PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
+            galleryManager.Initialize(cellphoneCamera);
+            obtained = true;
         }
-
-        transform.SetParent(GameManager.Instance.CurrentSceneContext.Player.PhonePoint);
-        transform.localRotation = Quaternion.identity;
-        transform.localPosition = Vector3.zero;
-
-        GetComponentInChildren<TwinkleLight>()?.StopTwinkle();
-
-        PhoneCommuStatusAndBatter_UI phoneCommuStatusAndBatter_UI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
-        phoneCommuStatusAndBatter_UI.Initialize(GetComponent<PlayerLight>());
-
-        PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
-        galleryManager.Initialize(cellphoneCamera);
-        PersistentDataManager.Instance.SaveData(cellphoneObtainKey, obtained);
     }
 
+    private void SetActiveScreen(GameState gameState)
+    {
+        if(gameState == GameState.UI)
+        {
+            screenMaterial.color = Color.white;
+        }
+        else
+        {
+            screenMaterial.color = Color.black;
+        }
+    }
 }
