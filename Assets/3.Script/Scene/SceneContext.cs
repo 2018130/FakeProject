@@ -49,6 +49,15 @@ public class SceneContext : MonoBehaviour
         Fade(3, true);
     }
 
+    public void ShortFadeOut()
+    {
+        Fade(0.8f, false);
+    }
+
+    public void ShortFadeIn()
+    {
+        Fade(0.8f, true);
+    }
     public void Fade(float time, bool isFadeIn = true)
     {
         StartCoroutine(Fade_co(time, isFadeIn));

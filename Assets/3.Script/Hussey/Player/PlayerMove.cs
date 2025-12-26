@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // √ﬂ∞°
+    // Ï∂îÍ∞Ä
     [SerializeField] private Transform phonePoint;
     public Transform PhonePoint => phonePoint;
 
@@ -33,13 +33,15 @@ public class PlayerMove : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+    private bool isMouseStop = true;
+
     private void Awake()
     {
         TryGetComponent(out playerInput);
         TryGetComponent(out playerR);
         //TryGetComponent(out ani);
 
-        //Cursor.lockState = CursorLockMode.Locked;//ƒøº≠ ∞Ì¡§Ω√≈∞¥¬∞≈¿”
+        //Cursor.lockState = CursorLockMode.Locked;//Ïª§ÏÑú Í≥†Ï†ïÏãúÌÇ§ÎäîÍ±∞ÏûÑ
         //Cursor.visible = false;
     }
 
@@ -58,16 +60,21 @@ public class PlayerMove : MonoBehaviour
         PersonalView();
     }
 
+    private void FixedUpdate()
+    {
+        //PersonalView();
+    }
+
     private void Move()
     {
         if(GameManager.Instance.GameState == GameState.Playing)
         {
-            //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale « ø‰
+            //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale ÌïÑÏöî
 
             Vector3 forward = transform.forward * playerInput.MoveValue.y;
             Vector3 right = transform.right * playerInput.MoveValue.x;
 
-            Vector3 direction = (forward + right).normalized;//normalized = πÊ«‚∫§≈Õ¿« ≈©±‚∏¶ 1∑Œ ∏¬√„
+            Vector3 direction = (forward + right).normalized;//normalized = Î∞©Ìñ•Î≤°ÌÑ∞Ïùò ÌÅ¨Í∏∞Î•º 1Î°ú ÎßûÏ∂§
 
             if (playerInput.isRun)
             {
@@ -85,12 +92,12 @@ public class PlayerMove : MonoBehaviour
     private void PersonalView()
     {
         if(GameManager.Instance.GameState == GameState.Playing)
+        if (isMouseStop)
         {
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
-
-            yRotation += mouseX;
-
+            cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+        else
+        {
             if (cameraPoint != null)
             {
                 cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
@@ -113,5 +120,14 @@ public class PlayerMove : MonoBehaviour
 
             transform.Rotate(Vector3.up * mouseX);
         }
+            //transform.Rotate(Vector3.up * mouseY);
+            transform.Rotate(Vector3.up * mouseX);
+            cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+        }
+    }
+
+    public void MouseStop()
+    {
+        isMouseStop = !isMouseStop;
     }
 }
