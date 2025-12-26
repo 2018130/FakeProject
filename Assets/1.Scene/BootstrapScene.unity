@@ -168,12 +168,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 849e0cc5cbd28a34481f95314ba458b9, type: 3}
   - {fileID: 8300000, guid: 053f2f9aa01808c4dbe3691f0d7ba454, type: 3}
   - {fileID: 8300000, guid: 7e328babbe0621b48922c7ebca768422, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: f14956bfddc2f1f4f932508d779e4133, type: 3}
+  - {fileID: 8300000, guid: 08bda9c6df803ce4c9f1c929929bc823, type: 3}
+  - {fileID: 8300000, guid: 549ce8bb6d8697646bee4c667e481409, type: 3}
   - {fileID: 8300000, guid: fdea17186e98f06429d3929576e0ca70, type: 3}
   - {fileID: 8300000, guid: 6abda05e4b854294aa731e2019000b5b, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: f1b31b1a54d7cb146ad9789d7ca4412e, type: 3}
   - {fileID: 8300000, guid: 1b988de29da3d84428d86c6f71b2c823, type: 3}
   - {fileID: 8300000, guid: 469dbed98031dd24f888acb38446e750, type: 3}
   bgmPlayer: {fileID: 1430286898}

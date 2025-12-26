@@ -29,9 +29,6 @@ public enum ESFX
     SFX_PickleCry1,
     SFX_PickleCry2,
     SFX_PickleBreath1,
-    /*
-     피클브레스1까지 넣음
-     */
     SFX_PickleBreath2,
     SFX_PickleStep,
     SFX_PickleRun,

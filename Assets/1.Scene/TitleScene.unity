@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 1057178586}
   - component: {fileID: 1057178585}
   - component: {fileID: 1057178588}
+  - component: {fileID: 1057178589}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -791,6 +792,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1057178589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057178584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3aaadf57aeefb9499c5459d295d117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
+  meunmenu: {fileID: 2800000, guid: 02ce8c7954f85ed459e806387f020efa, type: 3}
 --- !u!1 &1150852459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,7 +3714,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7181844571521082094}
   m_Direction: 2
   m_Value: -0.0008665511
-  m_Size: 0.9995606
+  m_Size: 0.9994908
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3980,6 +3994,8 @@ MonoBehaviour:
   _targetLeftBackWardPosition: 1080
   _durationToLeft: 0.3
   _durationToLeftBack: 0.35
+  cameraScreen: {fileID: 0}
+  _durationToCamera: 0.5
 --- !u!114 &3881084305197987244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4592,7 +4608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14097972}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.1410667}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &4660663331157186470
@@ -5472,6 +5488,8 @@ MonoBehaviour:
   messagePrefab: {fileID: 4204410856645064990, guid: 6e8c42c3fe0710b4d8dd38f430fb1c50, type: 3}
   contentTransform: {fileID: 4637037754932761560}
   scrollRect: {fileID: 2110214749919266040}
+  notificationBadge: {fileID: 0}
+  messageCountText: {fileID: 0}
 --- !u!1 &6433278474120456754
 GameObject:
   m_ObjectHideFlags: 0

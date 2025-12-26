@@ -3508,8 +3508,62 @@ MonoBehaviour:
   backgroundImage: {fileID: 765036191}
   dialogueManager: {fileID: 305779359}
   visualData:
-  - dialogueID: 0
+  - dialogueID: 1
+    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 2
+    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 3
+    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 4
+    characterSprite: {fileID: 21300000, guid: a259f6826085533439610d0286df7015, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 5
+    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 6
+    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 7
+    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 8
+    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 9
     characterSprite: {fileID: 0}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 10
+    characterSprite: {fileID: 21300000, guid: a259f6826085533439610d0286df7015, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 11
+    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 12
+    characterSprite: {fileID: 21300000, guid: 8d5f2da8164da264bbe0116ee9fe985b, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 13
+    characterSprite: {fileID: 0}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 14
+    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 15
+    characterSprite: {fileID: 21300000, guid: d931d5ac4dbe2f446ab32e597d66fec7, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 16
+    characterSprite: {fileID: 21300000, guid: d931d5ac4dbe2f446ab32e597d66fec7, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 17
+    characterSprite: {fileID: 21300000, guid: d9b8e186c6526774d9cbaac9ac3cd0cb, type: 3}
+    backgroundSprite: {fileID: 21300000, guid: 859cf58ab9d0273419876f8acd40fa59, type: 3}
+  - dialogueID: 18
+    characterSprite: {fileID: 21300000, guid: c8a9da60f33ed37449a12290f35e0035, type: 3}
+    backgroundSprite: {fileID: 0}
+  - dialogueID: 18
+    characterSprite: {fileID: 21300000, guid: c8a9da60f33ed37449a12290f35e0035, type: 3}
     backgroundSprite: {fileID: 0}
 --- !u!43 &385775777
 Mesh:
@@ -13971,6 +14025,7 @@ GameObject:
   - component: {fileID: 1696334847}
   - component: {fileID: 1696334851}
   - component: {fileID: 1696334850}
+  - component: {fileID: 1696334852}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14113,6 +14168,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1696334852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696334846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3aaadf57aeefb9499c5459d295d117e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
+  meunmenu: {fileID: 2800000, guid: 02ce8c7954f85ed459e806387f020efa, type: 3}
 --- !u!43 &1699514266
 Mesh:
   m_ObjectHideFlags: 0
