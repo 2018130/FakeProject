@@ -14,7 +14,6 @@ public class TriggerMessageSending : MonoBehaviour
     
     /// kjh
     private static int triggerMessageSendingKeyNum=0;
-    private GameObject gameObject;
     private string triggerMessageSendingKey;
     ///kjh
 
@@ -23,13 +22,12 @@ public class TriggerMessageSending : MonoBehaviour
         chatController = FindAnyObjectByType<ChatController>();
 
         ///kjh
-        gameObject = this.gameObject;
         triggerMessageSendingKey = gameObject.name+"Key"+ triggerMessageSendingKeyNum;
         triggerMessageSendingKeyNum++;
         ///kjh
         if (PersistentDataManager.Instance != null)
         {
-            _sendMSGAlready = PersistentDataManager.Instance.GetDataWithParsing(triggerMessageSendingKey,));
+            _sendMSGAlready = PersistentDataManager.Instance.GetDataWithParsing(triggerMessageSendingKey,false);
         }
 
 
@@ -42,7 +40,7 @@ public class TriggerMessageSending : MonoBehaviour
             chatController.AddMessage(messageData.scriptLines);
             _sendMSGAlready = true;
             ///kjh
-            PersistentDataManager.Instance.SaveData(_triggerMessageSendingKey, sendMSGAlready);
+            PersistentDataManager.Instance.SaveData(triggerMessageSendingKey, _sendMSGAlready);
             ///kjh
         }
     }
