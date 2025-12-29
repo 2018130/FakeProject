@@ -1043,11 +1043,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1785775291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &138132086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6395139996398248275, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-  m_PrefabInstance: {fileID: 1375496349}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146875797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,6 +3304,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2916371612361695108, guid: c9efc5c6294068146853bcec6193ea1b, type: 3}
   m_PrefabInstance: {fileID: 94465386}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &588052894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3593381538969761827, guid: 06d7c779f0a1d644d874d92b66354d68, type: 3}
+  m_PrefabInstance: {fileID: 8321525371149257068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1 &593405722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,11 +3571,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7825422518813114243, guid: 4e01bdaf6e769ba46a252a8859d85d38, type: 3}
   m_PrefabInstance: {fileID: 625075827}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &649520116 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8828705242987289868, guid: 0f7d3a016d263f04982354235117db97, type: 3}
-  m_PrefabInstance: {fileID: 385272621}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &653864190
 GameObject:
@@ -8460,7 +8461,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
   target: {fileID: 0}
   spawnPoint: {fileID: 15976608}
-  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -8557,7 +8557,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
   target: {fileID: 0}
   spawnPoint: {fileID: 1468958907}
-  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -9380,6 +9379,14 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1763171447}
+    - target: {fileID: 6395139996398248275, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 72.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395139996398248275, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 80.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12596,7 +12603,6 @@ GameObject:
   - component: {fileID: 1833436221}
   - component: {fileID: 1833436223}
   - component: {fileID: 1833436222}
-  - component: {fileID: 1833436224}
   m_Layer: 0
   m_Name: TriggerZone
   m_TagString: Untagged
@@ -12637,7 +12643,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8478988008436438988}
         m_TargetAssemblyTypeName: TeleportTarget, Assembly-CSharp
-        m_MethodName: AddMSG
+        m_MethodName: Teleport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12669,22 +12675,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1833436224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833436220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc3e52d939942d47807bbc98a86977e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PhotoSystem
-  photoCamera: {fileID: 649520116}
-  StatueTag: Statue
-  boxHalfExtents: {x: 2, y: 2, z: 0.1}
-  maxDistance: 50
 --- !u!1 &1858258958
 GameObject:
   m_ObjectHideFlags: 0
@@ -12928,7 +12918,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
   target: {fileID: 0}
   spawnPoint: {fileID: 0}
-  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -13164,6 +13153,17 @@ Transform:
   - {fileID: 877336684}
   m_Father: {fileID: 439516709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990908997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6592714331977699186, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+  m_PrefabInstance: {fileID: 923972064}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a49e6f94016f1d4390817ebffb08773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneContext
 --- !u!1 &1996138594
 GameObject:
   m_ObjectHideFlags: 0
@@ -13377,7 +13377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021318393}
   - component: {fileID: 2021318395}
-  - component: {fileID: 2021318394}
+  - component: {fileID: 2021318396}
   m_Layer: 0
   m_Name: TriggerZone
   m_TagString: Untagged
@@ -13400,35 +13400,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 923661754787681928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2021318394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021318392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f920eedcb8bc1c4f8777fe6f1b91424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ActionOnTrigger
-  data: {fileID: 0}
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5961438648351810206}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  triggerTargetTag: Player
 --- !u!65 &2021318395
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13450,6 +13421,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2021318396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021318392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2420179709ddc244e9801acf79e6368b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpScare
+  x: 18
+  scareob: {fileID: 5961438648351810206}
+  playerCamera: {fileID: 184075501381338401}
+  shakeDuration: 2
+  shakeMagnitude: 1
 --- !u!1 &2023794118
 GameObject:
   m_ObjectHideFlags: 0
@@ -19739,7 +19727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14113854}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.14129125}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3529271771841632229
@@ -21190,8 +21178,8 @@ MonoBehaviour:
         z: 0.5398227
       Rotation:
         value:
-          x: -0.29001814
-          y: -0.3929119
+          x: -0.29001817
+          y: -0.39291197
           z: -0.56379503
           w: 0.66606665
     - Position:
@@ -21226,10 +21214,10 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: -0.16242178
+          x: -0.16242182
           y: -0.0000000042009174
-          z: -0.43271253
-          w: 0.8867801
+          z: -0.43271258
+          w: 0.88678014
     m_MetaData:
     - Mode: 2
       Tension: 0.5
@@ -21311,8 +21299,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537293230407225511}
   m_HandleRect: {fileID: 1370685821100400692}
   m_Direction: 2
-  m_Value: -0.0008665511
-  m_Size: 0.99990916
+  m_Value: -0.0034662045
+  m_Size: 0.99990684
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23612,7 +23600,6 @@ GameObject:
   - component: {fileID: 6480847474951665700}
   - component: {fileID: 6480847474951665702}
   - component: {fileID: 6480847474951665701}
-  - component: {fileID: 6480847474951665703}
   m_Layer: 0
   m_Name: Lying_Figure
   m_TagString: Untagged
@@ -24368,6 +24355,7 @@ GameObject:
   - component: {fileID: 6452475536285636940}
   - component: {fileID: 399361962813334419}
   - component: {fileID: 8306768655577788945}
+  - component: {fileID: 8306768655577788946}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -24707,23 +24695,6 @@ CapsuleCollider:
   m_Height: 1.7171706
   m_Direction: 1
   m_Center: {x: 0.000001918341, y: 0.9751992, z: 0.11}
---- !u!114 &6480847474951665703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5961438648351810206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2420179709ddc244e9801acf79e6368b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::JumpScare
-  x: 18
-  scareob: {fileID: 5961438648351810206}
-  playerCamera: {fileID: 184075501381338401}
-  shakeDuration: 0.5
-  shakeMagnitude: 0.5
 --- !u!114 &6489427173940347732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25871,7 +25842,6 @@ MonoBehaviour:
   UpperbarPrefab: {fileID: 8192875843710601849, guid: c8933fe39450d2d469a4cb56b12479ce, type: 3}
   photoPrefab: {fileID: 5629152049372098825, guid: 6707b1bce0b9d084085954fed7dd1559, type: 3}
   openAnimator: {fileID: 6271755225905450888}
-  photoSystem: {fileID: 0}
 --- !u!222 &7279205972627722758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26031,7 +26001,7 @@ MonoBehaviour:
     Function:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1990908997}
           m_TargetAssemblyTypeName: SceneContext, Assembly-CSharp
           m_MethodName: FadeOut
           m_Mode: 1
@@ -26091,7 +26061,7 @@ MonoBehaviour:
     Function:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1990908997}
           m_TargetAssemblyTypeName: SceneContext, Assembly-CSharp
           m_MethodName: FadeIn
           m_Mode: 1
@@ -28475,6 +28445,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotateWithFollowTarget
   Damping: 0
+--- !u!114 &8306768655577788946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375698051403126331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!4 &8313878502705526423
 Transform:
   m_ObjectHideFlags: 0
@@ -28530,6 +28553,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_Alignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 558759461792810780, guid: 06d7c779f0a1d644d874d92b66354d68, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 588052894}
     - target: {fileID: 3593381538969761827, guid: 06d7c779f0a1d644d874d92b66354d68, type: 3}
       propertyPath: m_Text
       value: E
@@ -29021,12 +29048,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e30ee92e7225f44a016655626df307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
-  target: {fileID: 138132086}
+  target: {fileID: 0}
   spawnPoint: {fileID: 484655784}
-  messageData: {fileID: 11400000, guid: 7160667c811b92949a1f2b3fe398dcb6, type: 2}
   screenPointSpawnLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   screenSpawnPoint: {x: 0, y: 0}
 --- !u!4 &8492702983118646784
 Transform:

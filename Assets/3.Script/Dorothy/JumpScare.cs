@@ -21,8 +21,8 @@ public class JumpScare : MonoBehaviour
 
     private void Start()
     {
-        impulseSource = GetComponent<CinemachineImpulseSource>();
-        SoundManager.Instance.PlaySFX(x);
+        impulseSource = playerCamera.GetComponent<CinemachineImpulseSource>();
+
         if (scareob != null)
             scareob.SetActive(false);
     }
@@ -45,9 +45,11 @@ public class JumpScare : MonoBehaviour
         if (scareob != null)
             SoundManager.Instance.PlaySFX(x);
 
+        Debug.Log("2222");
         //카메라 흔들기
-        if(impulseSource!=null)
+        if (impulseSource!=null)
         {
+            Debug.Log("11111");
             impulseSource.GenerateImpulse();
         }
 
