@@ -8,6 +8,10 @@ using UnityEngine.UI;
 public class SceneContext : MonoBehaviour
 {
     [SerializeField]
+    private float fadeTime = 3f;
+    public float FadeTime => fadeTime;
+
+    [SerializeField]
     private float gameTimeScale = 1f;
     public float GameTimeScale { get => gameTimeScale; set => gameTimeScale = value; }
 
@@ -28,25 +32,14 @@ public class SceneContext : MonoBehaviour
         player = FindAnyObjectByType<PlayerMove>();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Fade(3, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Fade(3, false);
-        }
-    }
     public void FadeOut()
     {
-        Fade(3, false);
+        Fade(fadeTime, false);
     }
 
     public void FadeIn()
     {
-        Fade(3, true);
+        Fade(fadeTime, true);
     }
 
     public void ShortFadeOut()

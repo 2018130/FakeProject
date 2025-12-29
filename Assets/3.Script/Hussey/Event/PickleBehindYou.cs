@@ -21,7 +21,7 @@ public class PickleBehindYou : MonoBehaviour
     //{
     //    if (other.gameObject.CompareTag("Player"))
     //    {
-    //        //ÇÃ·¹ÀÌ¾îÀÇ µÚÂÊÀ¸·Î ³ª¿Ã °æ¿ì
+    //        //í”Œë ˆì´ì–´ì˜ ë’¤ìª½ìœ¼ë¡œ ë‚˜ì˜¬ ê²½ìš°
     //        Vector3 destPos = -other.transform.forward * 10f;
     //        pickle.gameObject.SetActive(true);
     //        pickle.SetPos(destPos, other.transform);
@@ -36,9 +36,7 @@ public class PickleBehindYou : MonoBehaviour
         pickle.ShowPickle();
         pickle.SetPos(sponPos, scenecontext.Player.transform);
         pickle.StopNav();
-        Debug.Log("1111");
         yield return new WaitForSeconds(delay);
-        Debug.Log("2222");
         pickle.StartNav();
 
         //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleBreath2);

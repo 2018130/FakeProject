@@ -10,7 +10,6 @@ public class Hudiepontouch : MonoBehaviour
     private bool isUIActive = false;
 
     public Animator blackScreenAnimator; //애니메이터 
-    
 
     private void Start()
     {
@@ -20,7 +19,7 @@ public class Hudiepontouch : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButtonDown(0))
         {
             if(!isUIActive)
             {
@@ -46,6 +45,7 @@ public class Hudiepontouch : MonoBehaviour
             blackScreenAnimator.SetTrigger("DoFade");
         }
         isUIActive = true;
+        this.enabled = false;
     }
 
     private IEnumerator DisableBlackOverlay(float delay)
