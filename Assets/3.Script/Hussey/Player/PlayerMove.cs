@@ -25,7 +25,10 @@ public class PlayerMove : MonoBehaviour
 
     //private Animator ani;
     [SerializeField]
-    private Transform cameraPoint;
+    public Transform cameraPoint;
+
+    public Vector3 baseCameraPosition;
+    public Quaternion baseCameraRotation;
 
     private float mouseX;
     private float mouseY;
@@ -40,6 +43,8 @@ public class PlayerMove : MonoBehaviour
     {
         TryGetComponent(out playerInput);
         TryGetComponent(out playerR);
+        baseCameraPosition = cameraPoint.localPosition;
+        baseCameraRotation = cameraPoint.localRotation;
         //TryGetComponent(out ani);
 
         //Cursor.lockState = CursorLockMode.Locked;//커서 고정시키는거임
@@ -105,11 +110,12 @@ public class PlayerMove : MonoBehaviour
                 xRotation -= lookSpeed * playerInput.MouseDelta.y;
                 xRotation = Mathf.Clamp(xRotation, -pitchDegreeLimit, pitchDegreeLimit);
 
+
                 yRotation += lookSpeed * playerInput.MouseDelta.x;
 
                 //transform.Rotate(Vector3.up * mouseY);
                 transform.Rotate(Vector3.up * mouseX);
-                cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+                cameraPoint.localRotation = Quaternion.Euler(xRotation, 0, 0);
             }
         }
         else if (GameManager.Instance.GameState == GameState.UI)

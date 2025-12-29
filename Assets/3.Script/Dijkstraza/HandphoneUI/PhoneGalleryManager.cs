@@ -20,6 +20,8 @@ public class PhoneGalleryManager : MonoBehaviour
 
     private string savePath;
 
+    private PhotoSystem photoSystem;
+
     void Start()
     {
         // PC와 모바일 모두에서 접근 가능한 저장 경로 설정
@@ -35,6 +37,7 @@ public class PhoneGalleryManager : MonoBehaviour
             Directory.Delete(savePath, true);
             Directory.CreateDirectory(savePath);
         }
+        photoSystem = FindAnyObjectByType<PhotoSystem>();
     }
 
     public void Initialize(Camera camera)
@@ -43,9 +46,11 @@ public class PhoneGalleryManager : MonoBehaviour
     }
 
     // [기능 1] 사진 촬영 및 저장 (기존 코드에서 특정 키나 버튼을 누르면 이 함수를 호출하세요)
+   
     public void CaptureAndSave()
     {
         StartCoroutine(CaptureRoutine());
+        photoSystem.TakePhoto();
     }
 
     IEnumerator CaptureRoutine()
