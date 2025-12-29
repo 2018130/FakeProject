@@ -20,6 +20,10 @@ public class SceneChangeManager : SingletonBehaviour<SceneChangeManager>
         {
             GameManager.Instance.ChangeState(GameState.Playing);
         }
+        else if(sceneType == SceneType.TitleScene)
+        {
+            GameManager.Instance.ChangeState(GameState.UI);
+        }
         StartCoroutine(ChangeScene_co(sceneType));
     }
 

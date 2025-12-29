@@ -62,6 +62,7 @@ public class DialogueSceneManager : MonoBehaviour
         volumeProfile.TryGet(out FilmGrain filmGrain);
         filmGrain.intensity.value = 0f;
     }
+
     public void SetFavorability(int value)
     {
         favorability = Mathf.Clamp(value, minFavorability, maxFavorability);
