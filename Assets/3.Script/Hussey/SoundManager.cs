@@ -93,6 +93,11 @@ public class SoundManager : SingletonBehaviour<SoundManager>
         sfxPlayer.Stop();
     }
 
+    public AudioClip GetSFX(ESFX sfx)
+    {
+        return sfxs[(int)sfx];
+    }
+
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("Master", MathF.Log10(volume) * 20);
