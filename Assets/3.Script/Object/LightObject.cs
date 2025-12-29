@@ -6,7 +6,7 @@ public class LightObject : MonoBehaviour, ISceneContextBuilt
     protected Light light;
     public Light Light => light;
 
-    public int Priority { get; set; }
+    public int Priority { get; set; } = 1;
 
     [SerializeField]
     protected string lightTurnOnKey = "LightTurnOnKey";

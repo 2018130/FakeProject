@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a102c068e979d4eaf04c43794c9d50, type: 3}
   m_Name: PlayerFindingMSGData
   m_EditorClassIdentifier: Assembly-CSharp::StringDataSO
-  scriptLines: "{0}\uC544 {0}\uC544 \uC5B4\uB528\uC5B4"
+  scriptLines: "\uC720\uC9C4\uC544 \uC720\uC9C4\uC544 \uC5B4\uB528\uC5B4"

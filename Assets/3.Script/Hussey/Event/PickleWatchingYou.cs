@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PickleWatchingYou : MonoBehaviour
 {
+    [SerializeField]
     private Pickle pickle;
     private SceneContext sceneContext;
     [SerializeField] GameObject sponPos;
@@ -20,7 +21,6 @@ public class PickleWatchingYou : MonoBehaviour
 
     private void Awake()
     {
-        pickle = FindAnyObjectByType<Pickle>();
         sceneContext = FindAnyObjectByType<SceneContext>();
         ani = pickle.GetComponentInChildren<Animator>();
     }

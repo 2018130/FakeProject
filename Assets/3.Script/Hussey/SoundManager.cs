@@ -11,7 +11,6 @@ public enum EBGM
     BGM_T,
     BGM_2D,
     BGM_2DError,
-    BGM_3D,
     BGM_3Dchase,
 }
 

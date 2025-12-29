@@ -43,6 +43,8 @@ public class FlutterEffect : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitUntil(() => GameManager.Instance.CurrentSceneContext.Player.MoveDirection != Vector3.zero);
+
             // ¿Ã¶ó°¨
             if(endOfLower)
             {
@@ -63,6 +65,8 @@ public class FlutterEffect : MonoBehaviour
                transform.localPosition.y < orign.y + maxFlutterHeight)
         {
             yield return null;
+
+            yield return new WaitUntil(() => GameManager.Instance.CurrentSceneContext.Player.MoveDirection != Vector3.zero);
 
             Vector3 newPos = transform.localPosition;
             float newPosX = transform.localPosition.x + flutterWidthSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
@@ -87,6 +91,8 @@ public class FlutterEffect : MonoBehaviour
                 transform.localPosition.y > orign.y)
         {
             yield return null;
+
+            yield return new WaitUntil(() => GameManager.Instance.CurrentSceneContext.Player.MoveDirection != Vector3.zero);
 
             Vector3 newPos = transform.localPosition;
             float newPosX = transform.localPosition.x - flutterWidthSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;

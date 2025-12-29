@@ -4207,6 +4207,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2460175841268450692, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_Name
+      value: FadePanel
+      objectReference: {fileID: 0}
     - target: {fileID: 2644730015414278021, guid: e13447ba1391c1640896edb59da5cece, type: 3}
       propertyPath: m_Name
       value: FadePanel
