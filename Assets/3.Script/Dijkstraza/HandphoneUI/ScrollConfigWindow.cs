@@ -86,7 +86,10 @@ public class ScrollConfigWindow : MonoBehaviour
         {
             FindAnyObjectByType<PlayerInput>().OnSettingKeyDowned += Toggle;
         }
-        ClosePanel();
+        if(GameManager.Instance.GameState == GameState.Playing)
+        {
+            ClosePanel();
+        }
     }
     // --- 화면 끄고 키는 기능 ---
 

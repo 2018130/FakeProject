@@ -121,7 +121,6 @@ public class PlayerMove : MonoBehaviour
             yRotation = Mathf.Clamp(yRotation, -camHorizontalDegreeLimit, camHorizontalDegreeLimit);
 
             cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            Debug.Log("1111");
         }
     }
 

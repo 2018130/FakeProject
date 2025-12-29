@@ -32,7 +32,7 @@ public class TeleportTarget : MonoBehaviour
 
             if(Physics.Raycast(ray, out RaycastHit hit, 100f, screenPointSpawnLayer))
             {
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
                 Vector3 spawnPos = hit.point;
                 spawnPos.y = 2f;
                 target.position = spawnPos;
@@ -40,8 +40,17 @@ public class TeleportTarget : MonoBehaviour
         }
         else
         {
-            target.position = spawnPoint.position;
+            if (target.TryGetComponent(out Pickle pickle))
+            {
+                pickle.SetPos(spawnPoint.position, target);
+                pickle.ShowPickle();
+            }
+            else
+            {
+                target.position = spawnPoint.position;
+            }
         }
+
     }
 
 }
