@@ -10,6 +10,12 @@ public class PhotoSystem : MonoBehaviour
     public Vector3 boxHalfExtents = new Vector3(0.5f, 0.5f, 0.1f); // 박스 크기의 절반 (가로, 세로, 두께)
     public float maxDistance = 50f; // 사진 찍히는 최대 거리
 
+    private TeleportTarget teleportTarget;
+
+    private void Start()
+    {
+        teleportTarget = FindAnyObjectByType<TeleportTarget>();
+    }
     public void TakePhoto()
     {
         RaycastHit hit;
@@ -27,7 +33,7 @@ public class PhotoSystem : MonoBehaviour
             }
             else
             {
-                Debug.Log($"대상이 아닙니다. 맞은 물체: {hit.collider.name}");
+                Debug.Log($"대상이 아닙니다. 맞은 물체: {hit.collider.tag}");
             }
         }
         else
@@ -39,6 +45,9 @@ public class PhotoSystem : MonoBehaviour
     void ExecuteEvent()
     {
         // 다음 이벤트 로직 (예: 컷신 재생, 점수 획득 등)
+        teleportTarget.Teleport();
+        Debug.Log("피클을 소환하라!");
+
     }
 
     // 에디터 뷰에서 박스 레이가 어디로 나가는지 시각적으로 보여줍니다.
