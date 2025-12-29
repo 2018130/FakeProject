@@ -76,16 +76,18 @@ public class PlayerMove : MonoBehaviour
             Vector3 right = transform.right * playerInput.MoveValue.x;
 
             Vector3 direction = (forward + right).normalized;//normalized = 방향벡터의 크기를 1로 맞춤
-
+            //Debug.Log(direction);
             if (playerInput.isRun)
             {
                 Vector3 movePos = direction * runSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
+                //Debug.Log("1111");
             }
             else
             {
                 Vector3 movePos = direction * moveSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
+                //Debug.Log("2222");
             }
         }
     }

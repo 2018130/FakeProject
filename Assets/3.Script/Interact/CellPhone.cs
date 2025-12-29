@@ -17,6 +17,15 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
     [SerializeField]
     private Material screenMaterial;
 
+
+    private void Start()
+    {
+        if (IsObtained.Equals(true))
+            Interact();
+
+        
+    }
+
     public void OnSceneContextBuilt()
     {
         obtained = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
@@ -50,6 +59,10 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
             PhoneGalleryManager galleryManager = FindAnyObjectByType<PhoneGalleryManager>();
             galleryManager.Initialize(cellphoneCamera);
             obtained = true;
+
+            /// kjh1229 - 어차피 기본이 false이므로 밖에보다는 안에 설치
+            PersistentDataManager.Instance.SaveData(cellphoneObtainKey, IsObtained);
+            Debug.Log("핸드폰 obtained 값을 저장했다.");
         }
     }
 

@@ -33,6 +33,9 @@ public class PlayerLight : LightObject
         _toggle?.onValueChanged.AddListener(Lighting);
         _batteryUI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
         _batteryUI.OnBatteryEmpty += TurnOff;
+
+        ///kjh1229 -
+        light.enabled = PersistentDataManager.Instance.GetDataWithParsing(lightTurnOnKey,false);
     }
 
 
@@ -41,6 +44,7 @@ public class PlayerLight : LightObject
         light.enabled = !active;
 
         PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
+        Debug.Log("손전등 상태가 저장되었습니다.");
     }
 
     public override void Toggle()

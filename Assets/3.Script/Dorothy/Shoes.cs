@@ -12,6 +12,7 @@ public class Shoes : MonoBehaviour, IInteractable
     private GameObject targetModel;
 
     private bool sendMSGAlready = false;
+    PlayerInput playerInput;
 
     //
     [SerializeField]
@@ -22,12 +23,19 @@ public class Shoes : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        ///kjh1229 -
+        sendMSGAlready = PersistentDataManager.Instance.GetDataWithParsing(shoesKey, false);
+
+        if (sendMSGAlready.Equals(true))
+            Interact();
+
+
         chatController = FindAnyObjectByType<ChatController>();
-        _playerInput = FindAnyObjectByType<PlayerInput>();
     }
 
     public void Interact()
     {
+        _playerInput = FindAnyObjectByType<PlayerInput>();
         _playerInput.canRun = true;
 
         GetComponent<ActionOnTrigger>().ChangeUIData(uIData);
@@ -35,12 +43,12 @@ public class Shoes : MonoBehaviour, IInteractable
         if (!sendMSGAlready)
         {
             chatController.AddMessage(messageData.scriptLines);
-            sendMSGAlready = true;
-
-            targetModel.SetActive(false);
         }
+        sendMSGAlready = true;
 
+        targetModel.SetActive(false);
         /// kjh
         PersistentDataManager.Instance.SaveData(shoesKey, sendMSGAlready);
+        Debug.Log("shoesKey가 저장되었습니다.");
     }
 }
