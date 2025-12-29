@@ -72,4 +72,33 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
             screenMaterial.color = Color.black;
         }
     }
+
+    public void TurnOnScreenForSeconds(float seconds)
+    {
+        StartCoroutine(ScreenTimer(seconds));
+    }
+
+    private IEnumerator ScreenTimer(float seconds)
+    {
+        // 1. 화면을 켬
+        SetActiveScreen(true);
+
+        // 2. n초 동안 대기
+        yield return new WaitForSeconds(seconds);
+
+        // 3. 화면을 끔
+        SetActiveScreen(false);
+    }
+
+    private void SetActiveScreen(bool active)
+    {
+        if (active)
+        {
+            screenMaterial.color = Color.white;
+        }
+        else
+        {
+            screenMaterial.color = Color.black;
+        }
+    }
 }

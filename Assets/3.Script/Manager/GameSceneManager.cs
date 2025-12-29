@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using NUnit.Framework.Constraints;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -100,6 +101,10 @@ public class GameSceneManager : MonoBehaviour
 
         gameOverUI.SetActive(true);
         restartUI.SetActive(true);
+
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R));
+
+        SceneChangeManager.Instance.ChangeScene(SceneType.TitleScene);
     }
 
     public void aaaaaa()

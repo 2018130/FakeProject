@@ -12,7 +12,6 @@ public class JumpScare : MonoBehaviour
 
     [Header("Èçµé¸²¼³Á¤")]
     public float shakeDuration = 0.5f; //Èçµé½Ã°£
-    public float shakeMagnitude = 0.5f;//Èçµé°­µµ
 
     private bool isTriggered = false;
     private Vector3 originalpos;
@@ -45,16 +44,14 @@ public class JumpScare : MonoBehaviour
         if (scareob != null)
             SoundManager.Instance.PlaySFX(x);
 
-        Debug.Log("2222");
         //Ä«¸Þ¶ó Èçµé±â
         if (impulseSource!=null)
         {
-            Debug.Log("11111");
             impulseSource.GenerateImpulse();
         }
 
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(shakeDuration);
         if (scareob != null)
             scareob.SetActive(false);
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EndOfRoad : MonoBehaviour
 {
+    [SerializeField]
     private Pickle pickle;
     private SceneContext sceneContext;
 
@@ -13,7 +14,6 @@ public class EndOfRoad : MonoBehaviour
 
     private void Awake()
     {
-        pickle = FindAnyObjectByType<Pickle>();
         sceneContext = FindAnyObjectByType<SceneContext>();
     }
 
