@@ -13,6 +13,8 @@ public class TwinkleLight : LightObject
     [SerializeField]
     private float minLagTime = 0.1f;
 
+
+    private string twinkleLightKey = "twinkleLightKey";
     private void Start()
     {
         if(twinkleOnStart)
@@ -28,11 +30,15 @@ public class TwinkleLight : LightObject
         twinkle = true;
         StopAllCoroutines();
         StartCoroutine(Twinkle_co());
+
+        
     }
 
     public void StopTwinkle()
     {
         twinkle = false;
+        /// kjh
+        PersistentDataManager.Instance.SaveData(twinkleLightKey, twinkle);
     }
 
     private IEnumerator Twinkle_co()

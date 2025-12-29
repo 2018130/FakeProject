@@ -11,12 +11,14 @@ public class Shoes : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject targetModel;
 
-    private bool _sendMSGAlready = false;
+    private bool sendMSGAlready = false;
 
     //
     [SerializeField]
     private UIData uIData;
     private PlayerInput _playerInput;
+
+    private string shoesKey = "shoesKey";
 
     private void Start()
     {
@@ -30,12 +32,15 @@ public class Shoes : MonoBehaviour, IInteractable
 
         GetComponent<ActionOnTrigger>().ChangeUIData(uIData);
 
-        if (!_sendMSGAlready)
+        if (!sendMSGAlready)
         {
             chatController.AddMessage(messageData.scriptLines);
-            _sendMSGAlready = true;
+            sendMSGAlready = true;
 
             targetModel.SetActive(false);
         }
+
+        /// kjh
+        PersistentDataManager.Instance.SaveData(shoesKey, sendMSGAlready);
     }
 }

@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float runSpeed = 50f;
 
     [SerializeField] private float lookSpeed = 1f;
-    [SerializeField] private float lookDegreeLimit = 80f;
+    [SerializeField] private float pitchDegreeLimit = 80f;
 
     [Header("Player Cam UI Setting")]
     [SerializeField] private float camLookSpeed = 1f;
@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+    [SerializeField]
     private bool isMouseStop = true;
 
     private void Awake()
@@ -67,7 +68,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
             //Vector3 movePos = new Vector3(playerInput.MoveValue.x * moveSpeed * Time.deltaTime, 0, playerInput.MoveValue.y * moveSpeed * Time.deltaTime);//timescale 필요
 
@@ -91,21 +92,25 @@ public class PlayerMove : MonoBehaviour
 
     private void PersonalView()
     {
-        if(GameManager.Instance.GameState == GameState.Playing)
-        if (isMouseStop)
+        if (GameManager.Instance.GameState == GameState.Playing)
         {
-            cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-        else
-        {
-            if (cameraPoint != null)
+            if (isMouseStop)
             {
+                cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else
+            {
+                xRotation -= lookSpeed * playerInput.MouseDelta.y;
+                xRotation = Mathf.Clamp(xRotation, -pitchDegreeLimit, pitchDegreeLimit);
+
+                yRotation += lookSpeed * playerInput.MouseDelta.x;
+
+                //transform.Rotate(Vector3.up * mouseY);
+                transform.Rotate(Vector3.up * mouseX);
                 cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             }
-
-            transform.Rotate(Vector3.up * mouseX);
         }
-        else if(GameManager.Instance.GameState == GameState.UI)
+        else if (GameManager.Instance.GameState == GameState.UI)
         {
             xRotation -= playerInput.MoveValue.y;
             xRotation = Mathf.Clamp(xRotation, -camLookDegreeLimit, camLookDegreeLimit);
@@ -113,21 +118,14 @@ public class PlayerMove : MonoBehaviour
             yRotation += playerInput.MoveValue.x;
             yRotation = Mathf.Clamp(yRotation, -camHorizontalDegreeLimit, camHorizontalDegreeLimit);
 
-            if (cameraPoint != null)
-            {
-                cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            }
-
-            transform.Rotate(Vector3.up * mouseX);
-        }
-            //transform.Rotate(Vector3.up * mouseY);
-            transform.Rotate(Vector3.up * mouseX);
             cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            Debug.Log("1111");
         }
     }
 
+
     public void MouseStop()
     {
-        isMouseStop = !isMouseStop;
+        isMouseStop = false;
     }
 }

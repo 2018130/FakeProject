@@ -6,6 +6,9 @@ public class LightObject : MonoBehaviour
     protected Light light;
     public Light Light => light;
 
+    [SerializeField]
+    protected string lightTurnOnKey = "LightTurnOnKey";
+
     protected virtual void Awake()
     {
         light = GetComponentInChildren<Light>();
@@ -14,11 +17,13 @@ public class LightObject : MonoBehaviour
     public virtual void TurnOn()
     {
         light.enabled = true;
+        PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
     }
 
     public virtual void TurnOff()
     {
         light.enabled = false;
+        PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
     }
 
     public virtual void Toggle()
