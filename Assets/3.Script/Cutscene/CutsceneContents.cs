@@ -12,6 +12,9 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
     private bool _isPlaying = false;
 
     [SerializeField]
+    private List<SceneEffect> loadedSceneEffects = new List<SceneEffect>();
+
+    [SerializeField]
     private List<SceneEffect> sceneEffects = new List<SceneEffect>();
 
     public int Priority { get; set; }
@@ -19,6 +22,16 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
     public void OnSceneContextBuilt()
     {
         isPlayed = PersistentDataManager.Instance.GetDataWithParsing(playedKey, false);
+
+        if(isPlayed)
+        {
+            PlayLoadedCutscene();
+        }
+    }
+
+    private void PlayLoadedCutscene()
+    {
+        StartCoroutine(PlayLoadedSceneEffect_co());
     }
 
     public void PlayCutscene()
@@ -29,8 +42,6 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
             StartCoroutine(PlaySceneEffect_co());
         }
         /// kjh
-        PersistentDataManager.Instance.SaveData(playedKey, isPlayed);
-        Debug.Log("수풀 피클 컷신이 재생됐다. 저장");
     }
 
     public IEnumerator PlaySceneEffect_co()
@@ -71,5 +82,46 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
         }
         _isPlaying = false;
         isPlayed = true;
+        PersistentDataManager.Instance.SaveData(playedKey, isPlayed);
+    }
+    public IEnumerator PlayLoadedSceneEffect_co()
+    {
+        _isPlaying = true;
+        foreach (var sceneEffect in loadedSceneEffects)
+        {
+            yield return null;
+
+            switch (sceneEffect.Type)
+            {
+                case SceneEffect.EffectType.ChangeGameState:
+                    GameManager.Instance.ChangeState(sceneEffect.GameState);
+                    Debug.Log("Change game state by cutscene");
+                    break;
+                case SceneEffect.EffectType.PlaySoundClip:
+                    if (sceneEffect.IsBGM)
+                    {
+                        // TODO : play sound from sound clip
+                        //SoundManager.Instance.PlayBGM(EBGM.BGM_2D);
+                        Debug.Log("Play bgm by cutscene");
+                    }
+                    else
+                    {
+                        //SoundManager.Instance.PlaySFX(ESFX.SFX_PlayerBreath);
+                        Debug.Log("Play sfx by cutscene");
+                    }
+                    break;
+                case SceneEffect.EffectType.WaitForSeconds:
+                    Debug.Log($"Wait for second '{sceneEffect.Time}'by cutscene");
+                    yield return new WaitForSeconds(sceneEffect.Time);
+                    break;
+                case SceneEffect.EffectType.FunctionCall:
+                    Debug.Log($"Calling function by cutscene");
+                    sceneEffect.Function?.Invoke();
+                    break;
+            }
+        }
+        _isPlaying = false;
+        isPlayed = true;
+        PersistentDataManager.Instance.SaveData(playedKey, isPlayed);
     }
 }
