@@ -19,12 +19,13 @@ public class EndOfRoad : MonoBehaviour
 
     public void WhenYouArrived()
     {
-        pickle.SetPos(sponPos.position, sceneContext.transform);
+        pickle.SetPos(sponPos.position, sceneContext.Player.transform);
         pickle.SetSpeed(pickleSpeed);
         pickle.ShowPickle();
         pickle.StartNav();
 
-        //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleRun);
+        SoundManager.Instance.PlayBGM(EBGM.BGM_3Dchase);
         //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleCry1);
+        SoundManager.Instance.PlaySFX(ESFX.SFX_PickleRun);
     }
 }
