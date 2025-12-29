@@ -107,6 +107,7 @@ public class ScrollConfigWindow : MonoBehaviour
 
     public void ClosePanel(bool useTimeContol = true)
     {
+        Debug.Log("1111");
         if(useTimeContol)
         {
             GameManager.Instance.ChangeState(GameState.Playing);
