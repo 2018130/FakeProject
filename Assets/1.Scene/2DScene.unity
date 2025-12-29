@@ -4199,6 +4199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 375440289700707817, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2188882464563389080, guid: e13447ba1391c1640896edb59da5cece, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -4206,6 +4210,10 @@ PrefabInstance:
     - target: {fileID: 2644730015414278021, guid: e13447ba1391c1640896edb59da5cece, type: 3}
       propertyPath: m_Name
       value: FadePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740089637518369924, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4986292526830498032, guid: e13447ba1391c1640896edb59da5cece, type: 3}
       propertyPath: m_Name
