@@ -10,7 +10,6 @@ public class Hudiepontouch : MonoBehaviour
     private bool isUIActive = false;
 
     public Animator blackScreenAnimator; //애니메이터 
-    
 
     private void Start()
     {

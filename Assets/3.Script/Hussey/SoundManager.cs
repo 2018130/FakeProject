@@ -98,6 +98,20 @@ public class SoundManager : SingletonBehaviour<SoundManager>
     {
         audioMixer.SetFloat("Master", MathF.Log10(volume) * 20);
     }
+
+    public float GetSFXVolume()
+    {
+        audioMixer.GetFloat("SFX", out float value);
+
+        return Mathf.Pow(10, value / 20);
+    }
+    public float GetBGMVolume()
+    {
+        audioMixer.GetFloat("BGM", out float value);
+
+        return Mathf.Pow(10, value / 20);
+    }
+
     public void SetBGMVolume(float volume)
     {
         audioMixer.SetFloat("BGM", MathF.Log10(volume) * 20);

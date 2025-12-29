@@ -35,6 +35,7 @@ public class PickleBehindYou : MonoBehaviour
         Vector3 sponPos = this.sponPos.transform.position;
         pickle.ShowPickle();
         pickle.SetPos(sponPos, scenecontext.Player.transform);
+        pickle.StopNav();
         yield return new WaitForSeconds(delay);
         pickle.StartNav();
 

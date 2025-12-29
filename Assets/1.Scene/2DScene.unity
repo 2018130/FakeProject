@@ -3466,7 +3466,7 @@ MonoBehaviour:
   - dialogueID: 24
     characterSprite: {fileID: 21300000, guid: c8a9da60f33ed37449a12290f35e0035, type: 3}
     backgroundSprite: {fileID: 0}
-    bgmType: 0
+    bgmType: 3
 --- !u!43 &385775777
 Mesh:
   m_ObjectHideFlags: 0
@@ -4055,7 +4055,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4191,6 +4191,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413844349}
   m_CullTransparentMesh: 1
+--- !u!1001 &434494423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2188882464563389080, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644730015414278021, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_Name
+      value: FadePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986292526830498032, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_Name
+      value: DefaultSceneContext
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986292526830498032, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.23094
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -24.67653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 84.24999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658048577153578591, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083253364803914341, guid: e13447ba1391c1640896edb59da5cece, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e13447ba1391c1640896edb59da5cece, type: 3}
 --- !u!1 &454342132
 GameObject:
   m_ObjectHideFlags: 0
@@ -6588,7 +6661,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -18984,3 +19057,4 @@ SceneRoots:
   - {fileID: 1171199257}
   - {fileID: 913187420}
   - {fileID: 87022510}
+  - {fileID: 434494423}

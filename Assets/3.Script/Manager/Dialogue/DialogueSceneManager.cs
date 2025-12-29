@@ -132,6 +132,9 @@ public class DialogueSceneManager : MonoBehaviour
 
         foreach(var image in images)
         {
+            if (image.name == "FadePanel")
+                continue;
+
             if (amount == 0)
             {
                 image.material = null;
