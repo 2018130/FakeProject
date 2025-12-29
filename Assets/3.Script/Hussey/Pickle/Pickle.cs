@@ -29,6 +29,11 @@ public class Pickle : MonoBehaviour
     //    StopNav();
     //}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player")) GameOver();
+    }
+
     public void SetPos(Vector3 sponPos, Transform target)
     {
         this.target = target;
@@ -93,5 +98,10 @@ public class Pickle : MonoBehaviour
     {
         if (transform.GetChild(0).gameObject.activeSelf) return;
         transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void GameOver()
+    {
+        GameManager.Instance.ChangeState(GameState.Dead);
     }
 }

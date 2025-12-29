@@ -55,10 +55,8 @@ public class GameSceneManager : MonoBehaviour
     {
         if (!isDeadScene)
         {
-            Debug.Log("!isdeadscene");
             if (GameManager.Instance.GameState == GameState.Dead)
             {
-                Debug.Log("if¹® µé¾î¿È");
                 isDeadScene = true;
                 StartCoroutine(PicklePopup_co());
             }
