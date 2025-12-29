@@ -78,7 +78,7 @@ public class DialogueSceneManager : MonoBehaviour
         // 점차 치지직 거리는 효과
         yield return FilmGrain_co();
 
-        //SceneChangeManager.Instance.ChangeScene(SceneType.GameScene);
+        SceneChangeManager.Instance.ChangeScene(SceneType.GameScene);
     }
     private void OnApplicationQuit()
     {
