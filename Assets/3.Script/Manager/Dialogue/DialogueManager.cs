@@ -50,9 +50,12 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
     private int nextPrintDialogueID = 1;
     [SerializeField]
     private float endDelay = 3f;
-
     public int Priority { get; set; } = 2;
 
+    private void Awake()
+    {
+        dialogueDatas = CsvReader.LoadCsvData();
+    }
     private void Start()
     {
     }
@@ -74,7 +77,6 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
 
         if (!isPrintAnyDialogue)
         {
-            Debug.Log("여기 나의 족적을 남기고 간다.... ㅋ");
             PrintDialogue(data);
         }
     }
@@ -93,7 +95,6 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
             dialogueText.text = "";
             nameText.text = currentDialogue.Name;
             Debug.Log($"Print dialogue, Current dialogue data : {currentDialogue.Name}");
-
             SetButtonActive(currentDialogue,
                 () =>
                 {
@@ -101,6 +102,9 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
                     PrintDialogue(currentDialogue.AcceptID);
                     nextPrintDialogueID = currentDialogue.AcceptID;
                     isClickedAnyKey = true;
+
+                    chooseButton[0].interactable = false;
+                    chooseButton[1].interactable = false;
                 },
                 () =>
                 {
@@ -108,6 +112,9 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
                     PrintDialogue(currentDialogue.RejectID);
                     nextPrintDialogueID = currentDialogue.RejectID;
                     isClickedAnyKey = true;
+
+                    chooseButton[0].interactable = false;
+                    chooseButton[1].interactable = false;
                 });
             int index = 0;
             while (index < currentDialogue.Dialogue.Length)
@@ -180,6 +187,8 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
             {
                 chooseButton[1].gameObject.SetActive(false);
             }
+            chooseButton[0].interactable = true;
+            chooseButton[1].interactable = true;
 
             chooseButton[0].GetComponentInChildren<Text>().text = currentDialogue.AcceptDialogue;
             chooseButton[1].GetComponentInChildren<Text>().text = currentDialogue.RejectDialogue;
@@ -199,7 +208,6 @@ public class DialogueManager : MonoBehaviour,ISceneContextBuilt
 
     public void OnSceneContextBuilt()
     {
-        dialogueDatas = CsvReader.LoadCsvData();
         PrintDialogue(nextPrintDialogueID);
     }
 }

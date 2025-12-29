@@ -16,11 +16,19 @@ public class SceneChangeManager : SingletonBehaviour<SceneChangeManager>
 {
     public void ChangeScene(SceneType sceneType)
     {
+        if(sceneType == SceneType.GameScene)
+        {
+            GameManager.Instance.ChangeState(GameState.Playing);
+        }
         StartCoroutine(ChangeScene_co(sceneType));
     }
 
     private IEnumerator ChangeScene_co(SceneType sceneType)
     {
+        GameManager.Instance.CurrentSceneContext.FadeOut();
+
+        yield return new WaitForSeconds(GameManager.Instance.CurrentSceneContext.FadeTime);
+
         AsyncOperation ao = SceneManager.LoadSceneAsync((int)sceneType);
 
         ao.allowSceneActivation = false;
@@ -36,5 +44,9 @@ public class SceneChangeManager : SingletonBehaviour<SceneChangeManager>
         }
 
         yield return GameManager.Instance.Initialize();
+
+        GameManager.Instance.CurrentSceneContext.FadeIn();
+
+        yield return new WaitForSeconds(GameManager.Instance.CurrentSceneContext.FadeTime);
     }
 }

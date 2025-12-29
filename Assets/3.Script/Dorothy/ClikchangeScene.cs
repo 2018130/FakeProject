@@ -6,6 +6,7 @@ public class ClikchangeScene : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 {
     public string sceneName;
     public float hoverScale = 1.1f;
+    private bool isClicked = false;
 
     private Vector3 originalScale;
 
@@ -25,6 +26,10 @@ public class ClikchangeScene : MonoBehaviour,IPointerEnterHandler,IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneChangeManager.Instance.ChangeScene(SceneType.DialogueScene);
+        if(!isClicked)
+        {
+            SceneChangeManager.Instance.ChangeScene(SceneType.DialogueScene);
+            isClicked = true;
+        }
     }
 }
