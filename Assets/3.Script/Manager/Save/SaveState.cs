@@ -16,19 +16,15 @@ public class SaveState : MonoBehaviour, ISceneContextBuilt
     public void OnSceneContextBuilt()
     {
         Vector3 position = PersistentDataManager.Instance.GetDataWithParsing<Vector3>(StateKey, transform.position);
-        if(position != default)
-        {
-            transform.position = position;
-        }
+        transform.position = position;
+        Debug.Log(transform.position);
+
+        PersistentDataManager.Instance.OnBeforeSaveDataToFile += SaveInfomation;
     }
 
     public void SaveInfomation()
     {
-
-    }
-
-    private void OnDestroy()
-    {
+        Debug.Log("Player position info saved");
         PersistentDataManager.Instance.SaveData(StateKey, transform.position);
     }
 }
