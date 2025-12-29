@@ -11,6 +11,9 @@ public class TeleportTarget : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
+    [SerializeField]
+    private StringDataSO messageData;
+
     [Header("Screen Point Spawn Layer")]
     [SerializeField]
     private LayerMask screenPointSpawnLayer;
@@ -18,12 +21,18 @@ public class TeleportTarget : MonoBehaviour
     private Vector2 screenSpawnPoint;
 
     private PlayerInput _playerInput;
+    private ChatController chatController;
 
     private void Start()
     {
         _playerInput = FindAnyObjectByType<PlayerInput>();
+        chatController = FindAnyObjectByType<ChatController>();
     }
 
+    public void AddMSG()
+    {
+        chatController.AddMessage(messageData.scriptLines);
+    }
     public void Teleport()
     {
         if(screenSpawnPoint != Vector2.zero)
