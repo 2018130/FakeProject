@@ -117,7 +117,7 @@ public class GameSceneManager : MonoBehaviour
     private void ShowBackground()
     {
         startColor = gameOverPanel.color;
-        startColor.a = 60f / 255f;
+        startColor.a = 50f / 255f;
         gameOverPanel.color = startColor;
     }
 
