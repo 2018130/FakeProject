@@ -1,20 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameSceneManager : MonoBehaviour
 {
-    [Header("Dead")]
     [SerializeField] private Transform cameraPoint;
 
     [SerializeField] private GameObject pickle;
-
     [SerializeField] private Transform destPos;
-
     [SerializeField] private float popupSpeed = 0.7f;
-
     [SerializeField] private float popupTime = 1f;
 
     [SerializeField] private SceneContext sceneEffect;
@@ -28,6 +25,13 @@ public class GameSceneManager : MonoBehaviour
 
     private bool isDeadScene = false;
 
+    [SerializeField] private Volume postProcessVolume;
+
+    private ChromaticAberration chromaticAberration;
+    private FilmGrain filmGrain;
+    private LensDistortion lensDistortion;
+
+    [SerializeField] private float glitchTime = 0.5f;
 
     private void Awake()
     {
@@ -38,6 +42,13 @@ public class GameSceneManager : MonoBehaviour
         isDeadScene = false;
 
         HideBackground();
+    }
+
+    private void Start()
+    {
+        postProcessVolume.profile.TryGet<ChromaticAberration>(out chromaticAberration);
+        postProcessVolume.profile.TryGet<FilmGrain>(out filmGrain);
+        postProcessVolume.profile.TryGet<LensDistortion>(out lensDistortion);
     }
 
     private void Update()
@@ -72,6 +83,7 @@ public class GameSceneManager : MonoBehaviour
         pickle.SetActive(true);
         float elapsedTime = 0f;
 
+
         while (elapsedTime < popupSpeed)
         {
             elapsedTime += Time.deltaTime;
@@ -79,10 +91,11 @@ public class GameSceneManager : MonoBehaviour
 
             yield return null;
         }
-
         pickle.transform.position = destPos.position;
 
-        yield return new WaitForSeconds(popupTime);
+
+        yield return StartCoroutine(GlitchEffect_co(glitchTime));
+        //yield return new WaitForSeconds(popupTime);
 
         sceneEffect.ShortFadeOut();
         yield return new WaitForSeconds(popupTime);
@@ -106,7 +119,29 @@ public class GameSceneManager : MonoBehaviour
     private void ShowBackground()
     {
         startColor = gameOverPanel.color;
-        startColor.a = 60f/255f;
+        startColor.a = 60f / 255f;
         gameOverPanel.color = startColor;
+    }
+
+    private IEnumerator GlitchEffect_co(float duration)
+    {
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            if (chromaticAberration != null) chromaticAberration.intensity.value = 1.0f;
+            if (filmGrain != null) filmGrain.intensity.value = Random.Range(0.5f, 0.8f);
+            //if (lensDistortion != null) lensDistortion.intensity.value = Random.Range(-0.5f, 0.5f);
+
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    private void ResetPostProcess()
+    {
+        if (chromaticAberration != null) chromaticAberration.intensity.value = 0f;
+        if (filmGrain != null) filmGrain.intensity.value = 0.13f;
     }
 }
