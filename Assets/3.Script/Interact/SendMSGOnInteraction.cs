@@ -12,17 +12,18 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
     private GameObject targetModel;
 
     private bool _sendMSGAlready = false;
-
+    private bool _sendMSGAlreadySaved = false;
+    [SerializeField]
     private string _sendMSGOnInteractionKey = "_sendMSGOnInteractionKey";
     private void Start()
     {
         chatController = FindAnyObjectByType<ChatController>();
 
-        if (_sendMSGAlready.Equals(true))
+        _sendMSGAlreadySaved = PersistentDataManager.Instance.GetDataWithParsing<bool>(_sendMSGOnInteractionKey, false);
+        if (_sendMSGAlreadySaved.Equals(true))
             Interact();
 
         chatController = FindAnyObjectByType<ChatController>();
-
     }
 
     public void Interact()

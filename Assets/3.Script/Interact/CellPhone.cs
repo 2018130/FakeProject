@@ -12,26 +12,21 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
     private bool obtained = false;
     public bool IsObtained => obtained;
     [SerializeField]
+    private bool obtainSaved = false;
+
+    [SerializeField]
     private string cellphoneObtainKey = "CellphoneObtained";
 
     [SerializeField]
     private Material screenMaterial;
 
 
-    private void Start()
-    {
-        if (IsObtained.Equals(true))
-            Interact();
-
-        
-    }
-
     public void OnSceneContextBuilt()
     {
-        obtained = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
+        obtainSaved = PersistentDataManager.Instance.GetDataWithParsing(cellphoneObtainKey, false);
         GameManager.Instance.OnChangedGameState += SetActiveScreen;
 
-        if (obtained)
+        if (obtainSaved)
         {
             Interact();
         }

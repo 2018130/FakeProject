@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwinkleLight : LightObject
+public class TwinkleLight : LightObject, ISceneContextBuilt
 {
     private bool twinkle = false;
     [SerializeField]
@@ -17,10 +17,15 @@ public class TwinkleLight : LightObject
     /// Àüº¿´ë ±ôºýÀÌ´Â ÀÌº¥Æ®¿ë ½ºÅ©¸³Æ®
     /// </summary>
     private string twinkleLightKey = "twinkleLightKey";
-    private void Start()
+
+    public override void OnSceneContextBuilt()
     {
-        ///kjh1229 -
         twinkle = PersistentDataManager.Instance.GetDataWithParsing(twinkleLightKey, false);
+
+        if (twinkle)
+        {
+            TurnOn();
+        }
 
         if (twinkleOnStart)
         {
@@ -36,7 +41,7 @@ public class TwinkleLight : LightObject
         StopAllCoroutines();
         StartCoroutine(Twinkle_co());
 
-        
+
     }
 
     public void StopTwinkle()
@@ -49,7 +54,7 @@ public class TwinkleLight : LightObject
 
     private IEnumerator Twinkle_co()
     {
-        while(twinkle)
+        while (twinkle)
         {
             float lagTime = UnityEngine.Random.Range(minLagTime, maxLagTime);
             yield return new WaitForSeconds(lagTime);

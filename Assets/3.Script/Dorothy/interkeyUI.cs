@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class interkeyUI : MonoBehaviour
 {
     [SerializeField]
-    private Text keyText;
+    private Text text;
     [SerializeField]
     private Text descriptionText;
 
@@ -19,7 +19,7 @@ public class interkeyUI : MonoBehaviour
 
     public void SetActive(bool active)
     {
-        keyText.gameObject.SetActive(active);
+        text.gameObject.SetActive(active);
         descriptionText.gameObject.SetActive(active);
     }
 
@@ -27,7 +27,7 @@ public class interkeyUI : MonoBehaviour
     {
         if(data != null)
         {
-            keyText.text = data.UIname;
+            text.text = data.UIname;
             descriptionText.text = data.UImsg;
             SetActive(true);
         }

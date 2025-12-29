@@ -21,8 +21,6 @@ public class TriggerMessageSending : MonoBehaviour
     {
         chatController = FindAnyObjectByType<ChatController>();
 
-        ///kjh
-        triggerMessageSendingKey = gameObject.name+"Key"+ triggerMessageSendingKeyNum;
         triggerMessageSendingKeyNum++;
         ///kjh
         if (PersistentDataManager.Instance != null)
