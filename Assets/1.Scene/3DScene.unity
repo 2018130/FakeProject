@@ -2848,6 +2848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 950400523}
     m_Modifications:
+    - target: {fileID: 1645169433292085457, guid: 7592217091790e741873f4567f5144b1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 753ff651f45963f4caff3b35e9c3cb71, type: 2}
     - target: {fileID: 5212147339327872599, guid: 7592217091790e741873f4567f5144b1, type: 3}
       propertyPath: m_Name
       value: TravelSet_Suitcase
@@ -2855,7 +2859,7 @@ PrefabInstance:
     - target: {fileID: 7444538867178355251, guid: 7592217091790e741873f4567f5144b1, type: 3}
       propertyPath: cutscene
       value: 
-      objectReference: {fileID: 2023794119}
+      objectReference: {fileID: 7371578062489853098}
     - target: {fileID: 7444538867178355251, guid: 7592217091790e741873f4567f5144b1, type: 3}
       propertyPath: maxFloatCount
       value: 0
@@ -2866,7 +2870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8242081469196167743, guid: 7592217091790e741873f4567f5144b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.327
       objectReference: {fileID: 0}
     - target: {fileID: 8242081469196167743, guid: 7592217091790e741873f4567f5144b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4457,6 +4461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131fd3bcd1b3d2e489cc8f02c32c8d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwinkleLight
+  lightTurnOnKey: LightTurnOnKey
   twinkleOnStart: 1
   maxLagTime: 0.7
   minLagTime: 1
@@ -4955,6 +4960,10 @@ PrefabInstance:
     - target: {fileID: 4771542309936408222, guid: 8814d21114865784da3896ae0472c1ad, type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989434114646313271, guid: 8814d21114865784da3896ae0472c1ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -20.97
       objectReference: {fileID: 0}
     - target: {fileID: 5065267654861081841, guid: 8814d21114865784da3896ae0472c1ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5611,6 +5620,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8242081469196167743, guid: 7592217091790e741873f4567f5144b1, type: 3}
   m_PrefabInstance: {fileID: 765215081}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1277019916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7444538867178355251, guid: 7592217091790e741873f4567f5144b1, type: 3}
+  m_PrefabInstance: {fileID: 765215081}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 132bc5363fe1d174898488cd24698549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShootCaseController
 --- !u!1 &1294576456
 GameObject:
   m_ObjectHideFlags: 0
@@ -9201,7 +9221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6375698051403126331}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.438583, y: 2, z: -28.141373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14286,7 +14306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 4.2210736}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.14109953}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3529271771841632229
@@ -15733,22 +15753,22 @@ MonoBehaviour:
     m_Knots:
     - Position:
         x: 0
-        y: 0
+        y: 0.5
         z: 0
       TangentIn:
         x: 0
         y: 0
-        z: -0.38069147
+        z: -0.5398227
       TangentOut:
         x: 0
         y: 0
-        z: 0.38069147
+        z: 0.5398227
       Rotation:
         value:
-          x: -0.34919912
-          y: -0.4230499
-          z: -0.54944474
-          w: 0.6302375
+          x: -0.29001817
+          y: -0.39291197
+          z: -0.56379503
+          w: 0.66606665
     - Position:
         x: -0.37800598
         y: 1.762
@@ -15756,17 +15776,17 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -0.54904926
+        z: -0.49439597
       TangentOut:
         x: 0
         y: 0
-        z: 0.54904926
+        z: 0.49439597
       Rotation:
         value:
-          x: -0.37355387
-          y: -0.17375222
-          z: -0.056519534
-          w: 0.90943563
+          x: -0.3181859
+          y: -0.17883055
+          z: -0.044823885
+          w: 0.929929
     - Position:
         x: -0.9020004
         y: 2.3030002
@@ -15866,8 +15886,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537293230407225511}
   m_HandleRect: {fileID: 1370685821100400692}
   m_Direction: 2
-  m_Value: -28.964472
-  m_Size: 0.8496351
+  m_Value: 0.00086505193
+  m_Size: 0.999833
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20748,6 +20768,26 @@ MonoBehaviour:
     Function:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 1277019916}
+          m_TargetAssemblyTypeName: SuitCaseController, Assembly-CSharp
+          m_MethodName: OpenCover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 1
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 3
+    Time: 5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
         - m_Target: {fileID: 946947234}
           m_TargetAssemblyTypeName: CameraController, Assembly-CSharp
           m_MethodName: ChangeCameraToPlayerAimed
@@ -20761,6 +20801,26 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     GameState: 3
+    IsBGM: 0
+    Clip: {fileID: 0}
+  - _type: 3
+    Time: 5
+    Function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1763171446}
+          m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+          m_MethodName: MouseStop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    GameState: 1
     IsBGM: 0
     Clip: {fileID: 0}
   - _type: 0
@@ -21908,8 +21968,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7008929298135395411}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5274175, y: -0.15080428, z: -0.09575665, w: 0.830614}
-  m_LocalPosition: {x: 37.938583, y: 0.1, z: -31.705372}
+  m_LocalRotation: {x: -0.46219134, y: -0.15770099, z: -0.08391426, w: 0.8686012}
+  m_LocalPosition: {x: 37.938583, y: 0.6, z: -31.705372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
