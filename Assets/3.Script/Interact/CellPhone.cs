@@ -26,6 +26,7 @@ public class CellPhone : MonoBehaviour, IInteractable, ISceneContextBuilt
         {
             Interact();
         }
+
     }
 
     public void Interact()

@@ -33,6 +33,7 @@ public class PlayerMove : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 0f;
 
+    [SerializeField]
     private bool isMouseStop = true;
 
     private void Awake()
@@ -92,19 +93,25 @@ public class PlayerMove : MonoBehaviour
     private void PersonalView()
     {
         if (GameManager.Instance.GameState == GameState.Playing)
+        {
             if (isMouseStop)
             {
                 cameraPoint.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
             else
             {
-                if (cameraPoint != null)
-                {
-                    cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-                }
+                xRotation -= lookSpeed * playerInput.MouseDelta.y * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
 
-                transform.Rotate(Vector3.up * mouseX);
+                yRotation += lookSpeed * playerInput.MouseDelta.x * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                yRotation = Mathf.Clamp(yRotation, -lookDegreeLimit, lookDegreeLimit);
+
+                Debug.Log(yRotation);
+                //transform.Rotate(Vector3.up * mouseY);
+                transform.Rotate(Vector3.up * playerInput.MouseDelta.x);
+                cameraPoint.rotation = Quaternion.Euler(yRotation, 0, 0);
             }
+        }
         else if (GameManager.Instance.GameState == GameState.UI)
         {
             xRotation -= playerInput.MoveValue.y;
@@ -120,14 +127,11 @@ public class PlayerMove : MonoBehaviour
 
             transform.Rotate(Vector3.up * mouseX);
         }
-        //transform.Rotate(Vector3.up * mouseY);
-        transform.Rotate(Vector3.up * mouseX);
-        cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 
 
     public void MouseStop()
     {
-        isMouseStop = !isMouseStop;
+        isMouseStop = false;
     }
 }

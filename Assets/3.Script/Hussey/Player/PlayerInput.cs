@@ -47,7 +47,7 @@ public class PlayerInput : MonoBehaviour
 
     private void LateUpdate()
     {
-        mouseDelta = Vector2.zero;
+        //mouseDelta = Vector2.zero;
     }
 
     public void Event_Move(InputAction.CallbackContext context)
@@ -80,9 +80,13 @@ public class PlayerInput : MonoBehaviour
     {
         if (GameManager.Instance.GameState == GameState.Playing)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (context.phase == InputActionPhase.Started)
             {
                 mouseDelta = context.ReadValue<Vector2>();
+            }
+            else if(context.phase == InputActionPhase.Canceled)
+            {
+                mouseDelta = Vector2.zero;
             }
         }
     }
