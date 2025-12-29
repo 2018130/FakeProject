@@ -37,9 +37,10 @@ public class PickleWatchingYou : MonoBehaviour
 
     public void WatchingYou()
     {
+        pickle.ShowPickle();
         pickle.SetPos(sponPos.transform.position, destPos.transform);
         pickle.SetSpeed(walkSpeed);
-        pickle.ShowPickle();
+        pickle.StopNav();
 
         //InvokeRepeating(nameof(SetLookat), 0f, 0.2f);
 

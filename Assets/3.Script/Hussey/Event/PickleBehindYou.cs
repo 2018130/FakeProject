@@ -35,7 +35,10 @@ public class PickleBehindYou : MonoBehaviour
         Vector3 sponPos = this.sponPos.transform.position;
         pickle.ShowPickle();
         pickle.SetPos(sponPos, scenecontext.Player.transform);
+        pickle.StopNav();
+        Debug.Log("1111");
         yield return new WaitForSeconds(delay);
+        Debug.Log("2222");
         pickle.StartNav();
 
         //SoundManager.Instance.PlaySFX(ESFX.SFX_PickleBreath2);
@@ -44,5 +47,6 @@ public class PickleBehindYou : MonoBehaviour
     public void Start_Co()
     {
         StartCoroutine(PickleInYourBack());
+        //pickle.StartNav();
     }
 }

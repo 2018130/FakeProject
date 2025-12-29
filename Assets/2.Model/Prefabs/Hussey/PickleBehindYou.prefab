@@ -66,3 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc03ac0a6bdd76842a9bca9a3e688f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EventExample
+  sponPos: {fileID: 0}
+  delay: 5
