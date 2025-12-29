@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float runSpeed = 50f;
 
     [SerializeField] private float lookSpeed = 1f;
-    [SerializeField] private float lookDegreeLimit = 80f;
+    [SerializeField] private float pitchDegreeLimit = 80f;
 
     [Header("Player Cam UI Setting")]
     [SerializeField] private float camLookSpeed = 1f;
@@ -100,16 +100,14 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                xRotation -= lookSpeed * playerInput.MouseDelta.y * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
-                xRotation = Mathf.Clamp(xRotation, -lookDegreeLimit, lookDegreeLimit);
+                xRotation -= lookSpeed * playerInput.MouseDelta.y;
+                xRotation = Mathf.Clamp(xRotation, -pitchDegreeLimit, pitchDegreeLimit);
 
-                yRotation += lookSpeed * playerInput.MouseDelta.x * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
-                yRotation = Mathf.Clamp(yRotation, -lookDegreeLimit, lookDegreeLimit);
+                yRotation += lookSpeed * playerInput.MouseDelta.x;
 
-                Debug.Log(yRotation);
                 //transform.Rotate(Vector3.up * mouseY);
-                transform.Rotate(Vector3.up * playerInput.MouseDelta.x);
-                cameraPoint.rotation = Quaternion.Euler(yRotation, 0, 0);
+                transform.Rotate(Vector3.up * mouseX);
+                cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             }
         }
         else if (GameManager.Instance.GameState == GameState.UI)
@@ -120,12 +118,8 @@ public class PlayerMove : MonoBehaviour
             yRotation += playerInput.MoveValue.x;
             yRotation = Mathf.Clamp(yRotation, -camHorizontalDegreeLimit, camHorizontalDegreeLimit);
 
-            if (cameraPoint != null)
-            {
-                cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-            }
-
-            transform.Rotate(Vector3.up * mouseX);
+            cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            Debug.Log("1111");
         }
     }
 
