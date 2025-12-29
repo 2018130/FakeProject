@@ -47,15 +47,21 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
 
     [Header("배터리의 최대최소는 100-0 ")]
     [SerializeField]
-    private float batteryStartNum;
+    private float batteryStartNum = 99;
     private float batteryMaxNum=100f;
     private float batteryMinNum=0f;
     [SerializeField]
     private float batterSpeed = 10f;
     PlayerLight phoneLight;
 
+
+    float saveTimer = 5;
+    string batteryValueKey = "batteryValueKey";
     private void Start()
     {
+        ///kjh1229 - 
+        sliderBattery.value = batteryStartNum;
+
         textBattery.text = ((batteryStartNum * 100) / batteryMaxNum).ToString();
     }
 
@@ -113,6 +119,15 @@ public class PhoneCommuStatusAndBatter_UI : MonoBehaviour
             UpdateBattery();
         }
 
+        ///kjh1229 - 배터리의 상태로 5초마다 자동 저장시키는 방식
+        saveTimer -= Time.deltaTime;
+        if (saveTimer <= 0)
+        {
+            PersistentDataManager.Instance.SaveData(batteryValueKey,sliderBattery.value); // 실제 저장 메서드 호출
+            saveTimer = 5f;    // 타이머 리셋
+
+            Debug.Log("핸드폰 배터리 값이 저장되었습니다.");
+        }
     }
     
     

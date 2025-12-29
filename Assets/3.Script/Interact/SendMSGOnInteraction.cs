@@ -17,6 +17,12 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
     private void Start()
     {
         chatController = FindAnyObjectByType<ChatController>();
+
+        if (_sendMSGAlready.Equals(true))
+            Interact();
+
+        chatController = FindAnyObjectByType<ChatController>();
+
     }
 
     public void Interact()
@@ -28,6 +34,7 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
 
             ///kjh
             PersistentDataManager.Instance.SaveData(_sendMSGOnInteractionKey, _sendMSGAlready);
+            Debug.Log("IDCard∏¶ »πµÊ«ﬂΩ¿¥œ¥Ÿ.");
             targetModel?.SetActive(false);
         }
     }

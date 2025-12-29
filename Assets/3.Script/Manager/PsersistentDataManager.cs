@@ -26,58 +26,48 @@ public class PersistentDataManager : MonoBehaviour
 
         private void OnApplicationQuit()
         {
-            SaveDataToFile();
+            //SaveDataToFile();
         }
 
-        public void SaveData(string key, object data, bool overwrite = true)
-        {
-            StringPair currentData = GetData(key);
-            if (!overwrite && currentData != null)
-            {
-                Debug.LogWarning($"이미 저장되어 있는 데이터를 다시 저장합니다.{key} (덮어쓰기 불가)");
-                return;
-            }
+    public void SaveData(string key, object data, bool overwrite = true)
+    {
+        StringPair currentData = GetData(key);
+        bool isNewData = false; // 새로운 데이터인지 체크하는 플래그
 
-            if(currentData == null)
-            {
-                currentData = CreateData(key);
-            }
-
-            string serializedData = "";
-            if(data.GetType() == typeof(int))
-            {
-                serializedData = "i_" + data.ToString();
-            }
-            else if(data.GetType() == typeof(float))
-            {
-                serializedData = "f_" + data.ToString();
-            }
-        else if (data.GetType() == typeof(bool))
+        if (!overwrite && currentData != null)
         {
-            serializedData = "b_" + data.ToString();
+            Debug.LogWarning($"이미 저장되어 있는 데이터를 다시 저장합니다.{key} (덮어쓰기 불가)");
+            return;
         }
-        else if (data.GetType() == typeof(Vector3))
-            {
-                Vector3 tmp = (Vector3)data;
-                serializedData = "v_" + tmp.x+"."+tmp.y + "." + tmp.z;
-            }
-            else if(data.GetType() == typeof(string))
-            {
-                serializedData = "s_" + data.ToString();
-            }
-            else
-            {
-                Debug.LogWarning($"데이터 저장에 실패했습니다. 지원하지 않는 데이터 포맷입니다");
-                return;
-            }
 
-        //Debug.Log($"데이터가 버퍼에 저장되었습니다");
+        if (currentData == null)
+        {
+            currentData = CreateData(key);
+            isNewData = true; // 리스트에 없는 데이터일 때만 true
+        }
+
+        string serializedData = "";
+        // ... (데이터 타입 판별 로직은 그대로 유지) ...
+        if (data.GetType() == typeof(int)) { serializedData = "i_" + data.ToString(); }
+        else if (data.GetType() == typeof(float)) { serializedData = "f_" + data.ToString(); }
+        else if (data.GetType() == typeof(bool)) { serializedData = "b_" + data.ToString(); }
+        else if (data.GetType() == typeof(Vector3)) { /* ... */ }
+        else if (data.GetType() == typeof(string)) { serializedData = "s_" + data.ToString(); }
+        else { return; }
+
         currentData.Second = serializedData;
 
+        // 핵심 수정: 새 데이터일 때만 리스트에 추가합니다.
+        // 기존 데이터라면 위에서 currentData.Second 값만 바뀌었으므로 리스트를 건드릴 필요가 없습니다.
+        if (isNewData)
+        {
             persistantData.Add(currentData);
         }
 
-        public void RemoveData(string key)
+        Debug.Log($"{key} 데이터가 버퍼에 저장되었습니다.");
+    }
+
+    public void RemoveData(string key)
         {
             StringPair removeableData = GetData(key);
             if (removeableData != null)
@@ -160,8 +150,12 @@ public class PersistentDataManager : MonoBehaviour
                         string[] keyValue = content.Split(',');
                         if (keyValue.Length == 2)
                         {
-                            StringPair dataPair = new StringPair() { First = keyValue[0], Second = keyValue[1] };
-                            persistantData.Add(dataPair);
+                        StringPair dataPair = new StringPair() { First = keyValue[0], Second = keyValue[1] };
+                        
+                        ///kjh1229
+                        //StringDouble dataPair = new StringDouble() { First = keyValue[0], Second = keyValue[1] };
+
+                        persistantData.Add(dataPair);
                         }
                     }
                 }

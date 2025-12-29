@@ -30,6 +30,7 @@ public class CutsceneContents : MonoBehaviour,ISceneContextBuilt
         }
         /// kjh
         PersistentDataManager.Instance.SaveData(playedKey, isPlayed);
+        Debug.Log("수풀 피클 컷신이 재생됐다. 저장");
     }
 
     public IEnumerator PlaySceneEffect_co()

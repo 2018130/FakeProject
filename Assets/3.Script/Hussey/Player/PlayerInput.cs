@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -162,4 +163,19 @@ public class PlayerInput : MonoBehaviour
     //    //    IsPersonalView = false;
     //    //}
     //}
+
+
+    ///kjh1229 - 임시 씬 로드 후 세이브 데이터 같이 로드 되는지 확인
+    public void ReloadCurrentScene()
+    {
+        //// 1. 현재 활성화된 씬의 정보를 가져옵니다.
+        //Scene currentScene = SceneManager.GetActiveScene();
+        //
+        //// 2. 해당 씬의 이름(name)이나 빌드 인덱스(buildIndex)를 이용해 다시 로드합니다.
+        //SceneManager.LoadSceneAsync(currentScene.name);
+        //GameManager.Instance.Initialize();
+
+        // 1.
+        SceneChangeManager.Instance.ChangeScene(SceneType.GameScene);
+    }
 }

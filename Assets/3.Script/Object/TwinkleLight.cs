@@ -13,11 +13,16 @@ public class TwinkleLight : LightObject
     [SerializeField]
     private float minLagTime = 0.1f;
 
-
+    /// <summary>
+    /// 전봇대 깜빡이는 이벤트용 스크립트
+    /// </summary>
     private string twinkleLightKey = "twinkleLightKey";
     private void Start()
     {
-        if(twinkleOnStart)
+        ///kjh1229 -
+        twinkle = PersistentDataManager.Instance.GetDataWithParsing(twinkleLightKey, false);
+
+        if (twinkleOnStart)
         {
             TurnOn();
         }
@@ -39,6 +44,7 @@ public class TwinkleLight : LightObject
         twinkle = false;
         /// kjh
         PersistentDataManager.Instance.SaveData(twinkleLightKey, twinkle);
+        Debug.Log("전봇대 twinkle값을 저장함");
     }
 
     private IEnumerator Twinkle_co()

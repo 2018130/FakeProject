@@ -43,6 +43,7 @@ public class GameManager : SingletonBehaviour<GameManager>
 
     private void Start()
     {
+        //todo - 로컬의 세이브파일의 데이터를 버퍼로 불러오는 작업
         StartCoroutine(Initialize());
     }
 

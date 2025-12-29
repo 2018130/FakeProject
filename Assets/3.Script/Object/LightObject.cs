@@ -18,12 +18,14 @@ public class LightObject : MonoBehaviour
     {
         light.enabled = true;
         PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
+        Debug.Log("TurnOn가 저장되었습니다.");
     }
 
     public virtual void TurnOff()
     {
         light.enabled = false;
         PersistentDataManager.Instance.SaveData(lightTurnOnKey, light.enabled);
+        Debug.Log("TurnOff가 저장되었습니다.");
     }
 
     public virtual void Toggle()

@@ -41,6 +41,7 @@ public class TriggerMessageSending : MonoBehaviour
             _sendMSGAlready = true;
             ///kjh
             PersistentDataManager.Instance.SaveData(triggerMessageSendingKey, _sendMSGAlready);
+            Debug.Log($"문자메세지 {triggerMessageSendingKeyNum}번째가 보내졌음을 저장");
             ///kjh
         }
     }
