@@ -20,7 +20,8 @@ public class PhoneGalleryManager : MonoBehaviour
 
     private string savePath;
 
-    private PhotoSystem photoSystem;
+    [SerializeField]
+    public PhotoSystem photoSystem;
 
     void Start()
     {

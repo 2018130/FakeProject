@@ -849,7 +849,7 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1619167746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
         m_MethodName: StopNav
         m_Mode: 1
@@ -1043,6 +1043,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1785775291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &138132086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6395139996398248275, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
+  m_PrefabInstance: {fileID: 1375496349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146875797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
   playedKey: CutscenePlayedKey
   isPlayed: 0
+  loadedSceneEffects: []
   sceneEffects:
   - _type: 0
     Time: 5
@@ -3560,6 +3566,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7825422518813114243, guid: 4e01bdaf6e769ba46a252a8859d85d38, type: 3}
   m_PrefabInstance: {fileID: 625075827}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &649520116 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8828705242987289868, guid: 0f7d3a016d263f04982354235117db97, type: 3}
+  m_PrefabInstance: {fileID: 385272621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653864190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4277,7 +4288,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1619167746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
         m_MethodName: StartNav
         m_Mode: 1
@@ -6281,7 +6292,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1619167746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
         m_MethodName: ShowPickle
         m_Mode: 1
@@ -6293,7 +6304,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1619167746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
         m_MethodName: HidePickle
         m_Mode: 4
@@ -7033,11 +7044,6 @@ Transform:
   - {fileID: 804003921}
   m_Father: {fileID: 1769581227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1061424348 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1333966814240620013, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-  m_PrefabInstance: {fileID: 1375496349}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1061633268
 GameObject:
   m_ObjectHideFlags: 0
@@ -7137,6 +7143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
   playedKey: CutscenePlayedKey
   isPlayed: 0
+  loadedSceneEffects: []
   sceneEffects:
   - _type: 3
     Time: 0
@@ -7303,7 +7310,7 @@ MonoBehaviour:
     Function:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1619167746}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
           m_MethodName: StartNav
           m_Mode: 1
@@ -7323,7 +7330,7 @@ MonoBehaviour:
     Function:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1619167746}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
           m_MethodName: StartNav
           m_Mode: 1
@@ -8451,8 +8458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e30ee92e7225f44a016655626df307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
-  target: {fileID: 1061424348}
+  target: {fileID: 0}
   spawnPoint: {fileID: 15976608}
+  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -8547,8 +8555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e30ee92e7225f44a016655626df307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
-  target: {fileID: 1061424348}
+  target: {fileID: 0}
   spawnPoint: {fileID: 1468958907}
+  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -9374,38 +9383,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6162450486085029984, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1375496352}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
---- !u!4 &1375496350 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8513824497230640864, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-  m_PrefabInstance: {fileID: 1375496349}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1375496351 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6162450486085029984, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-  m_PrefabInstance: {fileID: 1375496349}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1375496352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375496351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f67b9d0871c3349a12acbe2c32af51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickleWatchingYou
-  sponPos: {fileID: 0}
-  destPos: {fileID: 0}
-  walkSpeed: 3
-  lookWeight: 1
-  headTransform: {fileID: 1375496350}
 --- !u!1 &1384759190
 GameObject:
   m_ObjectHideFlags: 0
@@ -11054,17 +11033,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2127585776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1619167746 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4352010382325295062, guid: dbc242e09423bb84db5b92c3bd450130, type: 3}
-  m_PrefabInstance: {fileID: 1375496349}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7741c23668645884cac5fd908f185c6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pickle
 --- !u!1001 &1621789950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12628,6 +12596,7 @@ GameObject:
   - component: {fileID: 1833436221}
   - component: {fileID: 1833436223}
   - component: {fileID: 1833436222}
+  - component: {fileID: 1833436224}
   m_Layer: 0
   m_Name: TriggerZone
   m_TagString: Untagged
@@ -12668,7 +12637,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8478988008436438988}
         m_TargetAssemblyTypeName: TeleportTarget, Assembly-CSharp
-        m_MethodName: Teleport
+        m_MethodName: AddMSG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12700,6 +12669,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1833436224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833436220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc3e52d939942d47807bbc98a86977e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhotoSystem
+  photoCamera: {fileID: 649520116}
+  StatueTag: Statue
+  boxHalfExtents: {x: 2, y: 2, z: 0.1}
+  maxDistance: 50
 --- !u!1 &1858258958
 GameObject:
   m_ObjectHideFlags: 0
@@ -12941,8 +12926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e30ee92e7225f44a016655626df307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
-  target: {fileID: 1061424348}
+  target: {fileID: 0}
   spawnPoint: {fileID: 0}
+  messageData: {fileID: 0}
   screenPointSpawnLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -13146,6 +13132,84 @@ Transform:
   - {fileID: 906191716}
   m_Father: {fileID: 630826378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1936286823
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8273567116895378467}
+    m_Modifications:
+    - target: {fileID: 1568614720049160460, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_Name
+      value: SM_Statue_05a
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568614720049160460, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_TagString
+      value: Statue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.5503645
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000066666666
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.819967
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+--- !u!4 &1936286824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2201985797078055862, guid: 122f050ef4b978e499a22cf5759ec55f, type: 3}
+  m_PrefabInstance: {fileID: 1936286823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1973330999
 GameObject:
   m_ObjectHideFlags: 0
@@ -13495,6 +13559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
   playedKey: CutscenePlayedKey
   isPlayed: 0
+  loadedSceneEffects: []
   sceneEffects:
   - _type: 3
     Time: 5
@@ -19752,7 +19817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14170854}
+  m_AnchoredPosition: {x: -0.0004367976, y: 0.14113854}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &3529271771841632229
@@ -21203,8 +21268,8 @@ MonoBehaviour:
         z: 0.5398227
       Rotation:
         value:
-          x: -0.29001817
-          y: -0.39291197
+          x: -0.29001814
+          y: -0.3929119
           z: -0.56379503
           w: 0.66606665
     - Position:
@@ -21239,10 +21304,10 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: -0.16242182
+          x: -0.16242178
           y: -0.0000000042009174
-          z: -0.43271258
-          w: 0.88678014
+          z: -0.43271253
+          w: 0.8867801
     m_MetaData:
     - Mode: 2
       Tension: 0.5
@@ -21324,8 +21389,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537293230407225511}
   m_HandleRect: {fileID: 1370685821100400692}
   m_Direction: 2
-  m_Value: -0.006065858
-  m_Size: 0.9999082
+  m_Value: -0.0008665511
+  m_Size: 0.9999061
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23934,6 +23999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SendMSGOnInteraction
   messageData: {fileID: 11400000, guid: e98686d78b875e648a19e14722181885, type: 2}
   targetModel: {fileID: 2061242783}
+  _sendMSGOnInteractionKey: _sendMSGOnInteractionKey
 --- !u!4 &6122417405235265683
 Transform:
   m_ObjectHideFlags: 0
@@ -25883,6 +25949,7 @@ MonoBehaviour:
   UpperbarPrefab: {fileID: 8192875843710601849, guid: c8933fe39450d2d469a4cb56b12479ce, type: 3}
   photoPrefab: {fileID: 5629152049372098825, guid: 6707b1bce0b9d084085954fed7dd1559, type: 3}
   openAnimator: {fileID: 6271755225905450888}
+  photoSystem: {fileID: 0}
 --- !u!222 &7279205972627722758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26027,6 +26094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
   playedKey: CutscenePlayedKey
   isPlayed: 0
+  loadedSceneEffects: []
   sceneEffects:
   - _type: 0
     Time: 0
@@ -28375,6 +28443,7 @@ Transform:
   m_Children:
   - {fileID: 1833436221}
   - {fileID: 484655784}
+  - {fileID: 1936286824}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &8283972189716766025
@@ -29031,11 +29100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11e30ee92e7225f44a016655626df307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportTarget
-  target: {fileID: 1061424348}
+  target: {fileID: 138132086}
   spawnPoint: {fileID: 484655784}
+  messageData: {fileID: 11400000, guid: 7160667c811b92949a1f2b3fe398dcb6, type: 2}
   screenPointSpawnLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   screenSpawnPoint: {x: 0, y: 0}
 --- !u!4 &8492702983118646784
 Transform:
