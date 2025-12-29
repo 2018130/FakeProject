@@ -71,7 +71,7 @@ public class PersistentDataManager : MonoBehaviour
                 return;
             }
 
-        Debug.Log($"데이터가 버퍼에 저장되었습니다");
+        //Debug.Log($"데이터가 버퍼에 저장되었습니다");
         currentData.Second = serializedData;
 
             persistantData.Add(currentData);

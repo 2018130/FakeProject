@@ -28,7 +28,7 @@ public class SendMSGOnInteraction : MonoBehaviour, IInteractable
 
             ///kjh
             PersistentDataManager.Instance.SaveData(_sendMSGOnInteractionKey, _sendMSGAlready);
-            targetModel.SetActive(false);
+            targetModel?.SetActive(false);
         }
     }
 }
