@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a102c068e979d4eaf04c43794c9d50, type: 3}
   m_Name: SomebodyEatMSGData
   m_EditorClassIdentifier: Assembly-CSharp::StringDataSO
-  scriptLines: "\uB204\uAC00 \uB0A0 \uBA39\uACE0\uC788\uC5B4... \uC0B4\uB824\uC918"
+  scriptLines: "\uB098 \uBA39\uACE0 \uC788\uC5B4"
