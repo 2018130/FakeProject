@@ -22,6 +22,7 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] private Image gameOverPanel;
 
+    [SerializeField] private Pickle chasePickle;
     private Color startColor;
 
     private bool isDeadScene = false;
@@ -74,6 +75,8 @@ public class GameSceneManager : MonoBehaviour
 
     private IEnumerator PicklePopup_co()
     {
+        //chasePickle.StopNav();
+        Destroy(chasePickle.gameObject);
         ShowBackground();
 
         transform.position = cameraPoint.position;
