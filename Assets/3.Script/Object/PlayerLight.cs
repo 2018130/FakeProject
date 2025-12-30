@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerLight : LightObject, ISceneContextBuilt
@@ -29,20 +30,18 @@ public class PlayerLight : LightObject, ISceneContextBuilt
     {
         base.OnSceneContextBuilt();
 
-        if(PersistentDataManager.Instance.GetDataWithParsing(lightTurnOnKey, false))
-        {
-            TurnOn();
-        }
-    }
-
-    private void Start()
-    {
         FindAnyObjectByType<PlayerInput>().OnLightKeyDowned += Toggle;
 
         _toggle = FindAnyObjectByType<ScrollConfigWindow>()?.transform.GetComponentInChildren<Toggle>();
+        Debug.Log(SceneManager.GetActiveScene().name);
         _toggle?.onValueChanged.AddListener(Lighting);
         _batteryUI = FindAnyObjectByType<PhoneCommuStatusAndBatter_UI>();
         _batteryUI.OnBatteryEmpty += TurnOff;
+
+        if (PersistentDataManager.Instance.GetDataWithParsing(lightTurnOnKey, false))
+        {
+            TurnOn();
+        }
     }
 
 
@@ -69,9 +68,10 @@ public class PlayerLight : LightObject, ISceneContextBuilt
 
     public override void TurnOn()
     {
-        if(_batteryUI.sliderBattery.value > 0)
+        if(_batteryUI?.sliderBattery.value > 0)
         {
             base.TurnOn();
+            Debug.Log($"{_toggle}");
             _toggle.isOn = true;
         }
     }

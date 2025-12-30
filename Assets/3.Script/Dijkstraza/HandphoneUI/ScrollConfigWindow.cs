@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollConfigWindow : MonoBehaviour
+public class ScrollConfigWindow : MonoBehaviour, ISceneContextBuilt
 {
     [Header("BlurOverlayImage")]
     [SerializeField]
@@ -80,17 +80,8 @@ public class ScrollConfigWindow : MonoBehaviour
     private float _durationToCamera = 0.5f; // 카메라 페이드 시간
     bool isCameraOn = false;
 
-    private void Start()
-    {
-        if(FindAnyObjectByType<PlayerInput>() != null)
-        {
-            FindAnyObjectByType<PlayerInput>().OnSettingKeyDowned += Toggle;
-        }
-        if(GameManager.Instance.GameState == GameState.Playing)
-        {
-            ClosePanel();
-        }
-    }
+    public int Priority { get; set; } = 2;
+
     // --- 화면 끄고 키는 기능 ---
 
     public void Toggle()
@@ -389,5 +380,17 @@ public class ScrollConfigWindow : MonoBehaviour
         blurOverlayImageImage.color = blurOverlayImageColor;
         tempColor.a = 0;
         image.color = tempColor;
+    }
+
+    public void OnSceneContextBuilt()
+    {
+        if (FindAnyObjectByType<PlayerInput>() != null)
+        {
+            FindAnyObjectByType<PlayerInput>().OnSettingKeyDowned += Toggle;
+        }
+        if (GameManager.Instance.GameState == GameState.Playing)
+        {
+            ClosePanel();
+        }
     }
 }

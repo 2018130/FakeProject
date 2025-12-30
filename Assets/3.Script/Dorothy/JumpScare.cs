@@ -12,7 +12,6 @@ public class JumpScare : MonoBehaviour
 
     [Header("Èçµé¸²¼³Á¤")]
     public float shakeDuration = 0.5f; //Èçµé½Ã°£
-    public float shakeMagnitude = 0.5f;//Èçµé°­µµ
 
     private bool isTriggered = false;
     private Vector3 originalpos;
@@ -21,8 +20,8 @@ public class JumpScare : MonoBehaviour
 
     private void Start()
     {
-        impulseSource = GetComponent<CinemachineImpulseSource>();
-        SoundManager.Instance.PlaySFX(x);
+        impulseSource = playerCamera.GetComponent<CinemachineImpulseSource>();
+
         if (scareob != null)
             scareob.SetActive(false);
     }
@@ -46,13 +45,13 @@ public class JumpScare : MonoBehaviour
             SoundManager.Instance.PlaySFX(x);
 
         //Ä«¸Þ¶ó Èçµé±â
-        if(impulseSource!=null)
+        if (impulseSource!=null)
         {
             impulseSource.GenerateImpulse();
         }
 
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(shakeDuration);
         if (scareob != null)
             scareob.SetActive(false);
     }

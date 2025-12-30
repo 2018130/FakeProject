@@ -38,4 +38,8 @@ public class SoundPlayer : MonoBehaviour
     {
         SoundManager.Instance.PlayBGM(bGM);
     }
+    public void StopBGM()
+    {
+        SoundManager.Instance.StopBGM();
+    }
 }

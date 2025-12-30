@@ -20,18 +20,21 @@ public class ChatController : MonoBehaviour
 
     private int currentMessageCount = 0;   // 내부 카운트 변수
 
+    private CellPhone cellPhone;
+
     private void Start()
     {
         // 시작할 때 상태 업데이트 (0이면 숨김)
         UpdateBadgeState();
-
-        AddMessage("testmessage,나야나 마리오");
-        AddMessage("testmessage,루이지는 루이지, 오늘도 굼바를 괴롭히고 있었어.");
+        cellPhone = FindAnyObjectByType<CellPhone>();
     }
 
     // 메시지 추가 함수
     public void AddMessage(string text)
     {
+        SoundManager.Instance.PlaySFX(ESFX.SFX_MessageAlarm);
+        cellPhone?.TurnOnScreenForSeconds(0.5f);
+
         // 1. 메시지 생성
         GameObject newMessage = Instantiate(messagePrefab, contentTransform);
         Text messageText = newMessage.GetComponentInChildren<Text>();

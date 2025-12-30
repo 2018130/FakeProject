@@ -34,6 +34,10 @@ public class Pickle : MonoBehaviour
         if (other.CompareTag("Player")) GameOver();
     }
 
+    public void SetTriggerCollider(bool active)
+    {
+        GetComponent<Collider>().enabled = active;
+    }
     public void SetPos(Vector3 sponPos, Transform target)
     {
         this.target = target;

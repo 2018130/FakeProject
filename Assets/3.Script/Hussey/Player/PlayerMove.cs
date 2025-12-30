@@ -23,6 +23,9 @@ public class PlayerMove : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody playerR;
 
+    private Vector3 _moveDirection = Vector3.zero;
+    public Vector3 MoveDirection => _moveDirection;
+
     //private Animator ani;
     [SerializeField]
     public Transform cameraPoint;
@@ -80,17 +83,17 @@ public class PlayerMove : MonoBehaviour
             Vector3 forward = transform.forward * playerInput.MoveValue.y;
             Vector3 right = transform.right * playerInput.MoveValue.x;
 
-            Vector3 direction = (forward + right).normalized;//normalized = 방향벡터의 크기를 1로 맞춤
+            _moveDirection = (forward + right).normalized;//normalized = 방향벡터의 크기를 1로 맞춤
             //Debug.Log(direction);
             if (playerInput.isRun)
             {
-                Vector3 movePos = direction * runSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                Vector3 movePos = _moveDirection * runSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
                 //Debug.Log("1111");
             }
             else
             {
-                Vector3 movePos = direction * moveSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                Vector3 movePos = _moveDirection * moveSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
                 //Debug.Log("2222");
             }
@@ -126,7 +129,7 @@ public class PlayerMove : MonoBehaviour
             yRotation += playerInput.MoveValue.x;
             yRotation = Mathf.Clamp(yRotation, -camHorizontalDegreeLimit, camHorizontalDegreeLimit);
 
-            cameraPoint.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+            cameraPoint.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         }
     }
 

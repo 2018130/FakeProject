@@ -60,9 +60,13 @@ public class GameManager : SingletonBehaviour<GameManager>
             case GameState.None:
                 break;
             case GameState.Playing:
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 GameManager.Instance.currentSceneContext.GameTimeScale = 1f;
                 break;
             case GameState.UI:
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 GameManager.Instance.currentSceneContext.GameTimeScale = 0f;
                 break;
             case GameState.TimeStop:

@@ -57,6 +57,7 @@ public class SuitCaseController : MonoBehaviour
         else if (!_isFloating)
         {
             floatCount++;
+            SoundManager.Instance.PlaySFX(ESFX.SFX_Rustle2);
             StartCoroutine(Floating_co(2));
         }
     }
