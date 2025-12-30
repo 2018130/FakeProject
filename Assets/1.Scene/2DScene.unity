@@ -3376,7 +3376,7 @@ MonoBehaviour:
     backgroundSprite: {fileID: 0}
     bgmType: 2
   - dialogueID: 2
-    characterSprite: {fileID: 21300000, guid: 751c0eae2f529d345aff382836c84ed6, type: 3}
+    characterSprite: {fileID: 21300000, guid: 1bcd83f134ee2fd46b8265ae6cb7cde3, type: 3}
     backgroundSprite: {fileID: 0}
     bgmType: 0
   - dialogueID: 3
@@ -3392,7 +3392,7 @@ MonoBehaviour:
     backgroundSprite: {fileID: 0}
     bgmType: 0
   - dialogueID: 6
-    characterSprite: {fileID: 21300000, guid: c37b1ea9ddf7f2b469e88b545c995f46, type: 3}
+    characterSprite: {fileID: 21300000, guid: 3ec854a7105ec5b4ab2af0180478eac3, type: 3}
     backgroundSprite: {fileID: 21300000, guid: 3cffa8e879d7492448f61b21bcaf1d0b, type: 3}
     bgmType: 0
   - dialogueID: 7
