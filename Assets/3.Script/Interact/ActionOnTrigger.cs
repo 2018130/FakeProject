@@ -16,6 +16,8 @@ public class ActionOnTrigger : MonoBehaviour
     [TagSelector]
     private string triggerTargetTag = "Player";
 
+    private bool _isTriggered = false;
+
     private void Start()
     {
         if(!TryGetComponent(out Collider collider))
@@ -29,11 +31,12 @@ public class ActionOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(triggerTargetTag))
+        if(other.CompareTag(triggerTargetTag) && !_isTriggered)
         {
             // ?. -> 널이라면 뒤에것 실행 x, 그렇지 않다면 실행
             FindAnyObjectByType<interkeyUI>()?.SetInteractionKeyUI(data);
             action?.Invoke();
+            _isTriggered = true;
         }
     }
 

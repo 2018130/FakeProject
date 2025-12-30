@@ -107,7 +107,7 @@ public class GameSceneManager : MonoBehaviour
 
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R));
 
-        SceneChangeManager.Instance.ChangeScene(SceneType.TitleScene);
+        SceneChangeManager.Instance.ChangeScene(SceneType.GameScene);
     }
 
     public void aaaaaa()
