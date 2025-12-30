@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PhotoSystem : MonoBehaviour
@@ -48,6 +49,8 @@ public class PhotoSystem : MonoBehaviour
         // 다음 이벤트 로직 (예: 컷신 재생, 점수 획득 등)
         pickleBehindYou.Start_Co();
         SoundManager.Instance.PlayBGM(EBGM.BGM_3Dchase);
+        SoundManager.Instance.PlaySFX(ESFX.SFX_DropDeadBody);
+        GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         Debug.Log("피클을 소환하라!");
 
     }
