@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a102c068e979d4eaf04c43794c9d50, type: 3}
   m_Name: RunningMSGData
   m_EditorClassIdentifier: Assembly-CSharp::StringDataSO
-  scriptLines: "\uB6F0\uC5B4!!"
+  scriptLines: "\uB6F0\uC5B4"

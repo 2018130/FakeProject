@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a102c068e979d4eaf04c43794c9d50, type: 3}
   m_Name: CameraMissionMSGData
   m_EditorClassIdentifier: Assembly-CSharp::StringDataSO
-  scriptLines: "\uBE44\uBC00\uC758 \uC11D\uC0C1\uC744 \uCC0D\uC5B4\uC57C\uB418, \uADF8
-    \uC11D\uC0C1\uC740 \uBCF4\uD638\uBC1B\uACE0 \uC788\uC5B4\uC11C \uC55E\uC5D0\uC11C\uB294
-    \uCC0D\uC744 \uC218 \uC5C6\uC5B4."
+  scriptLines: "\uAD6C\uC870\uB300\uC6D0\uC785\uB2C8\uB2E4. \uC8FC\uBCC0\uC5D0 \uC11D\uC0C1
+    \uAC19\uC740\uAC8C \uC788\uC73C\uC2DC\uB2E4\uBA74 \uCC0D\uC5B4\uC11C \uBCF4\uB0B4\uC8FC\uC138\uC694,
+    \uC704\uCE58\uD2B9\uC815\uC5D0 \uB3C4\uC6C0\uC774 \uB429\uB2C8\uB2E4."
