@@ -87,13 +87,13 @@ public class PlayerMove : MonoBehaviour
             //Debug.Log(direction);
             if (playerInput.isRun)
             {
-                Vector3 movePos = _moveDirection * runSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                Vector3 movePos = _moveDirection * runSpeed * Time.fixedDeltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
                 //Debug.Log("1111");
             }
             else
             {
-                Vector3 movePos = _moveDirection * moveSpeed * Time.deltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
+                Vector3 movePos = _moveDirection * moveSpeed * Time.fixedDeltaTime * GameManager.Instance.CurrentSceneContext.GameTimeScale;
                 playerR.MovePosition(transform.position + movePos);
                 //Debug.Log("2222");
             }
