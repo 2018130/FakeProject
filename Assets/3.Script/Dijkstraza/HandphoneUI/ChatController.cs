@@ -27,6 +27,9 @@ public class ChatController : MonoBehaviour
         // 시작할 때 상태 업데이트 (0이면 숨김)
         UpdateBadgeState();
         cellPhone = FindAnyObjectByType<CellPhone>();
+
+        AddMessage("프레쉬, 3명 배달 중");
+        AddMessage("사고나서 늦어질 듯");
     }
 
     // 메시지 추가 함수

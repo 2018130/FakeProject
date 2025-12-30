@@ -3261,7 +3261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
-  playedKey: CutscenePlayedKey
+  playedKey: CutscenePlayedKey1
   isPlayed: 0
   loadedSceneEffects: []
   sceneEffects:
@@ -9576,7 +9576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
-  playedKey: CutscenePlayedKey
+  playedKey: CutscenePlayedKey127
   isPlayed: 0
   loadedSceneEffects: []
   sceneEffects:
@@ -10009,7 +10009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
-  playedKey: CutscenePlayedKey
+  playedKey: CutscenePlayedKey12
   isPlayed: 0
   loadedSceneEffects: []
   sceneEffects:
@@ -10877,6 +10877,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1347188154}
         m_TargetAssemblyTypeName: SoundPlayer, Assembly-CSharp
         m_MethodName: PlayeAudioByType
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5139441465209413964}
+        m_TargetAssemblyTypeName: Pickle, Assembly-CSharp
+        m_MethodName: StopNav
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18103,7 +18115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
-  playedKey: CutscenePlayedKey
+  playedKey: CutscenePlayedKey123
   isPlayed: 0
   loadedSceneEffects: []
   sceneEffects:
@@ -25965,7 +25977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0004367976, y: 0.14154974}
+  m_AnchoredPosition: {x: -0.0004367976, y: 1.4092835}
   m_SizeDelta: {x: 0, y: 1551.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!4 &3532617228371764287
@@ -27947,8 +27959,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537293230407225511}
   m_HandleRect: {fileID: 1370685821100400692}
   m_Direction: 2
-  m_Value: -0.0043327557
-  m_Size: 0.99990916
+  m_Value: -8.995671
+  m_Size: 0.98956716
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33221,7 +33233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49de8caf62be8341b4c30d69a6cf67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneContents
-  playedKey: CutscenePlayedKey
+  playedKey: CutscenePlayedKey125
   isPlayed: 0
   loadedSceneEffects:
   - _type: 3
@@ -36550,7 +36562,7 @@ MonoBehaviour:
     DissipationMode: 2
     DissipationDistance: 100
     PropagationSpeed: 343
-  DefaultVelocity: {x: 20, y: -20, z: 0}
+  DefaultVelocity: {x: 10, y: -5, z: 0}
 --- !u!1 &8496641313372638594
 GameObject:
   m_ObjectHideFlags: 0
@@ -36867,7 +36879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndOfRoad
   pickle: {fileID: 5139441465209413964}
   sponPos: {fileID: 163668141270101395}
-  pickleSpeed: 20
+  pickleSpeed: 40
 --- !u!1 &8642807313330996366
 GameObject:
   m_ObjectHideFlags: 0

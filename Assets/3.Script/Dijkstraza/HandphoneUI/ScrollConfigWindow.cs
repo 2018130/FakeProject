@@ -239,7 +239,7 @@ public class ScrollConfigWindow : MonoBehaviour, ISceneContextBuilt
             _elapseTime += Time.deltaTime;
             float per = _elapseTime / _durationToDown;
             _configScreen.transform.localPosition = new Vector3(0, Mathf.Lerp(startPosY, _targetDownPosition, per), 0);
-            tempColor.a = Mathf.Lerp(0.1f, 250 / 255f, per);
+            tempColor.a = Mathf.Lerp(0.1f, 255f / 255f, per);
             image.color = tempColor;
             blurOverlayImageColor.a = Mathf.Lerp(0.0f, 70 / 255f, per);
             blurOverlayImageImage.color = blurOverlayImageColor;
@@ -248,7 +248,7 @@ public class ScrollConfigWindow : MonoBehaviour, ISceneContextBuilt
         _configScreen.transform.localPosition = new Vector3(0, _targetDownPosition, 0);
         blurOverlayImageColor.a = 70 / 255f;
         blurOverlayImageImage.color = blurOverlayImageColor;
-        tempColor.a = 250 / 255f;
+        tempColor.a = 255f / 255f;
         image.color = tempColor;
     }
 
@@ -293,14 +293,14 @@ public class ScrollConfigWindow : MonoBehaviour, ISceneContextBuilt
             _callScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetRightPosition, per), 0, 0);
             blurOverlayImageColor.a = Mathf.Lerp(0f, 70 / 255f, per);
             blurOverlayImageImage.color = blurOverlayImageColor;
-            tempColor.a = Mathf.Lerp(0.1f, 250 / 255f, per);
+            tempColor.a = Mathf.Lerp(0.1f, 255f / 255f, per);
             image.color = tempColor;
             yield return null;
         }
         _callScreen.transform.localPosition = new Vector3(_targetRightPosition, 0, 0);
         blurOverlayImageColor.a = 70 / 255f;
         blurOverlayImageImage.color = blurOverlayImageColor;
-        tempColor.a = 250 / 255f;
+        tempColor.a = 255f / 255f;
         image.color = tempColor;
     }
 
@@ -345,14 +345,14 @@ public class ScrollConfigWindow : MonoBehaviour, ISceneContextBuilt
             _messageScreen.transform.localPosition = new Vector3(Mathf.Lerp(startPosX, _targetLeftPosition, per), 0, 0);
             blurOverlayImageColor.a = Mathf.Lerp(0f, 70 / 255f, per);
             blurOverlayImageImage.color = blurOverlayImageColor;
-            tempColor.a = Mathf.Lerp(0.1f, 250 / 255f, per);
+            tempColor.a = Mathf.Lerp(0.1f, 255f / 255f, per);
             image.color = tempColor;
             yield return null;
         }
         _messageScreen.transform.localPosition = new Vector3(_targetLeftPosition, 0, 0);
         blurOverlayImageColor.a = 70 / 255f;
         blurOverlayImageImage.color = blurOverlayImageColor;
-        tempColor.a = 250 / 255f;
+        tempColor.a = 255f / 255f;
         image.color = tempColor;
     }
 
